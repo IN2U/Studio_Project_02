@@ -77,7 +77,7 @@ private:
 	void CalculateFrameRate();
 
 	void InitShaderUniforms();
-
+	void InitLightSettings();
 	void InitMeshList();
 
 public:
