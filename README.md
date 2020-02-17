@@ -1,5 +1,5 @@
 # Studio_Project_02
-If you are git 1337 h4xxor(meaning you use the terminal for git), then follow along, if you are using the gui version, then idk.
+If you are a git 1337 h4xxor(meaning you use the terminal for git), then follow along, if you are using the gui version, then idk.
 
 You can just download this as a zip or you can do
 
