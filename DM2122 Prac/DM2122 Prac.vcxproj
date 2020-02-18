@@ -153,6 +153,7 @@
     <ClCompile Include="Source\Mesh.cpp" />
     <ClCompile Include="Source\MeshBuilder.cpp" />
     <ClCompile Include="Source\MeshList.cpp" />
+    <ClCompile Include="Source\Render\RenderMesh.cpp" />
     <ClCompile Include="Source\Render\RenderSkybox.cpp" />
     <ClCompile Include="Source\Render\RenderText.cpp" />
     <ClCompile Include="Source\SceneText.cpp" />
