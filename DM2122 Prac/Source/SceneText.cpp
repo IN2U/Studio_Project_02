@@ -147,21 +147,6 @@ void SceneText::Render()
 	ObjectManager* Objects = ObjectManager::getInstance();
 	Object* temp;
 
-	/*modelStack.PushMatrix();
-	modelStack.Translate(light[0].position.x, light[0].position.y, light[0].position.z);
-	RenderMesh(meshList[GEO_LIGHTSPHERE], false);
-	modelStack.PopMatrix();*/
-
-	//modelStack.PushMatrix();
-	//modelStack.Translate(0, -3, 0);
-	//RenderMesh(meshList[GEO_DICE], true);
-	//modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	//scale, translate, rotate
-	//RenderText(meshList[GEO_TEXT], "HELLO WORLD", Color(0, 1, 0));
-	modelStack.PopMatrix();
-
 	//No transform needed
 	RenderTextOnScreen(meshList[GEO_TEXT], "Hello World", Color(0, 1, 0), 2, 0, 0);
 

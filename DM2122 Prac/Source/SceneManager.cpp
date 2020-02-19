@@ -45,10 +45,4 @@ void SceneManager::Update(double ElapsedTime) {
 void SceneManager::ChangeScene() {
 
 	currSceneID = nextSceneID;
-	if (currSceneID == 0) {
-		nextSceneID = 0;
-	}
-	else {
-		nextSceneID = 0;
-	}
 }
