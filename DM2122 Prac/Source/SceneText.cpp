@@ -159,7 +159,7 @@ void SceneText::Render()
 
 	modelStack.PushMatrix();
 	//scale, translate, rotate
-	RenderText(meshList[GEO_TEXT], "HELLO WORLD", Color(0, 1, 0));
+	//RenderText(meshList[GEO_TEXT], "HELLO WORLD", Color(0, 1, 0));
 	modelStack.PopMatrix();
 
 	//No transform needed
