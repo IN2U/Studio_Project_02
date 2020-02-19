@@ -157,7 +157,6 @@ Mesh* MeshBuilder::GenerateCuboid(const std::string& meshName, Color color, floa
 	v.normal = Vector3(0.f, 1.f, 0.f);
 	v.pos.Set(midvalueX, midvalueY, midvalueZ);
 	v.texCoord.Set(0, 0);
-
 	vertex_buffer_data.push_back(v); //0
 	v.pos.Set(midvalueX, midvalueY, -midvalueZ);
 	v.texCoord.Set(1, 0);
