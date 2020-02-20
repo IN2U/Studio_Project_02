@@ -11,6 +11,10 @@
 #include "Application.h"
 #include "SceneManager.h"
 #include "SceneText.h"
+#include "SceneMenu.h"
+
+#include "GetCursorPos.h"
+#include "ButtonPos.h"
 
 GLFWwindow* m_window;
 const unsigned char FPS = 60; // FPS of this game
@@ -38,7 +42,6 @@ void resize_callback(GLFWwindow* window, int w, int h)
 
 bool Application::IsKeyPressed(unsigned short key)
 {
-	
     return ((GetAsyncKeyState(key) & 0x8001) != 0);
 }
 
@@ -68,9 +71,13 @@ void Application::Init()
 	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL 
 
-
+	//glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 	//Create a window and create its OpenGL context
-	m_window = glfwCreateWindow(800, 600, "Test Window", NULL, NULL);
+	m_window = glfwCreateWindow(Button::getInstance()->getWWidth(), Button::getInstance()->getWHeight(), "Motor Show 2077", NULL, NULL);
+
+	//glfwMaximizeWindow(m_window);
+
+	//glfwSetCursorPos(m_window, , );
 
 	//If the window couldn't be created
 	if (!m_window)
@@ -98,25 +105,40 @@ void Application::Init()
 	}
 
 	glfwSetWindowSizeCallback(m_window, resize_callback);
-
 }
 
 void Application::Run()
 {
 	//Main Loop
 	SceneManager* scene = SceneManager::getInstance();
+
+	scene->AddScene(new SceneMenu);
 	scene->AddScene(new SceneText);
+
 	scene->GetCurrScene()->Init();
 
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
-	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE))
+	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE) && scene->getInstance()->getNextSceneID() != -1)
 	{
 		if (IsKeyPressed(VK_F1)) {
+			// Checks if next scene has been set to something else
+			/*if (SceneManager::getCurrentSceneID() != SceneManager::getNextSceneID())
+			{
+			
+			}*/
 			scene->GetCurrScene()->Exit();
 			scene->ChangeScene();
 			scene->GetCurrScene()->Init();
 		}
+
+		// Gets cursor position
+		Cursor::getInstance()->getCursorPos(m_window);
+
+		// Gets window size
+		Button::getInstance()->getWindowSize(m_window);
+	
 		scene->Update(m_timer.getElapsedTime());
+
 		//Swap buffers
 		glfwSwapBuffers(m_window);
 		//Get and organize events, like keyboard and mouse input, window resizing, etc...
@@ -127,7 +149,6 @@ void Application::Run()
 	scene->GetCurrScene()->Exit();
 	delete scene;
 }
-
 
 void Application::Exit()
 {

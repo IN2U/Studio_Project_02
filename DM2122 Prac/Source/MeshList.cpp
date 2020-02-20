@@ -1,7 +1,14 @@
 #include "SceneText.h"
+#include "SceneMenu.h"
 #include "MeshBuilder.h"
 #include "../../glew/include/GL/glew.h"
 #include "LoadTGA.h"
+
+void SceneMenu::InitMeshList()
+{
+	meshList[MENU_SCREEN] = MeshBuilder::GenerateQuad("Menu_Screen", Color(1, 1, 1), 1.f, 1.f);
+	meshList[MENU_SCREEN]->textureID = LoadTGA("Image//MenuScreen.tga");
+}
 
 void SceneText::InitMeshList()
 {

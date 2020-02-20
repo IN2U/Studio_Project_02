@@ -127,8 +127,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
+    <ClInclude Include="Source\ButtonPos.h" />
     <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Source\Camera2.h" />
+    <ClInclude Include="Source\GetCursorPos.h" />
     <ClInclude Include="Source\Light.h" />
     <ClInclude Include="Source\LoadOBJ.h" />
     <ClInclude Include="Source\LoadTGA.h" />
@@ -139,15 +141,19 @@
     <ClInclude Include="Source\ObjectManager.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\SceneManager.h" />
+    <ClInclude Include="Source\SceneMenu.h" />
     <ClInclude Include="Source\SceneText.h" />
     <ClInclude Include="Source\shader.hpp" />
+    <ClInclude Include="Source\UNIFORM_TYPE.h" />
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Application.cpp" />
+    <ClCompile Include="Source\ButtonPos.cpp" />
     <ClCompile Include="Source\Camera.cpp" />
     <ClCompile Include="Source\Camera2.cpp" />
+    <ClCompile Include="Source\GetCursorPos.cpp" />
     <ClCompile Include="Source\InitLightSettings.cpp" />
     <ClCompile Include="Source\InitShaderUniforms.cpp" />
     <ClCompile Include="Source\LoadOBJ.cpp" />
@@ -158,9 +164,11 @@
     <ClCompile Include="Source\MeshList.cpp" />
     <ClCompile Include="Source\Object.cpp" />
     <ClCompile Include="Source\ObjectManager.cpp" />
+    <ClCompile Include="Source\Render\RenderMesh.cpp" />
     <ClCompile Include="Source\Render\RenderSkybox.cpp" />
     <ClCompile Include="Source\Render\RenderText.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
+    <ClCompile Include="Source\SceneMenu.cpp" />
     <ClCompile Include="Source\SceneText.cpp" />
     <ClCompile Include="Source\shader.cpp" />
     <ClCompile Include="Source\Utility.cpp" />

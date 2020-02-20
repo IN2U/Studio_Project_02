@@ -1,5 +1,4 @@
 #include "SceneManager.h"
-#include "Scene.h"
 
 SceneManager::SceneManager() {
 	currSceneID = 0;
@@ -7,7 +6,7 @@ SceneManager::SceneManager() {
 }
 
 SceneManager::~SceneManager() {
-	for (int i = 0; i < sceneLib.size(); i++) {
+	for (unsigned int i = 0; i < sceneLib.size(); i++) {
 		delete sceneLib[i];
 	}
 }
@@ -34,6 +33,11 @@ void SceneManager::AddScene(Scene* scene) {
 void SceneManager::SetNextScene(int sceneID) {
 
 	nextSceneID = sceneID;
+}
+
+int SceneManager::getNextSceneID()
+{
+	return nextSceneID;
 }
 
 void SceneManager::Update(double ElapsedTime) {
