@@ -32,6 +32,10 @@ struct Light
 		kC = 1.f;
 		kL = 0.f;
 		kQ = 0.f;
+		type = LIGHT_POINT;
+		cosCutoff = 0.f;
+		cosInner = 0.f;
+		exponent = 0.f;
 	}
 };
 

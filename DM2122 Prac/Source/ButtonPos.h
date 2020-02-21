@@ -22,22 +22,23 @@ private:
 	static Button* instance;
 public:
 	~Button();
-	static Button* getInstance();
 
 	int getWWidth();
 	int getWHeight();
 
-	double getMenuMinPosX();
-	double getMenuMaxPosX();
+	double getMenuMinPosX() const;
+	double getMenuMaxPosX() const;
 
-	double getMenuPlayMinPosY();
-	double getMenuPlayMaxPosY();
+	double getMenuPlayMinPosY() const;
+	double getMenuPlayMaxPosY() const;
 
-	double getMenuOptionsMinPosY();
-	double getMenuOptionsMaxPosY();
+	double getMenuOptionsMinPosY() const;
+	double getMenuOptionsMaxPosY() const;
 
-	double getMenuQuitMinPosY();
-	double getMenuQuitMaxPosY();
+	double getMenuQuitMinPosY() const;
+	double getMenuQuitMaxPosY() const;
+
+	static Button* getInstance();
 
 	void getWindowSize(GLFWwindow* m_window);
 	void setWidthHeight();

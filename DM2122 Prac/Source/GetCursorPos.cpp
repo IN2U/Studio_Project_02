@@ -1,5 +1,4 @@
 #include "GetCursorPos.h"
-#include "Application.h"
 
 Cursor::Cursor()
 {
@@ -12,12 +11,12 @@ Cursor::~Cursor()
 	// HELP ME
 }
 
-double Cursor::getMXPos()
+double Cursor::getMXPos() const
 {
 	return mXPos;
 }
 
-double Cursor::getMYPos()
+double Cursor::getMYPos() const
 {
 	return mYPos;
 }

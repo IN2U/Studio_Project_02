@@ -23,42 +23,42 @@ int Button::getWHeight()
 	return wHeight;
 }
 
-double Button::getMenuMinPosX()
+double Button::getMenuMinPosX() const
 {
 	return MenuMinPosX;
 }
 
-double Button::getMenuMaxPosX()
+double Button::getMenuMaxPosX() const
 {
 	return MenuMaxPosX;
 }
 
-double Button::getMenuPlayMinPosY()
+double Button::getMenuPlayMinPosY() const
 {
 	return MenuMinPosY[0];
 }
 
-double Button::getMenuPlayMaxPosY()
+double Button::getMenuPlayMaxPosY() const
 {
 	return MenuMaxPosY[0];
 }
 
-double Button::getMenuOptionsMinPosY()
+double Button::getMenuOptionsMinPosY() const
 {
 	return MenuMinPosY[1];
 }
 
-double Button::getMenuOptionsMaxPosY()
+double Button::getMenuOptionsMaxPosY() const
 {
 	return MenuMaxPosY[1];
 }
 
-double Button::getMenuQuitMinPosY()
+double Button::getMenuQuitMinPosY() const
 {
 	return MenuMinPosY[2];
 }
 
-double Button::getMenuQuitMaxPosY()
+double Button::getMenuQuitMaxPosY() const
 {
 	return MenuMaxPosY[2];
 }

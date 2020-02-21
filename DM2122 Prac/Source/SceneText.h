@@ -6,32 +6,47 @@
 #include "Camera2.h"
 #include "Light.h"
 #include <MatrixStack.h>
+#include "Sun.h"
 
 class SceneText : public Scene
 {
+private:
 	enum GEOMETRY_TYPE
 	{
 		GEO_AXES = 0,
-		GEO_LEFT, 
-		GEO_RIGHT, 
-		GEO_TOP, 
-		GEO_BOTTOM, 
-		GEO_FRONT, 
-		GEO_BACK,
+
+		SKYBOX_LEFT_DAY, 
+		SKYBOX_RIGHT_DAY,
+		SKYBOX_TOP_DAY,
+		SKYBOX_BOTTOM_DAY,
+		SKYBOX_FRONT_DAY,
+		SKYBOX_BACK_DAY,
+
+		SKYBOX_LEFT_NIGHT,
+		SKYBOX_RIGHT_NIGHT,
+		SKYBOX_TOP_NIGHT,
+		SKYBOX_BOTTOM_NIGHT,
+		SKYBOX_FRONT_NIGHT,
+		SKYBOX_BACK_NIGHT,
+
+		GEO_SUN,
 		GEO_CHAR,
 		GEO_DICE,
 		GEO_LIGHTSPHERE,
 		GEO_TEXT,
 		NUM_GEOMETRY,
 	}; 
-private:
+
 	unsigned m_vertexArrayID;
 
 	Mesh* meshList[NUM_GEOMETRY];
 
 	MS modelStack, viewStack, projectionStack;
-	Light light[1];
+
+	Light light[2];
+
 	bool renderHitBox;
+
 	Camera2 camera;
 	
 	void RenderMesh(Mesh* mesh, bool enableLight);
@@ -46,6 +61,10 @@ private:
 	virtual void InitMeshList() override;
 
 	void CalculateFrameRate();
+
+	Sun sun;
+	//void updateSunlight();
+
 public:
 	SceneText();
 	~SceneText();

@@ -8,7 +8,6 @@
 #include "Utility.h"
 #include "LoadTGA.h"
 #include <Mtx44.h>
-
 #include "GetCursorPos.h"
 
 #define ROT_LIMIT 45.f;
@@ -111,6 +110,32 @@ void SceneText::Update(double dt)
 		//to do: switch light type to SPOT and pass the information to
 		light[0].type = Light::LIGHT_SPOT;
 	}
+
+	// Updates sun pos
+	sun.revolve(dt);
+
+	// Updates sunlight pos
+	light[1].position.Set(sun.getX(), sun.getY(), sun.getZ());
+
+	// Night
+	if(sun.getAngle() > 180)
+	{
+		light[1].power = 0;
+		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
+	}
+	// Morning
+	else if(sun.getAngle() < 90)
+	{
+		light[1].power += sun.getPower();
+		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
+	}
+	// Afternoon
+	else if (sun.getAngle() > 90)
+	{
+		light[1].power -= sun.getPower();
+		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
+	}
+
 	camera.Update(dt);
 	CalculateFrameRate();
 }
@@ -146,6 +171,28 @@ void SceneText::Render()
 		glUniform3fv(m_parameters[U_LIGHT0_POSITION], 1, &lightPosition_cameraspace.x);
 	}
 
+	// passing the light direction if it is a direction light	
+	if (light[1].type == Light::LIGHT_DIRECTIONAL)
+	{
+		Vector3 lightDir(light[1].position.x, light[1].position.y, light[1].position.z);
+		Vector3 lightDirection_cameraspace = viewStack.Top() * lightDir;
+		glUniform3fv(m_parameters[U_LIGHT_SUN_POSITION], 1, &lightDirection_cameraspace.x);
+	}
+	// if it is spot light, pass in position and direction 
+	else if (light[1].type == Light::LIGHT_SPOT)
+	{
+		Position lightPosition_cameraspace = viewStack.Top() * light[1].position;
+		glUniform3fv(m_parameters[U_LIGHT_SUN_POSITION], 1, &lightPosition_cameraspace.x);
+		Vector3 spotDirection_cameraspace = viewStack.Top() * light[1].spotDirection;
+		glUniform3fv(m_parameters[U_LIGHT_SUN_SPOTDIRECTION], 1, &spotDirection_cameraspace.x);
+	}
+	else
+	{
+		// default is point light (only position since point light is 360 degrees)
+		Position lightPosition_cameraspace = viewStack.Top() * light[1].position;
+		glUniform3fv(m_parameters[U_LIGHT_SUN_POSITION], 1, &lightPosition_cameraspace.x);
+	}
+
 	RenderSkybox();
 
 	ObjectManager* Objects = ObjectManager::getInstance();
@@ -153,13 +200,17 @@ void SceneText::Render()
 
 	//No transform needed
 	RenderTextOnScreen(meshList[GEO_TEXT], "Hello World", Color(0, 1, 0), 2, 0, 0);
-
-	temp = Objects->AddObject("Light", meshList[GEO_LIGHTSPHERE], false);
-	temp->Transform('T', 0, 10, 0);
+	
+	temp = Objects->AddObject("Sun", meshList[GEO_SUN], false);
+	temp->Transform('T', sun.getX(), sun.getY(), sun.getZ());
+	temp->Transform('S', 0.5f, 0.5f, 0.5f);
 	Objects->getLib().push_back(temp);
 
-	temp = Objects->AddObject("Dice", meshList[GEO_DICE], true, "Light");
-	temp->Transform(90.f, 1, 0, 0);
+	//temp = Objects->AddObject("Light", meshList[GEO_LIGHTSPHERE], false);
+	//temp->Transform('T', 0, 5, 0);
+	//Objects->getLib().push_back(temp);
+
+	temp = Objects->AddObject("Dice", meshList[GEO_DICE], true);
 	Objects->getLib().push_back(temp);
 
 	// RenderMesh
@@ -189,7 +240,7 @@ void SceneText::CalculateFrameRate()
 	static float framesPerSecond = 0.0f;
 	static int fps;
 	static float lastTime = 0.0f;
-	float currentTime = GetTickCount() * 0.001f;
+	float currentTime = GetTickCount64() * 0.001f;
 	++framesPerSecond;
 	printf("Current Frames Per Second: %d\n\n", fps);
 	if (currentTime - lastTime > 1.0f)

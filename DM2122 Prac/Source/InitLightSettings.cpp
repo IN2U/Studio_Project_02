@@ -4,9 +4,9 @@
 void SceneText::InitLightSettings()
 {
 	light[0].type = Light::LIGHT_POINT;
-	light[0].position.Set(0, 5, 0);
+	light[0].position.Set(0, -5, 0);
 	light[0].color.Set(0.5f, 0.5f, 0.5f);
-	light[0].power = 1;
+	light[0].power = 10;
 	light[0].kC = 1.f;
 	light[0].kL = 0.01f;
 	light[0].kQ = 0.001f;
@@ -25,5 +25,29 @@ void SceneText::InitLightSettings()
 	glUniform1f(m_parameters[U_LIGHT0_COSCUTOFF], light[0].cosCutoff);
 	glUniform1f(m_parameters[U_LIGHT0_COSINNER], light[0].cosInner);
 	glUniform1f(m_parameters[U_LIGHT0_EXPONENT], light[0].exponent);
-	glUniform1i(m_parameters[U_NUMLIGHTS], 1);
+
+	light[1].type = Light::LIGHT_DIRECTIONAL;
+	light[1].position.Set(sun.getX(), sun.getY(), sun.getZ());
+	light[1].color.Set(1.f, 1.f, 1.f);
+	light[1].power = 0;
+	light[1].kC = 1.f;
+	light[1].kL = 0.01f;
+	light[1].kQ = 0.001f;
+	light[1].cosCutoff = cos(Math::DegreeToRadian(45));
+	light[1].cosInner = cos(Math::DegreeToRadian(30));
+	light[1].exponent = 3.f;
+	light[1].spotDirection.Set(0.f, 1.f, 0.f);
+
+	glUniform1i(m_parameters[U_LIGHT_SUN_TYPE], light[1].type);
+	glUniform3fv(m_parameters[U_LIGHT_SUN_COLOR], 1, &light[1].color.r);
+	glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
+	glUniform1f(m_parameters[U_LIGHT_SUN_KC], light[1].kC);
+	glUniform1f(m_parameters[U_LIGHT_SUN_KL], light[1].kL);
+	glUniform1f(m_parameters[U_LIGHT_SUN_KQ], light[1].kQ);
+	glUniform3fv(m_parameters[U_LIGHT_SUN_SPOTDIRECTION], 1, &light[1].spotDirection.x);
+	glUniform1f(m_parameters[U_LIGHT_SUN_COSCUTOFF], light[1].cosCutoff);
+	glUniform1f(m_parameters[U_LIGHT_SUN_COSINNER], light[1].cosInner);
+	glUniform1f(m_parameters[U_LIGHT_SUN_EXPONENT], light[1].exponent);
+
+	glUniform1i(m_parameters[U_NUMLIGHTS], 2);
 }

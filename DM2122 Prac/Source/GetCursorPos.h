@@ -14,10 +14,11 @@ private:
 	double mXPos, mYPos;
 public:
 	~Cursor();
-	static Cursor* getInstance();
 
-	double getMXPos();
-	double getMYPos();
+	double getMXPos() const;
+	double getMYPos() const;
+
+	static Cursor* getInstance();
 
 	void getCursorPos(GLFWwindow* m_window);
 };

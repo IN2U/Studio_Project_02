@@ -12,23 +12,47 @@ void SceneMenu::InitMeshList()
 
 void SceneText::InitMeshList()
 {
-	meshList[GEO_LEFT] = MeshBuilder::GenerateQuad("left", Color(1, 1, 1), 1.f, 1.f);
-	meshList[GEO_LEFT]->textureID = LoadTGA("Image//left.tga");
+	//DAY SKYBOX
+	meshList[SKYBOX_LEFT_DAY] = MeshBuilder::GenerateQuad("sb_left_day", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_LEFT_DAY]->textureID = LoadTGA("Image//sb_left_day.tga");
 
-	meshList[GEO_RIGHT] = MeshBuilder::GenerateQuad("right", Color(1, 1, 1), 1.f, 1.f);
-	meshList[GEO_RIGHT]->textureID = LoadTGA("Image//right.tga");
+	meshList[SKYBOX_RIGHT_DAY] = MeshBuilder::GenerateQuad("sb_right_day", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_RIGHT_DAY]->textureID = LoadTGA("Image//sb_right_day.tga");
 
-	meshList[GEO_TOP] = MeshBuilder::GenerateQuad("top", Color(1, 1, 1), 1.f, 1.f);
-	meshList[GEO_TOP]->textureID = LoadTGA("Image//top.tga");
+	meshList[SKYBOX_TOP_DAY] = MeshBuilder::GenerateQuad("sb_top_day", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_TOP_DAY]->textureID = LoadTGA("Image//sb_top_day.tga");
 
-	meshList[GEO_BOTTOM] = MeshBuilder::GenerateQuad("bottom", Color(1, 1, 1), 1.f, 1.f);
-	meshList[GEO_BOTTOM]->textureID = LoadTGA("Image//bottom.tga");
+	meshList[SKYBOX_BOTTOM_DAY] = MeshBuilder::GenerateQuad("sb_bottom_day", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_BOTTOM_DAY]->textureID = LoadTGA("Image//sb_bottom_day.tga");
 
-	meshList[GEO_FRONT] = MeshBuilder::GenerateQuad("front", Color(1, 1, 1), 1.f, 1.f);
-	meshList[GEO_FRONT]->textureID = LoadTGA("Image//front.tga");
+	meshList[SKYBOX_FRONT_DAY] = MeshBuilder::GenerateQuad("sb_front_day", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_FRONT_DAY]->textureID = LoadTGA("Image//sb_front_day.tga");
 
-	meshList[GEO_BACK] = MeshBuilder::GenerateQuad("back", Color(1, 1, 1), 1.f, 1.f);
-	meshList[GEO_BACK]->textureID = LoadTGA("Image//back.tga");
+	meshList[SKYBOX_BACK_DAY] = MeshBuilder::GenerateQuad("sb_back_day", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_BACK_DAY]->textureID = LoadTGA("Image//sb_back_day.tga");
+	//~
+
+	//NIGHT SKYBOX
+	meshList[SKYBOX_LEFT_NIGHT] = MeshBuilder::GenerateQuad("sb_left_night", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_LEFT_NIGHT]->textureID = LoadTGA("Image//sb_left_night.tga");
+
+	meshList[SKYBOX_RIGHT_NIGHT] = MeshBuilder::GenerateQuad("sb_right_night", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_RIGHT_NIGHT]->textureID = LoadTGA("Image//sb_right_night.tga");
+
+	meshList[SKYBOX_TOP_NIGHT] = MeshBuilder::GenerateQuad("sb_top_night", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_TOP_NIGHT]->textureID = LoadTGA("Image//sb_top_night.tga");
+
+	meshList[SKYBOX_BOTTOM_NIGHT] = MeshBuilder::GenerateQuad("sb_bottom_night", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_BOTTOM_NIGHT]->textureID = LoadTGA("Image//sb_bottom_night.tga");
+
+	meshList[SKYBOX_FRONT_NIGHT] = MeshBuilder::GenerateQuad("sb_front_night", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_FRONT_NIGHT]->textureID = LoadTGA("Image//sb_front_night.tga");
+
+	meshList[SKYBOX_BACK_NIGHT] = MeshBuilder::GenerateQuad("sb_back_night", Color(1, 1, 1), 1.f, 1.f);
+	meshList[SKYBOX_BACK_NIGHT]->textureID = LoadTGA("Image//sb_back_night.tga");
+	//~
+	
+	meshList[GEO_SUN] = MeshBuilder::GenerateSphere("sun", Color(1.f, 1.f, 1.f), 9, 36, 1.f);
 
 	meshList[GEO_CHAR] = MeshBuilder::GenerateQuad("char", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_CHAR]->textureID = LoadTGA("Image//char.tga");
