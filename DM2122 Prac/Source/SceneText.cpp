@@ -201,10 +201,15 @@ void SceneText::Render()
 	//No transform needed
 	RenderTextOnScreen(meshList[GEO_TEXT], "Hello World", Color(0, 1, 0), 2, 0, 0);
 	
-	temp = Objects->AddObject("Sun", meshList[GEO_SUN], false);
-	temp->Transform('T', sun.getX(), sun.getY(), sun.getZ());
-	temp->Transform('S', 0.5f, 0.5f, 0.5f);
-	Objects->getLib().push_back(temp);
+	//temp = Objects->AddObject("Sun", meshList[GEO_SUN], false);
+	//temp->Transform('T', sun.getX(), sun.getY(), sun.getZ());
+	//temp->Transform('S', 0.5f, 0.5f, 0.5f);
+	//Objects->getLib().push_back(temp);
+
+	modelStack.PushMatrix();
+	modelStack.Translate(sun.getX(), sun.getY(), sun.getZ());
+	RenderMesh(meshList[GEO_SUN], false);
+	modelStack.PopMatrix();
 
 	//temp = Objects->AddObject("Light", meshList[GEO_LIGHTSPHERE], false);
 	//temp->Transform('T', 0, 5, 0);
