@@ -3,6 +3,8 @@
 
 #include "GL/glew.h"
 #include "ObjectManager.h"
+#include "Currency.h"
+#include "Vending.h"
 #include "shader.hpp"
 #include "MeshBuilder.h"
 #include "Utility.h"
@@ -10,9 +12,12 @@
 #include <Mtx44.h>
 #include "GetCursorPos.h"
 
+
 #define ROT_LIMIT 45.f;
 #define SCALE_LIMIT 5.f;
 #define LSPEED 10.f
+
+Currency* currency = Currency::GetInstance();
 
 SceneText::SceneText()
 {
@@ -57,6 +62,8 @@ void SceneText::Init()
 	InitLightSettings();
 
 	InitMeshList();
+
+	currency->SortAndUpdateCurrency();
 }
 
 void SceneText::Update(double dt)
@@ -135,6 +142,9 @@ void SceneText::Update(double dt)
 		light[1].power -= sun.getPower();
 		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
 	}
+
+	currency->AddCurrency(100 * dt);
+	currency->SortAndUpdateCurrency();
 
 	camera.Update(dt);
 	CalculateFrameRate();
@@ -225,6 +235,8 @@ void SceneText::Render()
 		RenderMesh(Objects->getLib()[i]->getMesh(), Objects->getLib()[i]->getLight());
 		modelStack.PopMatrix();
 	}
+
+	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 13, 13);
 }
 
 void SceneText::Exit()

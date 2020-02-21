@@ -130,6 +130,9 @@
     <ClInclude Include="Source\ButtonPos.h" />
     <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Source\Camera2.h" />
+    <ClInclude Include="Source\CItem.h" />
+    <ClInclude Include="Source\CLinkList.h" />
+    <ClInclude Include="Source\Currency.h" />
     <ClInclude Include="Source\GetCursorPos.h" />
     <ClInclude Include="Source\Light.h" />
     <ClInclude Include="Source\LoadOBJ.h" />
@@ -147,6 +150,7 @@
     <ClInclude Include="Source\Sun.h" />
     <ClInclude Include="Source\UNIFORM_TYPE.h" />
     <ClInclude Include="Source\Utility.h" />
+    <ClInclude Include="Source\Vending.h" />
     <ClInclude Include="Source\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +158,9 @@
     <ClCompile Include="Source\ButtonPos.cpp" />
     <ClCompile Include="Source\Camera.cpp" />
     <ClCompile Include="Source\Camera2.cpp" />
+    <ClCompile Include="Source\CItem.cpp" />
+    <ClCompile Include="Source\CLinkList.cpp" />
+    <ClCompile Include="Source\Currency.cpp" />
     <ClCompile Include="Source\GetCursorPos.cpp" />
     <ClCompile Include="Source\InitLightSettings.cpp" />
     <ClCompile Include="Source\InitShaderUniforms.cpp" />
@@ -174,6 +181,7 @@
     <ClCompile Include="Source\shader.cpp" />
     <ClCompile Include="Source\Sun.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
+    <ClCompile Include="Source\Vending.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -73,3 +73,28 @@ void SceneText::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, fl
 
 	glEnable(GL_DEPTH_TEST);
 }
+
+void SceneText::RenderMeshOnScreen(Mesh* mesh, float x, float y, float sizex, float sizey)
+{
+	glDisable(GL_DEPTH_TEST);
+	Mtx44 ortho;
+	ortho.SetToOrtho(0, 800 / 2, 0, 600, -10, 10); // Size of screen
+
+	projectionStack.PushMatrix();
+	projectionStack.LoadMatrix(ortho);
+
+	viewStack.PushMatrix();
+	viewStack.LoadIdentity(); // No need camera for ortho mode
+
+	modelStack.PushMatrix();
+	modelStack.LoadIdentity();
+
+	modelStack.Translate(x, y, 0);
+	modelStack.Scale(sizex, sizey, 1);
+
+	RenderMesh(mesh, false);
+
+	modelStack.PopMatrix();
+	viewStack.PopMatrix();
+	projectionStack.PopMatrix();
+}

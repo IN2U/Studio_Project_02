@@ -8,6 +8,7 @@
 #include <MatrixStack.h>
 #include "Sun.h"
 
+
 class SceneText : public Scene
 {
 private:
@@ -34,6 +35,7 @@ private:
 		GEO_DICE,
 		GEO_LIGHTSPHERE,
 		GEO_TEXT,
+		GEO_VENDING_MENU,
 		NUM_GEOMETRY,
 	}; 
 
@@ -54,13 +56,15 @@ private:
 
 	void RenderText(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-
+	void RenderMeshOnScreen(Mesh* mesh, float x, float y, float sizex, float sizey);
+	
 	void InitLightShaderUniforms();
 	void InitLightSettings();
 
 	virtual void InitMeshList() override;
 
 	void CalculateFrameRate();
+
 
 	Sun sun;
 	//void updateSunlight();
