@@ -22,7 +22,8 @@ public:
 	void ChangeScene();
 	void AddScene(Scene* scene);
 	void SetNextScene(int sceneID);
-	int getNextSceneID();
+	int getCurrentSceneID() const;
+	int getNextSceneID() const;
 	void Update(double ElapsedTime);
 };
 

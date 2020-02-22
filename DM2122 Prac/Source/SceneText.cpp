@@ -10,7 +10,7 @@
 #include "Utility.h"
 #include "LoadTGA.h"
 #include <Mtx44.h>
-#include "GetCursorPos.h"
+#include "Cursor.h"
 
 
 #define ROT_LIMIT 45.f;
@@ -125,21 +125,21 @@ void SceneText::Update(double dt)
 	light[1].position.Set(sun.getX(), sun.getY(), sun.getZ());
 
 	// Night
-	if(sun.getAngle() > 180)
+	if (sun.getAngle() > 180)
 	{
 		light[1].power = 0;
 		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
 	}
 	// Morning
-	else if(sun.getAngle() < 90)
+	else if (sun.getAngle() < 90)
 	{
-		light[1].power += sun.getPower();
+		light[1].power += sun.getIntensity();
 		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
 	}
 	// Afternoon
 	else if (sun.getAngle() > 90)
 	{
-		light[1].power -= sun.getPower();
+		light[1].power -= sun.getIntensity();
 		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
 	}
 
@@ -206,20 +206,16 @@ void SceneText::Render()
 	RenderSkybox();
 
 	ObjectManager* Objects = ObjectManager::getInstance();
+	Objects->Update();
 	Object* temp;
 
 	//No transform needed
 	RenderTextOnScreen(meshList[GEO_TEXT], "Hello World", Color(0, 1, 0), 2, 0, 0);
 	
-	//temp = Objects->AddObject("Sun", meshList[GEO_SUN], false);
-	//temp->Transform('T', sun.getX(), sun.getY(), sun.getZ());
-	//temp->Transform('S', 0.5f, 0.5f, 0.5f);
-	//Objects->getLib().push_back(temp);
-
-	modelStack.PushMatrix();
-	modelStack.Translate(sun.getX(), sun.getY(), sun.getZ());
-	RenderMesh(meshList[GEO_SUN], false);
-	modelStack.PopMatrix();
+	temp = Objects->AddObject("Sun", meshList[GEO_SUN], false);
+	temp->Transform('T', sun.getX(), sun.getY(), sun.getZ());
+	temp->Transform('S', 0.5f, 0.5f, 0.5f);
+	Objects->getLib().push_back(temp);
 
 	//temp = Objects->AddObject("Light", meshList[GEO_LIGHTSPHERE], false);
 	//temp->Transform('T', 0, 5, 0);

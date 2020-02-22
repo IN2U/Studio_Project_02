@@ -19,7 +19,7 @@ ObjectManager* ObjectManager::getInstance() {
 	return instance;
 }
 
-std::vector< Object* > &ObjectManager::getLib() {
+std::vector< Object* >& ObjectManager::getLib() {
 	return objectLib;
 }
 
@@ -53,5 +53,8 @@ void ObjectManager::RemoveObject(std::string ID) {
 }
 
 void ObjectManager::Update() {
-
+	for (int i = 0; i < objectLib.size(); i++) {
+		delete objectLib[i];
+	}
+	objectLib.clear();
 }

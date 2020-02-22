@@ -1,26 +1,14 @@
 #include "ButtonPos.h"
+#include "Window.h"
 
 Button::Button()
 {
-	wWidth = 800;
-	wHeight = 600;
-
-	setWidthHeight();
+	updateButtonPos();
 }
 
 Button::~Button()
 {
 	//HELP ME
-}
-
-int Button::getWWidth()
-{
-	return wWidth;
-}
-
-int Button::getWHeight()
-{
-	return wHeight;
 }
 
 double Button::getMenuMinPosX() const
@@ -74,25 +62,19 @@ Button* Button::getInstance()
 	return instance;
 }
 
-void Button::getWindowSize(GLFWwindow* m_window)
+void Button::updateButtonPos()
 {
-	// Updates wWidth and wHeight
-	glfwGetWindowSize(m_window, &wWidth, &wHeight);
+	Window* window = Window::getInstance();
 
-	setWidthHeight();
-}
+	MenuMinPosX = double(window->getWidth() / 160) * (double)69;
+	MenuMaxPosX = double(window->getWidth() / 16 * (double)9);
 
-void Button::setWidthHeight()
-{
-	MenuMinPosX = (double)wWidth / 160 * (double)69;
-	MenuMaxPosX = (double)wWidth / 16 * (double)9;
+	MenuMinPosY[0] = double(window->getHeight() / 20) * (double)9;
+	MenuMaxPosY[0] = double(window->getHeight() / 40) * (double)21;
 
-	MenuMinPosY[0] = (double)wHeight / 20 * (double)9;
-	MenuMaxPosY[0] = (double)wHeight / 40 * (double)21;
+	MenuMinPosY[1] = double(window->getHeight() / 40) * (double)23;
+	MenuMaxPosY[1] = double(window->getHeight() / 20) * (double)13;
 
-	MenuMinPosY[1] = (double)wHeight / 40 * (double)23;
-	MenuMaxPosY[1] = (double)wHeight / 20 * (double)13;
-
-	MenuMinPosY[2] = (double)wHeight / 120 * (double)83;
-	MenuMaxPosY[2] = (double)wHeight / 30 * (double)23;
+	MenuMinPosY[2] = double(window->getHeight() / 120) * (double)83;
+	MenuMaxPosY[2] = double(window->getHeight() / 30) * (double)23;
 }

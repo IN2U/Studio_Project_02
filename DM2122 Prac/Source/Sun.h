@@ -7,7 +7,7 @@ private:
 	float y;
 	float z;
 	float angle;
-	float power;
+	float intensity;
 public:
 	Sun();
 	~Sun();
@@ -16,7 +16,7 @@ public:
 	float getY() const;
 	float getZ() const;
 	float getAngle() const;
-	float getPower() const;
+	float getIntensity() const;
 
 	void revolve(double dt);
 };

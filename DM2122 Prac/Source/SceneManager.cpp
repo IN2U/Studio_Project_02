@@ -35,7 +35,12 @@ void SceneManager::SetNextScene(int sceneID) {
 	nextSceneID = sceneID;
 }
 
-int SceneManager::getNextSceneID()
+int SceneManager::getCurrentSceneID() const
+{
+	return currSceneID;
+}
+
+int SceneManager::getNextSceneID() const
 {
 	return nextSceneID;
 }

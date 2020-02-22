@@ -9,7 +9,7 @@
 #include "SceneManager.h"
 #include "SceneText.h"
 
-#include "GetCursorPos.h"
+#include "Cursor.h"
 #include "ButtonPos.h"
 
 SceneMenu::SceneMenu()

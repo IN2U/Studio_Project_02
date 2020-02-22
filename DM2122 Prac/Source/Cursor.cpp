@@ -1,4 +1,4 @@
-#include "GetCursorPos.h"
+#include "Cursor.h"
 
 Cursor::Cursor()
 {
@@ -23,9 +23,9 @@ double Cursor::getMYPos() const
 
 Cursor* Cursor::instance = nullptr;
 
-Cursor* Cursor::getInstance() 
+Cursor* Cursor::getInstance()
 {
-	if (instance == nullptr) 
+	if (instance == nullptr)
 	{
 		instance = new Cursor;
 	}

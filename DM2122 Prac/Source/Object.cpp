@@ -35,8 +35,8 @@ Object::Object(std::string ID, Mesh* object, bool light, Object* parent) {
 	pos = parent->translate;
 }
 
-Object::~Object() { 
-	delete mesh; 
+Object::~Object() {
+	mesh = nullptr;
 }
 
 std::string Object::getID() {
@@ -59,7 +59,7 @@ bool Object::getLight() {
 void Object::Transform(char type, float x, float y, float z) {
 
 	if (type == 'T') {
-		translate = Vector3(x,y,z);
+		translate = Vector3(x, y, z);
 		pos = pos + translate;
 
 	}
@@ -77,7 +77,7 @@ void Object::Transform(float degrees, float x, float y, float z) {
 	rotateDegrees = degrees;
 }
 
-void Object::Render(MS &modelStack) {
+void Object::Render(MS& modelStack) {
 	if (this->getParent() != nullptr) {
 		modelStack.Translate(parent->translate.x, parent->translate.y, parent->translate.z);
 		modelStack.Scale(parent->scale.x, parent->scale.y, parent->scale.z);
@@ -91,4 +91,3 @@ void Object::Render(MS &modelStack) {
 		modelStack.Rotate(rotateDegrees, rotateAxis.x, rotateAxis.y, rotateAxis.z);
 	}
 }
-	

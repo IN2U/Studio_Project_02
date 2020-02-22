@@ -1,5 +1,5 @@
 #include "Sun.h"
-#include "SceneText.h"
+#include "SceneText.h" // For sin / cos
 
 Sun::Sun()
 {
@@ -7,7 +7,7 @@ Sun::Sun()
 	y = 0.f;
 	z = 0.f;
 	angle = 0.f;
-	power = 0.f;
+	intensity = 0.f;
 }
 
 Sun::~Sun()
@@ -34,9 +34,9 @@ float Sun::getAngle() const
 	return angle;
 }
 
-float Sun::getPower() const
+float Sun::getIntensity() const
 {
-	return power;
+	return intensity;
 }
 
 void Sun::revolve(double dt)
@@ -48,21 +48,21 @@ void Sun::revolve(double dt)
 
 		if (angle < 90)
 		{
-			power += float(dt/20000);
+			intensity += float(dt / 20000);
 		}
-		// Set power to 0 at noon
-		else if (angle > 89 && angle < 91)
+		// Set intensity to 0 at noon
+		else if (angle > 85 && angle < 95)
 		{
-			power = 0.f;
+			intensity = 0.f;
 		}
 		else if (angle > 90 && angle < 180)
 		{
-			power += float(dt/20000);
+			intensity += float(dt / 20000);
 		}
-		// Set power to 0 at night
+		// Set intensity to 0 at night
 		else
 		{
-			power = 0.f;
+			intensity = 0.f;
 		}
 	}
 	// When one revolution is completed

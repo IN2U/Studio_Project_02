@@ -13,8 +13,9 @@
 #include "SceneText.h"
 #include "SceneMenu.h"
 
-#include "GetCursorPos.h"
+#include "Cursor.h"
 #include "ButtonPos.h"
+#include "Window.h"
 
 GLFWwindow* m_window;
 const unsigned char FPS = 60; // FPS of this game
@@ -42,7 +43,7 @@ void resize_callback(GLFWwindow* window, int w, int h)
 
 bool Application::IsKeyPressed(unsigned short key)
 {
-    return ((GetAsyncKeyState(key) & 0x8001) != 0);
+	return ((GetAsyncKeyState(key) & 0x8001) != 0);
 }
 
 Application::Application()
@@ -71,18 +72,13 @@ void Application::Init()
 	//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL 
 
-	//glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 	//Create a window and create its OpenGL context
-	m_window = glfwCreateWindow(Button::getInstance()->getWWidth(), Button::getInstance()->getWHeight(), "Motor Show 2077", NULL, NULL);
-
-	//glfwMaximizeWindow(m_window);
-
-	//glfwSetCursorPos(m_window, , );
+	m_window = glfwCreateWindow(Window::getInstance()->getWidth(), Window::getInstance()->getHeight(), "Motor Show 2077", NULL, NULL);
 
 	//If the window couldn't be created
 	if (!m_window)
 	{
-		fprintf( stderr, "Failed to open GLFW window.\n" );
+		fprintf(stderr, "Failed to open GLFW window.\n");
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
@@ -98,7 +94,7 @@ void Application::Init()
 	GLenum err = glewInit();
 
 	//If GLEW hasn't initialized
-	if (err != GLEW_OK) 
+	if (err != GLEW_OK)
 	{
 		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
 		//return -1;
@@ -118,14 +114,23 @@ void Application::Run()
 	scene->GetCurrScene()->Init();
 
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
+
 	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE) && scene->getInstance()->getNextSceneID() != -1)
 	{
-		if (IsKeyPressed(VK_F1)) {
-			// Checks if next scene has been set to something else
-			/*if (SceneManager::getCurrentSceneID() != SceneManager::getNextSceneID())
-			{
-			
-			}*/
+		//if (IsKeyPressed(VK_F1)) {
+		//	// Checks if next scene has been set to something else
+		//	/*if (SceneManager::getCurrentSceneID() != SceneManager::getNextSceneID())
+		//	{
+		//	
+		//	}*/
+		//	scene->GetCurrScene()->Exit();
+		//	scene->ChangeScene();
+		//	scene->GetCurrScene()->Init();
+		//}
+
+		// Transition from menu to game
+		if (scene->getInstance()->getCurrentSceneID() == 0 && scene->getInstance()->getNextSceneID() == 1)
+		{
 			scene->GetCurrScene()->Exit();
 			scene->ChangeScene();
 			scene->GetCurrScene()->Init();
@@ -135,8 +140,11 @@ void Application::Run()
 		Cursor::getInstance()->getCursorPos(m_window);
 
 		// Gets window size
-		Button::getInstance()->getWindowSize(m_window);
-	
+		Window::getInstance()->getWindowSize(m_window);
+
+		// Updates buttons position
+		Button::getInstance()->updateButtonPos();
+
 		scene->Update(m_timer.getElapsedTime());
 
 		//Swap buffers
@@ -146,6 +154,7 @@ void Application::Run()
 		m_timer.waitUntil(frameTime);       // Frame rate limiter. Limits each frame to a specified time in ms.   
 
 	} //Check if the ESC key had been pressed or if the window had been closed
+
 	scene->GetCurrScene()->Exit();
 	delete scene;
 }

@@ -9,9 +9,9 @@
 class Cursor
 {
 private:
-	Cursor();
-	static Cursor* instance;
 	double mXPos, mYPos;
+	static Cursor* instance;
+	Cursor();
 public:
 	~Cursor();
 
