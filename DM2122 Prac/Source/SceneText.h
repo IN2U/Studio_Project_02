@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "Mesh.h"
 #include "Camera2.h"
+#include "Minimap.h"
 #include "Light.h"
 #include <MatrixStack.h>
 #include "Sun.h"
@@ -31,6 +32,9 @@ private:
 		SKYBOX_BACK_NIGHT,
 
 		GEO_SUN,
+		PLAYER_POINTER,
+		MINIMAP_BORDER,
+
 		GEO_CHAR,
 		GEO_DICE,
 		GEO_LIGHTSPHERE,
@@ -45,14 +49,22 @@ private:
 
 	MS modelStack, viewStack, projectionStack;
 
+	MS modelStack_mini, viewStack_mini, projectionStack_mini;
+
 	Light light[2];
 
 	bool renderHitBox;
 
 	Camera2 camera;
+
+	Minimap minimapCamera;
 	
 	void RenderMesh(Mesh* mesh, bool enableLight);
+	void RenderMiniMesh(Mesh* mesh);
+	
 	void RenderSkybox();
+
+	void RenderMinimap();
 
 	void RenderText(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
@@ -65,9 +77,7 @@ private:
 
 	void CalculateFrameRate();
 
-
 	Sun sun;
-	//void updateSunlight();
 
 public:
 	SceneText();

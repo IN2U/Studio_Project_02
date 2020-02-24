@@ -54,6 +54,12 @@ void SceneText::InitMeshList()
 	
 	meshList[GEO_SUN] = MeshBuilder::GenerateSphere("sun", Color(1.f, 1.f, 1.f), 9, 36, 1.f);
 
+	meshList[PLAYER_POINTER] = MeshBuilder::GenerateQuad("pointer", Color(1, 1, 1), 1.f, 1.f);
+	meshList[PLAYER_POINTER]->textureID = LoadTGA("Image//arrow_pointer.tga");
+
+	meshList[MINIMAP_BORDER] = MeshBuilder::GenerateQuad("minimap_border", Color(1, 1, 1), 1.f, 1.f);
+	meshList[MINIMAP_BORDER]->textureID = LoadTGA("Image//minimap_border.tga");
+
 	meshList[GEO_CHAR] = MeshBuilder::GenerateQuad("char", Color(1, 1, 1), 1.f, 1.f);
 	meshList[GEO_CHAR]->textureID = LoadTGA("Image//char.tga");
 
