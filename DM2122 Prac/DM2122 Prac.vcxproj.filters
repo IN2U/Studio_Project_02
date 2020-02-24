@@ -96,6 +96,9 @@
     <ClInclude Include="Source\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Minimap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\shader.cpp">
@@ -183,6 +186,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minimap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Render\RenderMinimap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

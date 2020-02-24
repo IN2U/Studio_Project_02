@@ -17,7 +17,6 @@ private:
 
 	Mesh* meshList[NUM_GEOMETRY];
 
-
 	MS modelStack, viewStack, projectionStack;
 
 	void RenderMesh(Mesh* mesh);

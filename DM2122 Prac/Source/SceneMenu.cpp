@@ -32,18 +32,9 @@ void SceneMenu::Init()
 	glGenVertexArrays(1, &m_vertexArrayID);
 	glBindVertexArray(m_vertexArrayID);
 
-	glEnable(GL_CULL_FACE);
-
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 	m_programID = LoadShaders("Shader//Texture.vertexshader", "Shader//Text.fragmentshader");
 
 	InitShaderUniforms();
-
-	Mtx44 projection;
-	projection.SetToPerspective(45.f, 4.f / 3.f, 0.1f, 1000.f);
-	projectionStack.LoadMatrix(projection);
 
 	glUseProgram(m_programID);
 

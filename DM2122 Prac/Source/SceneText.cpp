@@ -11,7 +11,7 @@
 #include "LoadTGA.h"
 #include <Mtx44.h>
 #include "Cursor.h"
-
+#include "Window.h"
 
 #define ROT_LIMIT 45.f;
 #define SCALE_LIMIT 5.f;
@@ -45,9 +45,14 @@ void SceneText::Init()
 
 	camera.Init(Vector3(0, 0, 10), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
+	// Top-down view for minimap
+	minimapCamera.Init(Vector3(0, 10, 0), Vector3(0, 0, 0), Vector3(0, 0, -1));
+
 	Mtx44 projection;
 	projection.SetToPerspective(45.f, 4.f / 3.f, 0.1f, 1000.f);
 	projectionStack.LoadMatrix(projection);
+	// For minimap
+	projectionStack_mini.LoadMatrix(projection);
 	
 	m_programID = LoadShaders("Shader//Texture.vertexshader", "Shader//Text.fragmentshader");
 
@@ -155,52 +160,37 @@ void SceneText::Render()
 	//Clear color & depth buffer every frame
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	// Sets the viewport for main scene
+	glViewport(0, 0, Window::getInstance()->getWidth(), Window::getInstance()->getHeight());
+
 	viewStack.LoadIdentity();
 	viewStack.LookAt(camera.position.x, camera.position.y, camera.position.z, camera.target.x, camera.target.y, camera.target.z, camera.up.x, camera.up.y, camera.up.z);
 	modelStack.LoadIdentity();
 
-	// passing the light direction if it is a direction light	
-	if (light[0].type == Light::LIGHT_DIRECTIONAL)
+	// Pass light info to shader
+	for (int i = 0; i < 2; ++i)
 	{
-		Vector3 lightDir(light[0].position.x, light[0].position.y, light[0].position.z);
-		Vector3 lightDirection_cameraspace = viewStack.Top() * lightDir;
-		glUniform3fv(m_parameters[U_LIGHT0_POSITION], 1, &lightDirection_cameraspace.x);
-	}
-	// if it is spot light, pass in position and direction 
-	else if (light[0].type == Light::LIGHT_SPOT)
-	{
-		Position lightPosition_cameraspace = viewStack.Top() * light[0].position;
-		glUniform3fv(m_parameters[U_LIGHT0_POSITION], 1, &lightPosition_cameraspace.x);
-		Vector3 spotDirection_cameraspace = viewStack.Top() * light[0].spotDirection;
-		glUniform3fv(m_parameters[U_LIGHT0_SPOTDIRECTION], 1, &spotDirection_cameraspace.x);
-	}
-	else
-	{
-		// default is point light (only position since point light is 360 degrees)
-		Position lightPosition_cameraspace = viewStack.Top() * light[0].position;
-		glUniform3fv(m_parameters[U_LIGHT0_POSITION], 1, &lightPosition_cameraspace.x);
-	}
-
-	// passing the light direction if it is a direction light	
-	if (light[1].type == Light::LIGHT_DIRECTIONAL)
-	{
-		Vector3 lightDir(light[1].position.x, light[1].position.y, light[1].position.z);
-		Vector3 lightDirection_cameraspace = viewStack.Top() * lightDir;
-		glUniform3fv(m_parameters[U_LIGHT_SUN_POSITION], 1, &lightDirection_cameraspace.x);
-	}
-	// if it is spot light, pass in position and direction 
-	else if (light[1].type == Light::LIGHT_SPOT)
-	{
-		Position lightPosition_cameraspace = viewStack.Top() * light[1].position;
-		glUniform3fv(m_parameters[U_LIGHT_SUN_POSITION], 1, &lightPosition_cameraspace.x);
-		Vector3 spotDirection_cameraspace = viewStack.Top() * light[1].spotDirection;
-		glUniform3fv(m_parameters[U_LIGHT_SUN_SPOTDIRECTION], 1, &spotDirection_cameraspace.x);
-	}
-	else
-	{
-		// default is point light (only position since point light is 360 degrees)
-		Position lightPosition_cameraspace = viewStack.Top() * light[1].position;
-		glUniform3fv(m_parameters[U_LIGHT_SUN_POSITION], 1, &lightPosition_cameraspace.x);
+		// passing the light direction if it is a direction light	
+		if (light[i].type == Light::LIGHT_DIRECTIONAL)
+		{
+			Vector3 lightDir(light[i].position.x, light[i].position.y, light[i].position.z);
+			Vector3 lightDirection_cameraspace = viewStack.Top() * lightDir;
+			glUniform3fv(m_parameters[7 + i * 11], 1, &lightDirection_cameraspace.x);
+		}
+		// if it is spot light, pass in position and direction 
+		else if (light[i].type == Light::LIGHT_SPOT)
+		{
+			Position lightPosition_cameraspace = viewStack.Top() * light[i].position;
+			glUniform3fv(m_parameters[7 + i * 11], 1, &lightPosition_cameraspace.x);
+			Vector3 spotDirection_cameraspace = viewStack.Top() * light[i].spotDirection;
+			glUniform3fv(m_parameters[14 + i * 11], 1, &spotDirection_cameraspace.x);
+		}
+		else
+		{
+			// default is point light (only position since point light is 360 degrees)
+			Position lightPosition_cameraspace = viewStack.Top() * light[i].position;
+			glUniform3fv(m_parameters[7 + i * 11], 1, &lightPosition_cameraspace.x);
+		}
 	}
 
 	RenderSkybox();
@@ -208,18 +198,11 @@ void SceneText::Render()
 	ObjectManager* Objects = ObjectManager::getInstance();
 	Objects->Update();
 	Object* temp;
-
-	//No transform needed
-	RenderTextOnScreen(meshList[GEO_TEXT], "Hello World", Color(0, 1, 0), 2, 0, 0);
 	
 	temp = Objects->AddObject("Sun", meshList[GEO_SUN], false);
 	temp->Transform('T', sun.getX(), sun.getY(), sun.getZ());
 	temp->Transform('S', 0.5f, 0.5f, 0.5f);
 	Objects->getLib().push_back(temp);
-
-	//temp = Objects->AddObject("Light", meshList[GEO_LIGHTSPHERE], false);
-	//temp->Transform('T', 0, 5, 0);
-	//Objects->getLib().push_back(temp);
 
 	temp = Objects->AddObject("Dice", meshList[GEO_DICE], true);
 	Objects->getLib().push_back(temp);
@@ -233,6 +216,8 @@ void SceneText::Render()
 	}
 
 	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 13, 13);
+
+	RenderMinimap();
 }
 
 void SceneText::Exit()
