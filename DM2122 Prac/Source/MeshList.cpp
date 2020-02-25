@@ -83,6 +83,9 @@ void SceneText::InitMeshList()
 	meshList[GEO_DICE] = MeshBuilder::GenerateOBJ("Dice", "OBJ//doorman.obj");
 	meshList[GEO_DICE]->textureID = LoadTGA("Image//doorman.tga");
 
+	meshList[TEXT_BORDER] = MeshBuilder::GenerateQuad("text_border", Color(0, 1, 0), 1.f, 1.f);
+	meshList[TEXT_BORDER]->textureID = LoadTGA("Image//TextBorder.tga");
+
 	meshList[GEO_LIGHTSPHERE] = MeshBuilder::GenerateSphere("lightBall", Color(1.f, 1.f, 1.f), 9, 36, 1.f);
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);

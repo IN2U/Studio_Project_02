@@ -141,8 +141,10 @@
     <ClInclude Include="Source\Mesh.h" />
     <ClInclude Include="Source\MeshBuilder.h" />
     <ClInclude Include="Source\Minimap.h" />
+    <ClInclude Include="Source\NPC.h" />
     <ClInclude Include="Source\Object.h" />
     <ClInclude Include="Source\ObjectManager.h" />
+    <ClInclude Include="Source\Quest.h" />
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\SceneManager.h" />
     <ClInclude Include="Source\SceneMenu.h" />
@@ -174,8 +176,10 @@
     <ClCompile Include="Source\MeshBuilder.cpp" />
     <ClCompile Include="Source\MeshList.cpp" />
     <ClCompile Include="Source\Minimap.cpp" />
+    <ClCompile Include="Source\NPC.cpp" />
     <ClCompile Include="Source\Object.cpp" />
     <ClCompile Include="Source\ObjectManager.cpp" />
+    <ClCompile Include="Source\Quest.cpp" />
     <ClCompile Include="Source\Render\RenderMesh.cpp" />
     <ClCompile Include="Source\Render\RenderMinimap.cpp" />
     <ClCompile Include="Source\Render\RenderSkybox.cpp" />

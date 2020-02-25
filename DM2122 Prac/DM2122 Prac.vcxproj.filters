@@ -102,6 +102,12 @@
     <ClInclude Include="Source\SceneOptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\NPC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Quest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\shader.cpp">
@@ -198,6 +204,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\SceneOptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\NPC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Quest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

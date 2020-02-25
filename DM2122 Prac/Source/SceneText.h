@@ -40,6 +40,7 @@ private:
 		GEO_LIGHTSPHERE,
 		GEO_TEXT,
 		GEO_VENDING_MENU,
+		TEXT_BORDER,
 		NUM_GEOMETRY,
 	}; 
 
@@ -55,6 +56,9 @@ private:
 
 	bool renderHitBox;
 
+	bool defaultUI = true;
+	bool NPCUI = false;
+
 	Camera2 camera;
 
 	Minimap minimapCamera;
@@ -65,6 +69,9 @@ private:
 	void RenderSkybox();
 
 	void RenderMinimap();
+
+	void RenderUI();
+	void RenderNPCUI();
 
 	void RenderText(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z);
 	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);

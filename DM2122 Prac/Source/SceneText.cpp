@@ -4,6 +4,7 @@
 #include "ObjectManager.h"
 #include "Currency.h"
 #include "Vending.h"
+#include "NPC.h"
 #include "shader.hpp"
 #include "MeshBuilder.h"
 #include "Utility.h"
@@ -18,6 +19,8 @@
 #define LSPEED 10.f
 
 Currency* currency = Currency::GetInstance();
+
+NPC npc;
 
 SceneText::SceneText()
 {
@@ -163,6 +166,23 @@ void SceneText::Update(double dt)
 	CalculateFrameRate();
 }
 
+void SceneText::RenderUI()
+{
+	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 15, 13);
+	RenderTextOnScreen(meshList[GEO_TEXT], "QUESTS", Color(0, 1, 0), 3, 5, 1);
+
+	if (npc.CheckQuestActive() == true)
+		RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnQuest(), Color(0, 1, 0), 3, 5, 0);
+	else
+		RenderTextOnScreen(meshList[GEO_TEXT], "No current quests.", Color(0, 1, 0), 3, 5, 0);
+}
+
+void SceneText::RenderNPCUI()
+{
+	RenderMeshOnScreen(meshList[TEXT_BORDER], 200.f, 50.f, 500.f, 100.f);
+	RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnDialogue(), Color(0, 1, 0), 3, 5, 1);
+}
+
 void SceneText::Render()
 {
 	//Clear color & depth buffer every frame
@@ -223,7 +243,11 @@ void SceneText::Render()
 		modelStack.PopMatrix();
 	}
 
-	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 13, 13);
+
+	if (defaultUI)
+		RenderUI();
+	else if (NPCUI)
+		RenderNPCUI();
 
 	RenderMinimap();
 
