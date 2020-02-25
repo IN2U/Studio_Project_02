@@ -589,7 +589,6 @@ Mesh* MeshBuilder::GenerateText(const std::string& meshName, unsigned numRow, un
 			v.texCoord.Set(width * (i + 1), height * (numRow - j - 1));
 			vertex_buffer_data.push_back(v);
 
-
 			//Task: Add 6 indices into index_buffer_data
 			index_buffer_data.push_back(nCnt);
 			index_buffer_data.push_back(nCnt+1);

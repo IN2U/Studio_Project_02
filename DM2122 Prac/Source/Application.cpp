@@ -11,7 +11,9 @@
 #include "Application.h"
 #include "SceneManager.h"
 #include "SceneText.h"
+
 #include "SceneMenu.h"
+#include "SceneOptions.h"
 
 #include "Cursor.h"
 #include "ButtonPos.h"
@@ -75,6 +77,8 @@ void Application::Init()
 	//Create a window and create its OpenGL context
 	m_window = glfwCreateWindow(Window::getInstance()->getWidth(), Window::getInstance()->getHeight(), "Motor Show 2077", NULL, NULL);
 
+	//glfwSetCursorPos(m_window, 280, 390);
+
 	//If the window couldn't be created
 	if (!m_window)
 	{
@@ -108,28 +112,18 @@ void Application::Run()
 	//Main Loop
 	SceneManager* scene = SceneManager::getInstance();
 
-	scene->AddScene(new SceneMenu);
-	scene->AddScene(new SceneText);
+	scene->AddScene(new SceneMenu); // 0
+	scene->AddScene(new SceneText); // 1
+	scene->AddScene(new SceneOptions); // 2
 
 	scene->GetCurrScene()->Init();
 
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
 
-	while (!glfwWindowShouldClose(m_window) && !IsKeyPressed(VK_ESCAPE) && scene->getInstance()->getNextSceneID() != -1)
+	while (!glfwWindowShouldClose(m_window) && scene->getInstance()->getNextSceneID() != -1)
 	{
-		//if (IsKeyPressed(VK_F1)) {
-		//	// Checks if next scene has been set to something else
-		//	/*if (SceneManager::getCurrentSceneID() != SceneManager::getNextSceneID())
-		//	{
-		//	
-		//	}*/
-		//	scene->GetCurrScene()->Exit();
-		//	scene->ChangeScene();
-		//	scene->GetCurrScene()->Init();
-		//}
-
-		// Transition from menu to game
-		if (scene->getInstance()->getCurrentSceneID() == 0 && scene->getInstance()->getNextSceneID() == 1)
+		// Checks if next scene has been set to something else
+		if (scene->getCurrentSceneID() != scene->getNextSceneID())
 		{
 			scene->GetCurrScene()->Exit();
 			scene->ChangeScene();

@@ -10,6 +10,8 @@ private:
 	enum GEOMETRY_TYPE
 	{
 		MENU_SCREEN,
+		BUTTON,
+		TEXT,
 		NUM_GEOMETRY,
 	};
 
@@ -22,6 +24,8 @@ private:
 	void RenderMesh(Mesh* mesh);
 
 	void RenderMeshOnScreen(Mesh* mesh, float x, float y, float sizex, float sizey);
+	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
+
 
 	virtual void InitMeshList() override;
 public:

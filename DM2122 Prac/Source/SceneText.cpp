@@ -1,6 +1,5 @@
 #include "SceneText.h"
 #include "Application.h"
-
 #include "GL/glew.h"
 #include "ObjectManager.h"
 #include "Currency.h"
@@ -12,6 +11,7 @@
 #include <Mtx44.h>
 #include "Cursor.h"
 #include "Window.h"
+#include "SceneManager.h"
 
 #define ROT_LIMIT 45.f;
 #define SCALE_LIMIT 5.f;
@@ -123,6 +123,14 @@ void SceneText::Update(double dt)
 		light[0].type = Light::LIGHT_SPOT;
 	}
 
+	// Need to render options without exiting scene
+	// Open options
+	//if (Application::IsKeyPressed(VK_ESCAPE))
+	//{
+	//	SceneManager* scene = SceneManager::getInstance();
+	//	scene->SetNextScene(2);
+	//}
+
 	// Updates sun pos
 	sun.revolve(dt);
 
@@ -218,6 +226,8 @@ void SceneText::Render()
 	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 13, 13);
 
 	RenderMinimap();
+
+	glViewport(0, 0, Window::getInstance()->getWidth(), Window::getInstance()->getHeight());
 }
 
 void SceneText::Exit()

@@ -8,6 +8,11 @@ private:
 	double MenuMinPosY[3];
 	double MenuMaxPosY[3];
 
+	double OptionsMinPosX;
+	double OptionsMaxPosX;
+	double OptionsMinPosY[3];
+	double OptionsMaxPosY[3];
+
 	Button();
 
 	static Button* instance;
@@ -25,6 +30,18 @@ public:
 
 	double getMenuQuitMinPosY() const;
 	double getMenuQuitMaxPosY() const;
+
+	double getOptionsMinPosX() const;
+	double getOptionsMaxPosX() const;
+
+	double getOptionsControlsMinPosY() const;
+	double getOptionsControlsMaxPosY() const;
+
+	double getOptionsAudioMinPosY() const;
+	double getOptionsAudioMaxPosY() const;
+
+	double getOptionsBackMinPosY() const;
+	double getOptionsBackMaxPosY() const;
 
 	void updateButtonPos();
 
