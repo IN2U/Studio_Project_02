@@ -60,18 +60,16 @@ private:
 
 	void RenderMinimap();
 
- HEAD
 	void RenderUI();
 	void RenderNPCUI();
-
 
 	void CalculateFrameRate();
 
 	Sun sun;
 
 	void RenderMiniMesh(Mesh* mesh);
- tic-tac-toe
 	void RenderText(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z);
+	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
 	
 	void InitLightShaderUniforms();
 	void InitLightSettings();
