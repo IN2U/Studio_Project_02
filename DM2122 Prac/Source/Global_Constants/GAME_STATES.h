@@ -8,4 +8,5 @@ namespace STATE
 	const int GAME_SCENE = 1;
 	const int OPTIONS_SCENE = 2;
 	const int TIC_TAC_TOE_SCENE = 3;
+	const int VENDING_SCENE = 4;
 }

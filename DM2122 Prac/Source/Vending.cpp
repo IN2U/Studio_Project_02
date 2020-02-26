@@ -52,12 +52,18 @@ void Vending::PrintAvailability(int choice)
 
 std::string Vending::ReturnItemName(int ID)
 {
-	return machineItems.at(ID)->Name();
+	if (ID > machineItems.size())
+		return "INVALID";
+	else
+		return machineItems.at(ID)->Name();
 }
 
 float Vending::ReturnItemPrice(int ID)
 {
-	return machineItems.at(ID)->Price();
+	if (ID > machineItems.size())
+		return 0.f;
+	else
+		return machineItems.at(ID)->Price();
 }
 
 bool Vending::ItemAvailable(int ID)

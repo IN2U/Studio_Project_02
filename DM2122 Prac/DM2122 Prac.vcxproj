@@ -135,6 +135,7 @@
     <ClInclude Include="Source\Currency.h" />
     <ClInclude Include="Source\Helper\Cursor.h" />
     <ClInclude Include="Source\Global_Constants\GAME_STATES.h" />
+    <ClInclude Include="Source\Inventory.h" />
     <ClInclude Include="Source\Light.h" />
     <ClInclude Include="Source\LoadOBJ.h" />
     <ClInclude Include="Source\LoadTGA.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="Source\SceneMenu.h" />
     <ClInclude Include="Source\SceneOptions.h" />
     <ClInclude Include="Source\SceneText.h" />
+    <ClInclude Include="Source\SceneVending.h" />
     <ClInclude Include="Source\shader.hpp" />
     <ClInclude Include="Source\Sun.h" />
     <ClInclude Include="Source\Global_Constants\TEXT_BUTTON.h" />
@@ -172,6 +174,7 @@
     <ClCompile Include="Source\Helper\Cursor.cpp" />
     <ClCompile Include="Source\InitLightSettings.cpp" />
     <ClCompile Include="Source\InitShaderUniforms.cpp" />
+    <ClCompile Include="Source\Inventory.cpp" />
     <ClCompile Include="Source\LoadOBJ.cpp" />
     <ClCompile Include="Source\LoadTGA.cpp" />
     <ClCompile Include="Source\main.cpp" />
@@ -191,6 +194,7 @@
     <ClCompile Include="Source\SceneMenu.cpp" />
     <ClCompile Include="Source\SceneOptions.cpp" />
     <ClCompile Include="Source\SceneText.cpp" />
+    <ClCompile Include="Source\SceneVending.cpp" />
     <ClCompile Include="Source\shader.cpp" />
     <ClCompile Include="Source\Sun.cpp" />
     <ClCompile Include="Source\TicTacToe.cpp" />

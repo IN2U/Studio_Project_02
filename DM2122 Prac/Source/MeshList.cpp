@@ -2,6 +2,7 @@
 #include "SceneMenu.h"
 #include "SceneOptions.h"
 #include "TicTacToe.h"
+#include "SceneVending.h"
 #include "MeshBuilder.h"
 #include "../../glew/include/GL/glew.h"
 #include "LoadTGA.h"
@@ -105,4 +106,13 @@ void TicTacToe::InitMeshList()
 
 	meshList[TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[TEXT]->textureID = LoadTGA("Image//arial-rounded-mt-bold.tga");
+}
+
+void SceneVending::InitMeshList()
+{
+	meshList[VENDING_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
+	meshList[VENDING_TEXT]->textureID = LoadTGA("Image//calibri.tga");
+
+	meshList[GEO_VENDING] = MeshBuilder::GenerateOBJ("dice", "OBJ//dice.obj");
+	meshList[GEO_VENDING]->textureID = LoadTGA("Image//dice.tga");
 }

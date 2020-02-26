@@ -37,6 +37,8 @@
     <ClCompile Include="Source\Helper\Window.cpp" />
     <ClCompile Include="Source\Helper\ButtonPos.cpp" />
     <ClCompile Include="Source\Helper\Cursor.cpp" />
+    <ClCompile Include="Source\SceneVending.cpp" />
+    <ClCompile Include="Source\Inventory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -73,5 +75,7 @@
     <ClInclude Include="Source\Helper\Cursor.h" />
     <ClInclude Include="Source\Global_Constants\TEXT_BUTTON.h" />
     <ClInclude Include="Source\Global_Constants\GAME_STATES.h" />
+    <ClInclude Include="Source\SceneVending.h" />
+    <ClInclude Include="Source\Inventory.h" />
   </ItemGroup>
 </Project>
