@@ -15,6 +15,10 @@ private:
 
 	Mesh* meshList[NUM_GEOMETRY];
 
+	// Debounce
+	double sceneTime;
+	double debounceTime;
+
 	virtual void InitMeshList() override;
 public:
 	SceneMenu();

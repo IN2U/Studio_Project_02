@@ -9,9 +9,12 @@
 class Window
 {
 private:
+	// GLFW window width and height
 	int width;
 	int height;
+
 	static Window* instance;
+
 	Window();
 public:
 	~Window();

@@ -14,7 +14,7 @@
 #include "Global_Constants/TEXT_BUTTON.h"
 #include "Global_Constants/GAME_STATES.h"
 
-SceneMenu::SceneMenu() : meshList{ NULL, NULL, NULL }
+SceneMenu::SceneMenu() : meshList{ NULL, NULL, NULL }, sceneTime(0.0), debounceTime(0.0)
 {
 }
 
@@ -44,6 +44,13 @@ void SceneMenu::Init()
 
 void SceneMenu::Update(double dt)
 {
+	sceneTime += dt;
+
+	bool clicked = false;
+
+	if (debounceTime > sceneTime)
+		return;
+
 	if (Application::IsKeyPressed(MK_LBUTTON))
 	{
 		Cursor* mouse = Cursor::getInstance();
@@ -70,6 +77,13 @@ void SceneMenu::Update(double dt)
 		{
 			scene->SetNextScene(STATE::EXIT_SCENE);
 		}
+
+		clicked = true;
+	}
+
+	if (clicked)
+	{
+		debounceTime = sceneTime + 0.15;
 	}
 }
 

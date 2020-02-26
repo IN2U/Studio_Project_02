@@ -47,9 +47,9 @@ private:
 	bool validInput;
 
 	// Debounce
-	double gameTime;
+	double sceneTime;
 	double debounceTime;
-	bool bSomethingHappened;
+	bool clicked;
 
 	// Human turn to move
 	void Human_Move();

@@ -136,14 +136,14 @@ void Application::Run()
 			scene->GetCurrScene()->Init();
 		}
 
-		// Gets cursor position
-		Cursor::getInstance()->getCursorPos(m_window);
-
 		// Gets window size
 		Window::getInstance()->getWindowSize(m_window);
 
 		// Updates buttons position
 		Button::getInstance()->updateButtonPos();
+
+		// Gets cursor position
+		Cursor::getInstance()->getCursorPos(m_window);
 
 		scene->Update(m_timer.getElapsedTime());
 
@@ -153,7 +153,7 @@ void Application::Run()
 		glfwPollEvents();
 		m_timer.waitUntil(frameTime);       // Frame rate limiter. Limits each frame to a specified time in ms.   
 
-	} //Check if the window had been closed or quit game has been pressed
+	} // Check if the window had been closed or quit game has been pressed
 
 	scene->GetCurrScene()->Exit();
 	delete scene;

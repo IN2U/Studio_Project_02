@@ -66,7 +66,6 @@ void Button::updateButtonPos()
 {
 	Window* window = Window::getInstance();
 
-	// Buttons positions
 	ButtonMinPosX = double(window->getWidth() / 20) * (double)7;
 	ButtonMaxPosX = double(window->getWidth() / 20 * (double)13);
 

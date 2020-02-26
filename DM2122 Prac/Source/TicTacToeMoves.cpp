@@ -54,7 +54,7 @@ void TicTacToe::Human_Move()
 			winner = PLAYER_VAL;
 		}
 
-		bSomethingHappened = true;
+		clicked = true;
 	}
 }
 

@@ -16,6 +16,8 @@
 
 SceneOptions::SceneOptions() : meshList{ NULL, NULL, NULL, NULL }
 {
+	sceneTime = 0.0;
+	debounceTime = 0.0;
 }
 
 SceneOptions::~SceneOptions()
@@ -44,6 +46,13 @@ void SceneOptions::Init()
 
 void SceneOptions::Update(double dt)
 {
+	sceneTime += dt;
+
+	bool clicked = false;
+
+	if (debounceTime > sceneTime)
+		return;
+
 	if (Application::IsKeyPressed(MK_LBUTTON))
 	{
 		Cursor* mouse = Cursor::getInstance();
@@ -69,6 +78,8 @@ void SceneOptions::Update(double dt)
 		{
 			scene->SetNextScene(STATE::MENU_SCENE);
 		}
+
+		clicked = true;
 	}
 
 	//  options
@@ -77,6 +88,11 @@ void SceneOptions::Update(double dt)
 	//	SceneManager* scene = SceneManager::getInstance();
 	//	scene->SetNextScene(1);
 	//}
+
+	if (clicked)
+	{
+		debounceTime = sceneTime + 0.15;
+	}
 }
 
 void SceneOptions::Render()

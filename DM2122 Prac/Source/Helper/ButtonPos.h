@@ -3,6 +3,7 @@
 class Button
 {
 private:
+	// Buttons position
 	double ButtonMinPosX;
 	double ButtonMaxPosX;
 	double ButtonMinPosY[3];

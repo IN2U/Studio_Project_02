@@ -9,8 +9,10 @@
 class Cursor
 {
 private:
+	// Cursor xy coordinates
 	double mXPos;
 	double mYPos;
+
 	static Cursor* instance;
 	Cursor();
 public:

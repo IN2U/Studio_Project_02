@@ -19,9 +19,11 @@ TicTacToe::TicTacToe() : INVALID_VAL(-1), NO_VAL(0), PLAYER_VAL(1), CPU_VAL(2),
 	turn = HUMAN_PLAYER;
 	winner = INVALID_VAL;
 	validInput = true;
-	gameTime = 0.0;
+
+	sceneTime = 0.0;
 	debounceTime = 0.0;
-	bSomethingHappened = false;
+	clicked = false;
+
 	bestMove.row = -1;
 	bestMove.column = -1;	
 }
@@ -49,14 +51,16 @@ void TicTacToe::Init()
 
 	InitMeshList();
 
-	gameTime = 0;
+	sceneTime = 0.0;
 }
 
 void TicTacToe::Update(double dt)
 {
-	gameTime += dt;
+	sceneTime += dt;
 
-	if (debounceTime > gameTime)
+	clicked = false;
+	
+	if (debounceTime > sceneTime)
 		return;
 
 	// If winner is still undecided
@@ -98,12 +102,13 @@ void TicTacToe::Update(double dt)
 			{
 				scene->SetNextScene(STATE::GAME_SCENE);
 			}
+			clicked = true;
 		}
 	}
 
-	if (bSomethingHappened)
+	if (clicked)
 	{
-		debounceTime = gameTime + 0.15;
+		debounceTime = sceneTime + 0.15;
 	}
 }
 
