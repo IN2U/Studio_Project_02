@@ -15,9 +15,13 @@
 #include "SceneMenu.h"
 #include "SceneOptions.h"
 
+#include "TicTacToe.h"
+
 #include "Cursor.h"
 #include "ButtonPos.h"
 #include "Window.h"
+
+#include "GAME_STATES.h"
 
 GLFWwindow* m_window;
 const unsigned char FPS = 60; // FPS of this game
@@ -115,12 +119,14 @@ void Application::Run()
 	scene->AddScene(new SceneMenu); // 0
 	scene->AddScene(new SceneText); // 1
 	scene->AddScene(new SceneOptions); // 2
+	scene->AddScene(new TicTacToe); // 3
+	//scene->AddScene(new TicTacToe); // 4
 
 	scene->GetCurrScene()->Init();
 
 	m_timer.startTimer();    // Start timer to calculate how long it takes to render this frame
 
-	while (!glfwWindowShouldClose(m_window) && scene->getInstance()->getNextSceneID() != -1)
+	while (!glfwWindowShouldClose(m_window) && scene->getInstance()->getNextSceneID() != STATE::EXIT_SCENE)
 	{
 		// Checks if next scene has been set to something else
 		if (scene->getCurrentSceneID() != scene->getNextSceneID())
@@ -147,7 +153,7 @@ void Application::Run()
 		glfwPollEvents();
 		m_timer.waitUntil(frameTime);       // Frame rate limiter. Limits each frame to a specified time in ms.   
 
-	} //Check if the ESC key had been pressed or if the window had been closed
+	} //Check if the window had been closed or quit game has been pressed
 
 	scene->GetCurrScene()->Exit();
 	delete scene;

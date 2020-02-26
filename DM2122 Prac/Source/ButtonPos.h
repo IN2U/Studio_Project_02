@@ -13,9 +13,9 @@ private:
 	double OptionsMinPosY[3];
 	double OptionsMaxPosY[3];
 
-	Button();
-
 	static Button* instance;
+
+	Button();
 public:
 	~Button();
 

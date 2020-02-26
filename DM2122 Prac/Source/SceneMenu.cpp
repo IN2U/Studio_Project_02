@@ -1,6 +1,5 @@
 #include "SceneMenu.h"
 #include "Application.h"
-
 #include "GL\glew.h"
 #include "MeshBuilder.h"
 #include "LoadTGA.h"
@@ -8,9 +7,10 @@
 #include <Mtx44.h>
 #include "SceneManager.h"
 #include "SceneText.h"
-
 #include "Cursor.h"
 #include "ButtonPos.h"
+#include "TEXT_BUTTON.h"
+#include "GAME_STATES.h"
 
 SceneMenu::SceneMenu()
 {
@@ -57,19 +57,20 @@ void SceneMenu::Update(double dt)
 		if (mouse->getMXPos() > button->getMenuMinPosX() && mouse->getMXPos() < button->getMenuMaxPosX()
 			&& mouse->getMYPos() < button->getMenuPlayMaxPosY() && mouse->getMYPos() > button->getMenuPlayMinPosY())
 		{
-			scene->SetNextScene(1);
+			scene->SetNextScene(STATE::GAME_SCENE);
+			//scene->SetNextScene(STATE::TIC_TAC_TOE_SCENE);
 		}
 		//OPTIONS
 		else if (mouse->getMXPos() > button->getMenuMinPosX()&& mouse->getMXPos() < button->getMenuMaxPosX() 
 			&& mouse->getMYPos() < button->getMenuOptionsMaxPosY() && mouse->getMYPos() > button->getMenuOptionsMinPosY())
 		{
-			scene->SetNextScene(2);
+			scene->SetNextScene(STATE::OPTIONS_SCENE);
 		}
 		//QUIT
 		else if (mouse->getMXPos() > button->getMenuMinPosX()&& mouse->getMXPos() < button->getMenuMaxPosX() 
 			&& mouse->getMYPos() < button->getMenuQuitMaxPosY() && mouse->getMYPos() > button->getMenuQuitMinPosY())
 		{
-			scene->SetNextScene(-1);
+			scene->SetNextScene(STATE::EXIT_SCENE);
 		}
 	}
 }
@@ -78,15 +79,15 @@ void SceneMenu::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	RenderMeshOnScreen(meshList[MENU_SCREEN], 40, 30, 80, 60);
+	RenderMeshOnScreen(meshList[MENU_SCREEN], TxtB::CENTRE_OF_SCREEN_X, 30, 80, 60);
 
-	RenderMeshOnScreen(meshList[BUTTON], 40.f, 35.f, 24.f, 4.5f);
-	RenderMeshOnScreen(meshList[BUTTON], 40.f, 29.f, 24.f, 4.5f);
-	RenderMeshOnScreen(meshList[BUTTON], 40.f, 23.f, 24.f, 4.5f);
+	RenderMeshOnScreen(meshList[BUTTON], TxtB::CENTRE_OF_SCREEN_X, 35.f, TxtB::BUTTON_SIZE_X, TxtB::BUTTON_SIZE_Y);
+	RenderMeshOnScreen(meshList[BUTTON], TxtB::CENTRE_OF_SCREEN_X, 29.f, TxtB::BUTTON_SIZE_X, TxtB::BUTTON_SIZE_Y);
+	RenderMeshOnScreen(meshList[BUTTON], TxtB::CENTRE_OF_SCREEN_X, 23.f, TxtB::BUTTON_SIZE_X, TxtB::BUTTON_SIZE_Y);
 
-	RenderTextOnScreen(meshList[TEXT], "Play", Color(0, 0, 0), 3.f, 11.6f, 11.25f);
-	RenderTextOnScreen(meshList[TEXT], "Options", Color(0, 0, 0), 3.f, 10.f, 9.25f);
-	RenderTextOnScreen(meshList[TEXT], "Quit", Color(0, 0, 0), 3.f, 11.6f, 7.25f);
+	RenderTextOnScreen(meshList[TEXT], "Play",		Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.6f, TxtB::TEXT_DISTANCE_Y);
+	RenderTextOnScreen(meshList[TEXT], "Options",	Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 10.f, TxtB::TEXT_DISTANCE_Y - 2);
+	RenderTextOnScreen(meshList[TEXT], "Quit",		Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.6f, TxtB::TEXT_DISTANCE_Y - 4);
 }
 
 void SceneMenu::Exit()

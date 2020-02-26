@@ -134,6 +134,7 @@
     <ClInclude Include="Source\CLinkList.h" />
     <ClInclude Include="Source\Currency.h" />
     <ClInclude Include="Source\Cursor.h" />
+    <ClInclude Include="Source\GAME_STATES.h" />
     <ClInclude Include="Source\Light.h" />
     <ClInclude Include="Source\LoadOBJ.h" />
     <ClInclude Include="Source\LoadTGA.h" />
@@ -150,6 +151,8 @@
     <ClInclude Include="Source\SceneText.h" />
     <ClInclude Include="Source\shader.hpp" />
     <ClInclude Include="Source\Sun.h" />
+    <ClInclude Include="Source\TEXT_BUTTON.h" />
+    <ClInclude Include="Source\TicTacToe.h" />
     <ClInclude Include="Source\UNIFORM_TYPE.h" />
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vending.h" />
@@ -186,6 +189,8 @@
     <ClCompile Include="Source\SceneText.cpp" />
     <ClCompile Include="Source\shader.cpp" />
     <ClCompile Include="Source\Sun.cpp" />
+    <ClCompile Include="Source\TicTacToe.cpp" />
+    <ClCompile Include="Source\TicTacToeMoves.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
     <ClCompile Include="Source\Vending.cpp" />
     <ClCompile Include="Source\Window.cpp" />

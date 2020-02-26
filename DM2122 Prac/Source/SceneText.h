@@ -2,13 +2,10 @@
 #define SCENETEXT_H
 
 #include "Scene.h"
-#include "Mesh.h"
 #include "Camera2.h"
 #include "Minimap.h"
 #include "Light.h"
-#include <MatrixStack.h>
 #include "Sun.h"
-
 
 class SceneText : public Scene
 {
@@ -43,11 +40,7 @@ private:
 		NUM_GEOMETRY,
 	}; 
 
-	unsigned m_vertexArrayID;
-
 	Mesh* meshList[NUM_GEOMETRY];
-
-	MS modelStack, viewStack, projectionStack;
 
 	MS modelStack_mini, viewStack_mini, projectionStack_mini;
 
@@ -59,26 +52,21 @@ private:
 
 	Minimap minimapCamera;
 	
-	void RenderMesh(Mesh* mesh, bool enableLight);
-	void RenderMiniMesh(Mesh* mesh);
-	
 	void RenderSkybox();
 
 	void RenderMinimap();
-
-	void RenderText(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z);
-	void RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y);
-	void RenderMeshOnScreen(Mesh* mesh, float x, float y, float sizex, float sizey);
-	
-	void InitLightShaderUniforms();
-	void InitLightSettings();
-
-	virtual void InitMeshList() override;
 
 	void CalculateFrameRate();
 
 	Sun sun;
 
+	void RenderMiniMesh(Mesh* mesh);
+	void RenderText(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z);
+	
+	void InitLightShaderUniforms();
+	void InitLightSettings();
+
+	virtual void InitMeshList() override;
 public:
 	SceneText();
 	~SceneText();

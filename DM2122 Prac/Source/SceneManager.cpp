@@ -1,8 +1,11 @@
 #include "SceneManager.h"
+#include "GAME_STATES.h"
 
 SceneManager::SceneManager() {
-	currSceneID = 0;
-	nextSceneID = 0;
+	//currSceneID = 0;
+	//nextSceneID = 0;
+	currSceneID = STATE::MENU_SCENE;
+	nextSceneID = STATE::MENU_SCENE;
 }
 
 SceneManager::~SceneManager() {

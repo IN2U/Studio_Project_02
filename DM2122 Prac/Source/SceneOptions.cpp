@@ -9,6 +9,8 @@
 #include "SceneText.h"
 #include "Cursor.h"
 #include "ButtonPos.h"
+#include "TEXT_BUTTON.h"
+#include "GAME_STATES.h"
 
 SceneOptions::SceneOptions()
 {
@@ -67,7 +69,7 @@ void SceneOptions::Update(double dt)
 		else if (mouse->getMXPos() > button->getOptionsMinPosX() && mouse->getMXPos() < button->getOptionsMaxPosX()
 			&& mouse->getMYPos() < button->getOptionsBackMaxPosY() && mouse->getMYPos() > button->getOptionsBackMinPosY())
 		{
-			scene->SetNextScene(0);
+			scene->SetNextScene(STATE::MENU_SCENE);
 		}
 	}
 
@@ -83,15 +85,15 @@ void SceneOptions::Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	RenderMeshOnScreen(meshList[OPTIONS_SCREEN], 40, 30, 80, 60);
+	RenderMeshOnScreen(meshList[OPTIONS_SCREEN], TxtB::CENTRE_OF_SCREEN_X, 30, 80, 60);
 
-	RenderMeshOnScreen(meshList[BUTTON], 40.f, 35.f, 24.f, 4.5f);
-	RenderMeshOnScreen(meshList[BUTTON], 40.f, 29.f, 24.f, 4.5f);
-	RenderMeshOnScreen(meshList[BUTTON], 40.f, 23.f, 24.f, 4.5f);
+	RenderMeshOnScreen(meshList[BUTTON], TxtB::CENTRE_OF_SCREEN_X, 35.f, TxtB::BUTTON_SIZE_X, TxtB::BUTTON_SIZE_Y);
+	RenderMeshOnScreen(meshList[BUTTON], TxtB::CENTRE_OF_SCREEN_X, 29.f, TxtB::BUTTON_SIZE_X, TxtB::BUTTON_SIZE_Y);
+	RenderMeshOnScreen(meshList[BUTTON], TxtB::CENTRE_OF_SCREEN_X, 23.f, TxtB::BUTTON_SIZE_X, TxtB::BUTTON_SIZE_Y);
 
-	RenderTextOnScreen(meshList[TEXT], "Controls", Color(0, 0, 0), 3.f, 9.6f, 11.25f);
-	RenderTextOnScreen(meshList[TEXT], "Audio", Color(0, 0, 0), 3.f, 11.2f, 9.25f);
-	RenderTextOnScreen(meshList[TEXT], "Back", Color(0, 0, 0), 3.f, 11.5f, 7.25f);
+	RenderTextOnScreen(meshList[TEXT], "Controls",	Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 9.6f, TxtB::TEXT_DISTANCE_Y);
+	RenderTextOnScreen(meshList[TEXT], "Audio",		Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.2f, TxtB::TEXT_DISTANCE_Y - 2);
+	RenderTextOnScreen(meshList[TEXT], "Back",		Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.5f, TxtB::TEXT_DISTANCE_Y - 4);
 }
 
 void SceneOptions::Exit()
