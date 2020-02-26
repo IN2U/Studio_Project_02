@@ -102,10 +102,20 @@
     <ClInclude Include="Source\SceneOptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+ HEAD
     <ClInclude Include="Source\NPC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Quest.h">
+
+    <ClInclude Include="Source\TicTacToe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TEXT_BUTTON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GAME_STATES.h">
+ tic-tac-toe
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -206,10 +216,17 @@
     <ClCompile Include="Source\SceneOptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+ HEAD
     <ClCompile Include="Source\NPC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Quest.cpp">
+
+    <ClCompile Include="Source\TicTacToe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TicTacToeMoves.cpp">
+ tic-tac-toe
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

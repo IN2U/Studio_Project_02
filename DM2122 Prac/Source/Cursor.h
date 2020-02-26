@@ -9,7 +9,8 @@
 class Cursor
 {
 private:
-	double mXPos, mYPos;
+	double mXPos;
+	double mYPos;
 	static Cursor* instance;
 	Cursor();
 public:
@@ -18,7 +19,8 @@ public:
 	double getMXPos() const;
 	double getMYPos() const;
 
-	static Cursor* getInstance();
-
+	// Gets current cursor xy coordinates
 	void getCursorPos(GLFWwindow* m_window);
+
+	static Cursor* getInstance();
 };

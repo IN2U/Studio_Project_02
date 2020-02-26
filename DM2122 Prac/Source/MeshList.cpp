@@ -1,6 +1,7 @@
 #include "SceneText.h"
 #include "SceneMenu.h"
 #include "SceneOptions.h"
+#include "TicTacToe.h"
 #include "MeshBuilder.h"
 #include "../../glew/include/GL/glew.h"
 #include "LoadTGA.h"
@@ -10,7 +11,7 @@ void SceneMenu::InitMeshList()
 	meshList[MENU_SCREEN] = MeshBuilder::GenerateQuad("Menu_Screen", Color(1, 1, 1), 1.f, 1.f);
 	meshList[MENU_SCREEN]->textureID = LoadTGA("Image//menu-screen.tga");
 
-	meshList[BUTTON] = MeshBuilder::GenerateQuad("Button", Color(0.4, 0.4, 0.4), 1.f, 1.f);
+	meshList[BUTTON] = MeshBuilder::GenerateQuad("Button", Color(0.4f, 0.4f, 0.4f), 1.f, 1.f);
 
 	meshList[TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[TEXT]->textureID = LoadTGA("Image//arial-rounded-mt-bold.tga");
@@ -21,7 +22,7 @@ void SceneOptions::InitMeshList()
 	meshList[OPTIONS_SCREEN] = MeshBuilder::GenerateQuad("Options_Screen", Color(1, 1, 1), 1.f, 1.f);
 	meshList[OPTIONS_SCREEN]->textureID = LoadTGA("Image//options-screen.tga");
 
-	meshList[BUTTON] = MeshBuilder::GenerateQuad("Button", Color(0.4, 0.4, 0.4), 1.f, 1.f);
+	meshList[BUTTON] = MeshBuilder::GenerateQuad("Button", Color(0.4f, 0.4f, 0.4f), 1.f, 1.f);
 
 	meshList[TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[TEXT]->textureID = LoadTGA("Image//arial-rounded-mt-bold.tga");
@@ -90,4 +91,18 @@ void SceneText::InitMeshList()
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//calibri.tga");
+}
+
+void TicTacToe::InitMeshList()
+{
+	meshList[ENDING_SCREEN] = MeshBuilder::GenerateQuad("Ending_screen", Color(1, 1, 1), 1.f, 1.f);
+	meshList[ENDING_SCREEN]->textureID = LoadTGA("Image//game-over-screen.tga");
+
+	meshList[BUTTON] = MeshBuilder::GenerateQuad("Button", Color(0.4f, 0.4f, 0.4f), 1.f, 1.f);
+
+	meshList[GRID] = MeshBuilder::GenerateQuad("Grid", Color(1, 1, 1), 1.f, 1.f);
+	meshList[GRID]->textureID = LoadTGA("Image//tic-tac-toe-grid.tga");
+
+	meshList[TEXT] = MeshBuilder::GenerateText("text", 16, 16);
+	meshList[TEXT]->textureID = LoadTGA("Image//arial-rounded-mt-bold.tga");
 }

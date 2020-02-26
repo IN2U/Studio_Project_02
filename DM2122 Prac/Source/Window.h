@@ -11,16 +11,15 @@ class Window
 private:
 	int width;
 	int height;
-
-	Window();
-
 	static Window* instance;
+	Window();
 public:
 	~Window();
 
 	int getWidth() const;
 	int getHeight() const;
 
+	// Gets current window size
 	void getWindowSize(GLFWwindow* m_window);
 
 	static Window* getInstance();
