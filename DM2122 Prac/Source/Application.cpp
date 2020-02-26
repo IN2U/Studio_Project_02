@@ -17,11 +17,11 @@
 
 #include "TicTacToe.h"
 
-#include "Cursor.h"
-#include "ButtonPos.h"
-#include "Window.h"
+#include "Helper/Cursor.h"
+#include "Helper/ButtonPos.h"
+#include "Helper/Window.h"
 
-#include "GAME_STATES.h"
+#include "Global_Constants/GAME_STATES.h"
 
 GLFWwindow* m_window;
 const unsigned char FPS = 60; // FPS of this game

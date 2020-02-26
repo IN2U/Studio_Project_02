@@ -10,8 +10,10 @@
 #include "Utility.h"
 #include "LoadTGA.h"
 #include <Mtx44.h>
-#include "Cursor.h"
-#include "Window.h"
+
+#include "Helper/Cursor.h"
+#include "Helper/Window.h"
+
 #include "SceneManager.h"
 
 #define ROT_LIMIT 45.f;

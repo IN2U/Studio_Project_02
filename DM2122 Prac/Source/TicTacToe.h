@@ -29,7 +29,7 @@ private:
 
 	AiMove bestMove;
 
-	//
+	// Player indicators
 	const int INVALID_VAL;
 	const int NO_VAL;
 	const int PLAYER_VAL;

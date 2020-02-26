@@ -7,17 +7,15 @@
 #include <Mtx44.h>
 #include "SceneManager.h"
 #include "SceneText.h"
-#include "Cursor.h"
-#include "ButtonPos.h"
-#include "TEXT_BUTTON.h"
-#include "GAME_STATES.h"
 
-SceneMenu::SceneMenu()
+#include "Helper/ButtonPos.h"
+#include "Helper/Cursor.h"
+
+#include "Global_Constants/TEXT_BUTTON.h"
+#include "Global_Constants/GAME_STATES.h"
+
+SceneMenu::SceneMenu() : meshList{ NULL, NULL, NULL }
 {
-	for (int i = 0; i < NUM_GEOMETRY; ++i)
-	{
-		meshList[i] = NULL;
-	}
 }
 
 SceneMenu::~SceneMenu()
@@ -53,22 +51,22 @@ void SceneMenu::Update(double dt)
 
 		SceneManager* scene = SceneManager::getInstance();
 
-		//PLAY
-		if (mouse->getMXPos() > button->getMenuMinPosX() && mouse->getMXPos() < button->getMenuMaxPosX()
-			&& mouse->getMYPos() < button->getMenuPlayMaxPosY() && mouse->getMYPos() > button->getMenuPlayMinPosY())
+		// PLAY
+		if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+			&& mouse->getMYPos() < button->getButton1MaxPosY() && mouse->getMYPos() > button->getButton1MinPosY())
 		{
 			scene->SetNextScene(STATE::GAME_SCENE);
 			//scene->SetNextScene(STATE::TIC_TAC_TOE_SCENE);
 		}
-		//OPTIONS
-		else if (mouse->getMXPos() > button->getMenuMinPosX()&& mouse->getMXPos() < button->getMenuMaxPosX() 
-			&& mouse->getMYPos() < button->getMenuOptionsMaxPosY() && mouse->getMYPos() > button->getMenuOptionsMinPosY())
+		// OPTIONS
+		else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+			&& mouse->getMYPos() < button->getButton2MaxPosY() && mouse->getMYPos() > button->getButton2MinPosY())
 		{
 			scene->SetNextScene(STATE::OPTIONS_SCENE);
 		}
-		//QUIT
-		else if (mouse->getMXPos() > button->getMenuMinPosX()&& mouse->getMXPos() < button->getMenuMaxPosX() 
-			&& mouse->getMYPos() < button->getMenuQuitMaxPosY() && mouse->getMYPos() > button->getMenuQuitMinPosY())
+		// QUIT
+		else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+			&& mouse->getMYPos() < button->getButton3MaxPosY() && mouse->getMYPos() > button->getButton3MinPosY())
 		{
 			scene->SetNextScene(STATE::EXIT_SCENE);
 		}

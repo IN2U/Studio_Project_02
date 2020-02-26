@@ -7,17 +7,15 @@
 #include <Mtx44.h>
 #include "SceneManager.h"
 #include "SceneText.h"
-#include "Cursor.h"
-#include "ButtonPos.h"
-#include "TEXT_BUTTON.h"
-#include "GAME_STATES.h"
 
-SceneOptions::SceneOptions()
+#include "Helper/ButtonPos.h"
+#include "Helper/Cursor.h"
+
+#include "Global_Constants/TEXT_BUTTON.h"
+#include "Global_Constants/GAME_STATES.h"
+
+SceneOptions::SceneOptions() : meshList{ NULL, NULL, NULL, NULL }
 {
-	for (int i = 0; i < NUM_GEOMETRY; ++i)
-	{
-		meshList[i] = NULL;
-	}
 }
 
 SceneOptions::~SceneOptions()
@@ -54,20 +52,20 @@ void SceneOptions::Update(double dt)
 		SceneManager* scene = SceneManager::getInstance();
 
 		// CONTROLS
-		if (mouse->getMXPos() > button->getOptionsMinPosX() && mouse->getMXPos() < button->getOptionsMaxPosX()
-			&& mouse->getMYPos() < button->getOptionsControlsMaxPosY() && mouse->getMYPos() > button->getOptionsControlsMinPosY())
+		if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+			&& mouse->getMYPos() < button->getButton1MaxPosY() && mouse->getMYPos() > button->getButton1MinPosY())
 		{
 
 		}
 		// AUDIO
-		else if (mouse->getMXPos() > button->getOptionsMinPosX() && mouse->getMXPos() < button->getOptionsMaxPosX()
-			&& mouse->getMYPos() < button->getOptionsAudioMaxPosY() && mouse->getMYPos() > button->getOptionsAudioMinPosY())
+		else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+			&& mouse->getMYPos() < button->getButton2MaxPosY() && mouse->getMYPos() > button->getButton2MinPosY())
 		{
 
 		}
 		// BACK
-		else if (mouse->getMXPos() > button->getOptionsMinPosX() && mouse->getMXPos() < button->getOptionsMaxPosX()
-			&& mouse->getMYPos() < button->getOptionsBackMaxPosY() && mouse->getMYPos() > button->getOptionsBackMinPosY())
+		else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+			&& mouse->getMYPos() < button->getButton3MaxPosY() && mouse->getMYPos() > button->getButton3MinPosY())
 		{
 			scene->SetNextScene(STATE::MENU_SCENE);
 		}

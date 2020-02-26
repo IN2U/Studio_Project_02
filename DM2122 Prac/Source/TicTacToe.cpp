@@ -2,16 +2,19 @@
 #include "GL\glew.h"
 #include "shader.hpp"
 #include "Application.h"
-#include "Cursor.h"
-#include "ButtonPos.h"
-#include "Window.h"
+
 #include "SceneManager.h"
-#include "TEXT_BUTTON.h"
-#include "GAME_STATES.h"
+
+#include "Helper/ButtonPos.h"
+#include "Helper/Cursor.h"
+#include "Helper/Window.h"
+
+#include "Global_Constants/TEXT_BUTTON.h"
+#include "Global_Constants/GAME_STATES.h"
 
 TicTacToe::TicTacToe() : INVALID_VAL(-1), NO_VAL(0), PLAYER_VAL(1), CPU_VAL(2),
-						 MARK_COLOR(0.f), MARK_SIZE(8.f), MARK_X(1.4f), MARK_Y(5.75f),
-						 board{ 0, 0, 0, 0, 0, 0, 0, 0, 0 } 
+													MARK_COLOR(0.f), MARK_SIZE(8.f), MARK_X(1.4f), MARK_Y(5.75f),
+													board{ 0, 0, 0, 0, 0, 0, 0, 0, 0 }, meshList{ NULL,NULL,NULL,NULL }
 {
 	turn = HUMAN_PLAYER;
 	winner = INVALID_VAL;
@@ -20,12 +23,7 @@ TicTacToe::TicTacToe() : INVALID_VAL(-1), NO_VAL(0), PLAYER_VAL(1), CPU_VAL(2),
 	debounceTime = 0.0;
 	bSomethingHappened = false;
 	bestMove.row = -1;
-	bestMove.column = -1;
-
-	for (int i = 0; i < NUM_GEOMETRY; ++i)
-	{
-		meshList[i] = NULL;
-	}
+	bestMove.column = -1;	
 }
 
 TicTacToe::~TicTacToe()
@@ -86,8 +84,8 @@ void TicTacToe::Update(double dt)
 			SceneManager* scene = SceneManager::getInstance();
 
 			// Restart
-			if (mouse->getMXPos() > button->getMenuMinPosX() && mouse->getMXPos() < button->getMenuMaxPosX()
-				&& mouse->getMYPos() < button->getMenuPlayMaxPosY() && mouse->getMYPos() > button->getMenuPlayMinPosY())
+			if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+				&& mouse->getMYPos() < button->getButton1MaxPosY() && mouse->getMYPos() > button->getButton1MinPosY())
 			{
 				//if (scene->getCurrentSceneID() == 3)
 				//	scene->SetNextScene(4);
@@ -95,8 +93,8 @@ void TicTacToe::Update(double dt)
 				//	scene->SetNextScene(3);
 			}
 			// Exit game
-			else if (mouse->getMXPos() > button->getMenuMinPosX() && mouse->getMXPos() < button->getMenuMaxPosX()
-				&& mouse->getMYPos() < button->getMenuOptionsMaxPosY() && mouse->getMYPos() > button->getMenuOptionsMinPosY())
+			else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+				&& mouse->getMYPos() < button->getButton2MaxPosY() && mouse->getMYPos() > button->getButton2MinPosY())
 			{
 				scene->SetNextScene(STATE::GAME_SCENE);
 			}

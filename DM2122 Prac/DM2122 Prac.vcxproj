@@ -127,14 +127,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
-    <ClInclude Include="Source\ButtonPos.h" />
+    <ClInclude Include="Source\Helper\ButtonPos.h" />
     <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Source\Camera2.h" />
     <ClInclude Include="Source\CItem.h" />
     <ClInclude Include="Source\CLinkList.h" />
     <ClInclude Include="Source\Currency.h" />
-    <ClInclude Include="Source\Cursor.h" />
-    <ClInclude Include="Source\GAME_STATES.h" />
+    <ClInclude Include="Source\Helper\Cursor.h" />
+    <ClInclude Include="Source\Global_Constants\GAME_STATES.h" />
     <ClInclude Include="Source\Light.h" />
     <ClInclude Include="Source\LoadOBJ.h" />
     <ClInclude Include="Source\LoadTGA.h" />
@@ -153,23 +153,23 @@
     <ClInclude Include="Source\SceneText.h" />
     <ClInclude Include="Source\shader.hpp" />
     <ClInclude Include="Source\Sun.h" />
-    <ClInclude Include="Source\TEXT_BUTTON.h" />
+    <ClInclude Include="Source\Global_Constants\TEXT_BUTTON.h" />
     <ClInclude Include="Source\TicTacToe.h" />
     <ClInclude Include="Source\UNIFORM_TYPE.h" />
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vending.h" />
     <ClInclude Include="Source\Vertex.h" />
-    <ClInclude Include="Source\Window.h" />
+    <ClInclude Include="Source\Helper\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Application.cpp" />
-    <ClCompile Include="Source\ButtonPos.cpp" />
+    <ClCompile Include="Source\Helper\ButtonPos.cpp" />
     <ClCompile Include="Source\Camera.cpp" />
     <ClCompile Include="Source\Camera2.cpp" />
     <ClCompile Include="Source\CItem.cpp" />
     <ClCompile Include="Source\CLinkList.cpp" />
     <ClCompile Include="Source\Currency.cpp" />
-    <ClCompile Include="Source\Cursor.cpp" />
+    <ClCompile Include="Source\Helper\Cursor.cpp" />
     <ClCompile Include="Source\InitLightSettings.cpp" />
     <ClCompile Include="Source\InitShaderUniforms.cpp" />
     <ClCompile Include="Source\LoadOBJ.cpp" />
@@ -197,7 +197,7 @@
     <ClCompile Include="Source\TicTacToeMoves.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
     <ClCompile Include="Source\Vending.cpp" />
-    <ClCompile Include="Source\Window.cpp" />
+    <ClCompile Include="Source\Helper\Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

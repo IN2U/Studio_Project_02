@@ -1,5 +1,5 @@
 #include "../SceneText.h"
-#include "../Window.h"
+#include "../Helper/Window.h"
 #include "../ObjectManager.h"
 
 void SceneText::RenderMinimap()
