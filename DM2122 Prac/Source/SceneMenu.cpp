@@ -14,7 +14,7 @@
 #include "Global_Constants/TEXT_BUTTON.h"
 #include "Global_Constants/GAME_STATES.h"
 
-SceneMenu::SceneMenu() : meshList{ NULL, NULL, NULL }, sceneTime(0.0), debounceTime(0.0)
+SceneMenu::SceneMenu() : meshList{ NULL, NULL, NULL }, sceneTime(0.0), debounceTime(0.0), MAIN_MENU(0), OPTIONS_MENU(1), menuCurrentState(MAIN_MENU)
 {
 }
 
@@ -53,29 +53,56 @@ void SceneMenu::Update(double dt)
 
 	if (Application::IsKeyPressed(MK_LBUTTON))
 	{
+		// To get cursor pos
 		Cursor* mouse = Cursor::getInstance();
+
+		// To get buttons pos
 		Button* button = Button::getInstance();
 
 		SceneManager* scene = SceneManager::getInstance();
 
-		// PLAY
-		if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
-			&& mouse->getMYPos() < button->getButton1MaxPosY() && mouse->getMYPos() > button->getButton1MinPosY())
+		if (menuCurrentState == MAIN_MENU)
 		{
-			scene->SetNextScene(STATE::GAME_SCENE);
-			//scene->SetNextScene(STATE::TIC_TAC_TOE_SCENE);
+			// PLAY
+			if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+				&& mouse->getMYPos() < button->getButton1MaxPosY() && mouse->getMYPos() > button->getButton1MinPosY())
+			{
+				scene->SetNextScene(STATE::GAME_SCENE);
+				//scene->SetNextScene(STATE::TIC_TAC_TOE_SCENE);
+			}
+			// OPTIONS
+			else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+				&& mouse->getMYPos() < button->getButton2MaxPosY() && mouse->getMYPos() > button->getButton2MinPosY())
+			{
+				menuCurrentState = OPTIONS_MENU;
+			}
+			// QUIT
+			else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+				&& mouse->getMYPos() < button->getButton3MaxPosY() && mouse->getMYPos() > button->getButton3MinPosY())
+			{
+				scene->SetNextScene(STATE::EXIT_SCENE);
+			}
 		}
-		// OPTIONS
-		else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
-			&& mouse->getMYPos() < button->getButton2MaxPosY() && mouse->getMYPos() > button->getButton2MinPosY())
+		else if (menuCurrentState == OPTIONS_MENU)
 		{
-			scene->SetNextScene(STATE::OPTIONS_SCENE);
-		}
-		// QUIT
-		else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
-			&& mouse->getMYPos() < button->getButton3MaxPosY() && mouse->getMYPos() > button->getButton3MinPosY())
-		{
-			scene->SetNextScene(STATE::EXIT_SCENE);
+			// CONTROLS
+			if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+				&& mouse->getMYPos() < button->getButton1MaxPosY() && mouse->getMYPos() > button->getButton1MinPosY())
+			{
+
+			}
+			// AUDIO
+			else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+				&& mouse->getMYPos() < button->getButton2MaxPosY() && mouse->getMYPos() > button->getButton2MinPosY())
+			{
+
+			}
+			// BACK
+			else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+				&& mouse->getMYPos() < button->getButton3MaxPosY() && mouse->getMYPos() > button->getButton3MinPosY())
+			{
+				menuCurrentState = MAIN_MENU;
+			}
 		}
 
 		clicked = true;
@@ -97,9 +124,18 @@ void SceneMenu::Render()
 	RenderMeshOnScreen(meshList[BUTTON], TxtB::CENTRE_OF_SCREEN_X, 29.f, TxtB::BUTTON_SIZE_X, TxtB::BUTTON_SIZE_Y);
 	RenderMeshOnScreen(meshList[BUTTON], TxtB::CENTRE_OF_SCREEN_X, 23.f, TxtB::BUTTON_SIZE_X, TxtB::BUTTON_SIZE_Y);
 
-	RenderTextOnScreen(meshList[TEXT], "Play",		Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.6f, TxtB::TEXT_DISTANCE_Y);
-	RenderTextOnScreen(meshList[TEXT], "Options",	Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 10.f, TxtB::TEXT_DISTANCE_Y - 2);
-	RenderTextOnScreen(meshList[TEXT], "Quit",		Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.6f, TxtB::TEXT_DISTANCE_Y - 4);
+	if (menuCurrentState == MAIN_MENU)
+	{
+		RenderTextOnScreen(meshList[TEXT], "Play", Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.6f, TxtB::TEXT_DISTANCE_Y);
+		RenderTextOnScreen(meshList[TEXT], "Options", Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 10.f, TxtB::TEXT_DISTANCE_Y - 2);
+		RenderTextOnScreen(meshList[TEXT], "Quit", Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.6f, TxtB::TEXT_DISTANCE_Y - 4);
+	}
+	else if (menuCurrentState == OPTIONS_MENU)
+	{
+		RenderTextOnScreen(meshList[TEXT], "Controls", Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 9.6f, TxtB::TEXT_DISTANCE_Y);
+		RenderTextOnScreen(meshList[TEXT], "Audio", Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.2f, TxtB::TEXT_DISTANCE_Y - 2);
+		RenderTextOnScreen(meshList[TEXT], "Back", Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.5f, TxtB::TEXT_DISTANCE_Y - 4);
+	}
 }
 
 void SceneMenu::Exit()
@@ -113,4 +149,9 @@ void SceneMenu::Exit()
 	// Cleanup VBO here
 	glDeleteVertexArrays(1, &m_vertexArrayID);
 	glDeleteProgram(m_programID);
+}
+
+int SceneMenu::getMenuCurrentState()
+{
+	return menuCurrentState;
 }

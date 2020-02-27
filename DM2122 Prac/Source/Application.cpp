@@ -10,11 +10,8 @@
 
 #include "Application.h"
 #include "SceneManager.h"
-#include "SceneText.h"
-
 #include "SceneMenu.h"
-#include "SceneOptions.h"
-
+#include "SceneText.h"
 #include "TicTacToe.h"
 
 #include "Helper/Cursor.h"
@@ -118,8 +115,7 @@ void Application::Run()
 
 	scene->AddScene(new SceneMenu); // 0
 	scene->AddScene(new SceneText); // 1
-	scene->AddScene(new SceneOptions); // 2
-	scene->AddScene(new TicTacToe); // 3
+	scene->AddScene(new TicTacToe); // 2
 	//scene->AddScene(new TicTacToe); // 4
 
 	scene->GetCurrScene()->Init();

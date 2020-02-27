@@ -13,6 +13,7 @@ private:
 
 	enum GEOMETRY_TYPE
 	{
+		STARTING_SCREEN,
 		ENDING_SCREEN,
 		BUTTON,
 		GRID,
@@ -41,6 +42,13 @@ private:
 	const float MARK_X;
 	const float MARK_Y;
 
+	// Game states
+	const int START_STATE;
+	const int GAME_STATE;
+	const int END_STATE;
+
+	int gameCurrentState;
+
 	int board[3][3];
 	int turn;
 	int winner;
@@ -50,6 +58,11 @@ private:
 	double sceneTime;
 	double debounceTime;
 	bool clicked;
+
+	// TicTacToe states
+	void startState();
+	void gameState();
+	void endState();
 
 	// Human turn to move
 	void Human_Move();
@@ -73,10 +86,10 @@ private:
 
 	// Predicts the next move of human player, chooses the move with the least possible score
 	int minSearch(int board[3][3]);
-	
+
 	// Returns true if a winner has been found or there are no empty spaces
 	bool gameOver();
-	 
+
 	// Returns 10 for human win, -10 for cpu win, 0 for draw
 	int score();
 

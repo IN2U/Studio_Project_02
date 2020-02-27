@@ -1,6 +1,5 @@
 #include "SceneText.h"
 #include "SceneMenu.h"
-#include "SceneOptions.h"
 #include "TicTacToe.h"
 #include "SceneVending.h"
 #include "MeshBuilder.h"
@@ -11,17 +10,6 @@ void SceneMenu::InitMeshList()
 {
 	meshList[MENU_SCREEN] = MeshBuilder::GenerateQuad("Menu_Screen", Color(1, 1, 1), 1.f, 1.f);
 	meshList[MENU_SCREEN]->textureID = LoadTGA("Image//menu-screen.tga");
-
-	meshList[BUTTON] = MeshBuilder::GenerateQuad("Button", Color(0.4f, 0.4f, 0.4f), 1.f, 1.f);
-
-	meshList[TEXT] = MeshBuilder::GenerateText("text", 16, 16);
-	meshList[TEXT]->textureID = LoadTGA("Image//arial-rounded-mt-bold.tga");
-}
-
-void SceneOptions::InitMeshList()
-{
-	meshList[OPTIONS_SCREEN] = MeshBuilder::GenerateQuad("Options_Screen", Color(1, 1, 1), 1.f, 1.f);
-	meshList[OPTIONS_SCREEN]->textureID = LoadTGA("Image//options-screen.tga");
 
 	meshList[BUTTON] = MeshBuilder::GenerateQuad("Button", Color(0.4f, 0.4f, 0.4f), 1.f, 1.f);
 
@@ -96,6 +84,9 @@ void SceneText::InitMeshList()
 
 void TicTacToe::InitMeshList()
 {
+	meshList[STARTING_SCREEN] = MeshBuilder::GenerateQuad("Starting_screen", Color(1, 1, 1), 1.f, 1.f);
+	meshList[STARTING_SCREEN]->textureID = LoadTGA("Image//tic-tac-toe-grid.tga");
+
 	meshList[ENDING_SCREEN] = MeshBuilder::GenerateQuad("Ending_screen", Color(1, 1, 1), 1.f, 1.f);
 	meshList[ENDING_SCREEN]->textureID = LoadTGA("Image//game-over-screen.tga");
 

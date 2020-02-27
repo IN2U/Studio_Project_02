@@ -24,7 +24,6 @@
     <ClCompile Include="Source\Render\RenderText.cpp" />
     <ClCompile Include="Source\SceneManager.cpp" />
     <ClCompile Include="Source\SceneMenu.cpp" />
-    <ClCompile Include="Source\SceneOptions.cpp" />
     <ClCompile Include="Source\SceneText.cpp" />
     <ClCompile Include="Source\shader.cpp" />
     <ClCompile Include="Source\Sun.cpp" />
@@ -40,6 +39,7 @@
     <ClCompile Include="Source\NPCUtility.cpp" />
     <ClCompile Include="Source\Item.cpp" />
     <ClCompile Include="Source\LinkList.cpp" />
+    <ClCompile Include="Source\TicTacToeStates.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -60,7 +60,6 @@
     <ClInclude Include="Source\Scene.h" />
     <ClInclude Include="Source\SceneManager.h" />
     <ClInclude Include="Source\SceneMenu.h" />
-    <ClInclude Include="Source\SceneOptions.h" />
     <ClInclude Include="Source\SceneText.h" />
     <ClInclude Include="Source\shader.hpp" />
     <ClInclude Include="Source\Sun.h" />
