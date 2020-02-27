@@ -6,13 +6,12 @@
 #include "Vending.h"
 #include "NPC.h"
 #include "shader.hpp"
-#include "MeshBuilder.h"
 #include "Utility.h"
-#include "LoadTGA.h"
-#include <Mtx44.h>
 
 #include "Helper/Cursor.h"
 #include "Helper/Window.h"
+
+#include "Global_Constants/GAME_STATES.h"
 
 #include "SceneManager.h"
 
@@ -151,11 +150,11 @@ void SceneText::Update(double dt)
 
 	// Need to render options without exiting scene
 	// Open options
-	//if (Application::IsKeyPressed(VK_ESCAPE))
-	//{
-	//	SceneManager* scene = SceneManager::getInstance();
-	//	scene->SetNextScene(2);
-	//}
+	if (Application::IsKeyPressed(VK_ESCAPE))
+	{
+		SceneManager* scene = SceneManager::getInstance();
+		//scene->SetNextScene(STATE::MENU_SCENE);
+	}
 
 	// Updates sun pos
 	sun.revolve(dt);

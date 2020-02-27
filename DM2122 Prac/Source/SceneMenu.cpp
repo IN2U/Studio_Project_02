@@ -1,10 +1,7 @@
 #include "SceneMenu.h"
 #include "Application.h"
 #include "GL\glew.h"
-#include "MeshBuilder.h"
-#include "LoadTGA.h"
 #include "shader.hpp"
-#include <Mtx44.h>
 #include "SceneManager.h"
 #include "SceneText.h"
 
