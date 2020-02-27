@@ -179,7 +179,8 @@ void SceneText::Update(double dt)
 
 	if (eUIState == NPC_UI)
 	{
-		//do something
+		npc[0].UpdateNPC();
+		somethingHappened = npc[0].SomethingHappened();
 	}
 
 	if (eUIState == VENDING_UI)
@@ -205,12 +206,6 @@ void SceneText::Update(double dt)
 		eUIState = VENDING_UI;
 	}
 
-	if (Application::IsKeyPressed('F'))
-	{
-		inventory->PrintInventory();
-	}
-
-
 	currency->AddCurrency(100 * dt);
 	currency->SortAndUpdateCurrency();
 
@@ -218,25 +213,44 @@ void SceneText::Update(double dt)
 	CalculateFrameRate();
 
 	if (somethingHappened) {
-		bounceTime = gameTime + 0.5;
+		bounceTime = gameTime + 0.125;
 	}
 }
 
 void SceneText::RenderUI()
 {
 	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 15, 13);
-	RenderTextOnScreen(meshList[GEO_TEXT], "QUESTS", Color(0, 1, 0), 3, 5, 1);
+	RenderTextOnScreen(meshList[GEO_TEXT], "QUESTS", Color(0, 1, 0), 3, 5, 1.5);
 
 	if (npc[0].QuestIsActive() == true)
-		RenderTextOnScreen(meshList[GEO_TEXT], npc[0].ReturnQuest().ReturnRequirement(), Color(0, 1, 0), 3, 5, 0);
+		RenderTextOnScreen(meshList[GEO_TEXT], npc[0].ReturnQuest()->ReturnRequirement(), Color(0, 1, 0), 3, 5, 0.5);
 	else
-		RenderTextOnScreen(meshList[GEO_TEXT], "No current quests.", Color(0, 1, 0), 3, 5, 0);
+		RenderTextOnScreen(meshList[GEO_TEXT], "No current quests.", Color(0, 1, 0), 3, 5, 0.5);
 }
 
 void SceneText::RenderNPCUI(NPC npc)
 {
-	RenderMeshOnScreen(meshList[TEXT_BORDER], 200.f, 50.f, 500.f, 100.f);
-	RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnDialogue(), Color(0, 1, 0), 3, 5, 1);
+	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 15, 13);
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "QUESTS", Color(0, 1, 0), 3, 5, 5.5);
+	if (npc.QuestIsActive() == true)
+		RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnQuest()->ReturnRequirement(), Color(0, 1, 0), 3, 5, 4.5);
+	else
+		RenderTextOnScreen(meshList[GEO_TEXT], "No current quests.", Color(0, 1, 0), 3, 5, 4.5);
+
+	RenderMeshOnScreen(meshList[TEXT_BORDER], 40.f, 5.f, 100.f, 15.f);
+
+	
+	RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnDialogue(), Color(0, 1, 0), 3, 5, 2.5);
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "1. Talk", Color(0, 1, 0), 3, 5, 1.5);
+	RenderTextOnScreen(meshList[GEO_TEXT], "2. Accept a quest", Color(0, 1, 0), 3, 5, 0.5);
+	
+	if (npc.IsGoingToGiveTip())
+	{
+		RenderText(meshList[GEO_TEXT], npc.ReturnTips(), Color(0, 1, 0), 0.4f, 0.f, 0.f, 0.f);
+	}
+	
 }
 
 void SceneText::RenderVendingUI()

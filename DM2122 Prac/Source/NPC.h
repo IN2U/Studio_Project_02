@@ -10,14 +10,15 @@ class NPC
 {
 private:
 	int dialogueID = 0;
-	int tipsID = 0;
+	int tipsID = -1;
 	std::vector<std::string> dialogue;
 	std::vector<std::string> tips;
-	Quest NPCQuest;
+	Quest* NPCQuest;
 
 	bool questActive;
+	bool goingToGiveTip;
 
-	bool somethingHappened = false;
+	bool somethingHappened;
 
 public:
 	NPC();
@@ -41,7 +42,12 @@ public:
 	bool QuestIsActive();
 	bool SomethingHappened();
 
-	Quest ReturnQuest();
+	bool QuestRequirementMet();
+
+	bool IsGoingToGiveTip();
+	void SetToDefaultTipState();
+
+	Quest* ReturnQuest();
 };
 
 #endif

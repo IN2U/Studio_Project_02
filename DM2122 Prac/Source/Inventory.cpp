@@ -44,10 +44,10 @@ void Inventory::UseItem(int ID)
 		itemInventory.erase(itemInventory.begin() + ID - 1);
 }
 
-void Inventory::PrintInventory()
+bool Inventory::isEmpty()
 {
-	for (int i = 0; i < itemInventory.size(); ++i)
-	{
-		std::cout << itemInventory.at(i)->ReturnName() << std::endl;
-	}
+	if (itemInventory.empty())
+		return true;
+	else
+		return false;
 }

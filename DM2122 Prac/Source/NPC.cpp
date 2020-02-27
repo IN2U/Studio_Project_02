@@ -1,4 +1,6 @@
 #include "NPC.h"
+#include "Currency.h"
+#include "Inventory.h"
 
 NPC::NPC()
 {
@@ -25,6 +27,11 @@ NPC::NPC()
 	tips.push_back(temp);
 
 	questActive = false;
+	goingToGiveTip = false;
+
+	somethingHappened = false;
+
+	NPCQuest = nullptr;
 }
 
 NPC::~NPC()
@@ -44,14 +51,15 @@ std::string NPC::ReturnTips()
 	return tips.at(tipsID);
 }
 
-Quest NPC::ReturnQuest()
+Quest* NPC::ReturnQuest()
 {
 	return NPCQuest;
 }
 
 float NPC::ReturnReward()
 {
-	return NPCQuest.ReturnReward();
+	if(questActive)
+		return NPCQuest->ReturnReward();
 }
 
 void NPC::SelectRandomDialogue()
@@ -71,12 +79,19 @@ bool NPC::QuestCompleted()
 
 void NPC::StartQuest()
 {
+	NPCQuest = new Quest();
 	questActive = true;
 }
 
 void NPC::FinishQuest()
 {
-	questActive = false;
+	if (QuestRequirementMet())
+	{
+		Currency* currency3 = Currency::GetInstance();
+		currency3->AddCurrency(NPCQuest->ReturnReward());
+		delete NPCQuest;
+		questActive = false;
+	}
 }
 
 bool NPC::QuestIsActive()
@@ -84,3 +99,37 @@ bool NPC::QuestIsActive()
 	return questActive;
 }
 
+bool NPC::IsGoingToGiveTip()
+{
+	return goingToGiveTip;
+}
+
+void NPC::SetToDefaultTipState()
+{
+	goingToGiveTip = false;
+}
+
+bool NPC::QuestRequirementMet()
+{
+	if (NPCQuest != nullptr)
+	{
+		if (NPCQuest->ReturnTypeOfQuest() == 0) //drive a car
+		{
+			return true;
+		}
+		else if (NPCQuest->ReturnTypeOfQuest() == 1) //own item from vending machine
+		{
+			Inventory* inventory3 = Inventory::GetInstance();
+			if (inventory3->isEmpty())
+			{
+				return false;
+			}
+			else
+				return true;
+		}
+		else if (NPCQuest->ReturnTypeOfQuest() == 2) // customise car once
+		{
+			return true;
+		}
+	}
+}

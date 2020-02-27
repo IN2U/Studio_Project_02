@@ -17,7 +17,7 @@ public:
 
 	std::string ReturnRequirement();
 	float ReturnReward();
-
+	int ReturnTypeOfQuest();
 };
 
 #endif
