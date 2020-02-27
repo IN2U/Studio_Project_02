@@ -1,9 +1,9 @@
-#include "SceneText.h"
-#include "SceneMenu.h"
-#include "TicTacToe.h"
-#include "SceneVending.h"
-#include "MeshBuilder.h"
-#include "../../glew/include/GL/glew.h"
+#include "../SceneText.h"
+#include "../SceneMenu.h"
+#include "../TicTacToe.h"
+#include "../SceneVending.h"
+#include "../Mesh_Generation/MeshBuilder.h"
+#include "../../../glew/include/GL/glew.h"
 #include "LoadTGA.h"
 
 void SceneMenu::InitMeshList()

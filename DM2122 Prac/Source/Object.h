@@ -1,7 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include "Mesh.h"
+#include "Mesh_Generation/Mesh.h"
 #include "../../Common/Source/MatrixStack.h"
 #include <vector>
 #include <string>

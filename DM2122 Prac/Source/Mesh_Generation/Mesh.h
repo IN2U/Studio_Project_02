@@ -2,8 +2,8 @@
 #define MESH_H
 
 #include <string>
-#include "Vertex.h"
-#include "Material.h"
+#include "../Vertex.h"
+#include "../Material.h"
 
 /******************************************************************************/
 /*!

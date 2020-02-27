@@ -1,7 +1,7 @@
 #ifndef OBJECT_MANAGER_H
 #define OBJECT_MANAGER_H
 
-#include "Mesh.h"
+#include "Mesh_Generation/Mesh.h"
 #include "Object.h"
 #include <vector>
 #include <string>

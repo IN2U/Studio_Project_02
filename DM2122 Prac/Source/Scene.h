@@ -3,7 +3,7 @@
 
 #include "UNIFORM_TYPE.h"
 #include <MatrixStack.h>
-#include "Mesh.h"
+#include "Mesh_Generation/Mesh.h"
 
 class Scene
 {

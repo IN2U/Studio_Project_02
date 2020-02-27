@@ -7,12 +7,7 @@
     <ClCompile Include="Source\Currency.cpp" />
     <ClCompile Include="Source\InitLightSettings.cpp" />
     <ClCompile Include="Source\InitShaderUniforms.cpp" />
-    <ClCompile Include="Source\LoadOBJ.cpp" />
-    <ClCompile Include="Source\LoadTGA.cpp" />
     <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\Mesh.cpp" />
-    <ClCompile Include="Source\MeshBuilder.cpp" />
-    <ClCompile Include="Source\MeshList.cpp" />
     <ClCompile Include="Source\Minimap.cpp" />
     <ClCompile Include="Source\NPC.cpp" />
     <ClCompile Include="Source\Object.cpp" />
@@ -40,6 +35,11 @@
     <ClCompile Include="Source\Item.cpp" />
     <ClCompile Include="Source\TicTacToeStates.cpp" />
     <ClCompile Include="Source\ItemManager.cpp" />
+    <ClCompile Include="Source\Texture_Mapping\MeshList.cpp" />
+    <ClCompile Include="Source\Texture_Mapping\LoadTGA.cpp" />
+    <ClCompile Include="Source\Mesh_Generation\Mesh.cpp" />
+    <ClCompile Include="Source\Mesh_Generation\MeshBuilder.cpp" />
+    <ClCompile Include="Source\Mesh_Generation\LoadOBJ.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -47,11 +47,7 @@
     <ClInclude Include="Source\Camera2.h" />
     <ClInclude Include="Source\Currency.h" />
     <ClInclude Include="Source\Light.h" />
-    <ClInclude Include="Source\LoadOBJ.h" />
-    <ClInclude Include="Source\LoadTGA.h" />
     <ClInclude Include="Source\Material.h" />
-    <ClInclude Include="Source\Mesh.h" />
-    <ClInclude Include="Source\MeshBuilder.h" />
     <ClInclude Include="Source\Minimap.h" />
     <ClInclude Include="Source\NPC.h" />
     <ClInclude Include="Source\Object.h" />
@@ -76,5 +72,9 @@
     <ClInclude Include="Source\Inventory.h" />
     <ClInclude Include="Source\Item.h" />
     <ClInclude Include="Source\ItemManager.h" />
+    <ClInclude Include="Source\Texture_Mapping\LoadTGA.h" />
+    <ClInclude Include="Source\Mesh_Generation\MeshBuilder.h" />
+    <ClInclude Include="Source\Mesh_Generation\Mesh.h" />
+    <ClInclude Include="Source\Mesh_Generation\LoadOBJ.h" />
   </ItemGroup>
 </Project>

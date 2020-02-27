@@ -2,8 +2,8 @@
 #define LOAD_OBJ_H
 
 #include <vector>
-#include "Vertex.h"
-#include "Vector3.h"
+#include "../Vertex.h"
+#include "../../../Common/Source/Vector3.h"
 
 bool LoadOBJ(
 	const char *file_path, 
