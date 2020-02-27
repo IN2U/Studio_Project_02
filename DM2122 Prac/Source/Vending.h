@@ -1,13 +1,13 @@
 #ifndef VENDING_H
 #define VENDING_H
 
-#include "LinkList.h"
+#include "ItemManager.h"
 
 
 class Vending
 {
 private:
-	vector<LinkList*> machineItems;
+	vector<ItemManager*> machineItems;
 
 	string itemChosen;
 	string itemIssued;

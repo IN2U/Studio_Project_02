@@ -4,8 +4,8 @@ Vending::Vending()
 {
 	for (int i = 0; i < 10; ++i)
 	{
-		LinkList* newList = new LinkList(i, "trashcan" + std::to_string(i), float(i * 3));
-		machineItems.push_back(newList);
+		ItemManager* newManager = new ItemManager(i, "trashcan" + std::to_string(i), float(i * 3));
+		machineItems.push_back(newManager);
 	}
 }
 

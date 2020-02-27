@@ -131,11 +131,11 @@
     <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Source\Camera2.h" />
     <ClInclude Include="Source\Item.h" />
-    <ClInclude Include="Source\LinkList.h" />
     <ClInclude Include="Source\Currency.h" />
     <ClInclude Include="Source\Helper\Cursor.h" />
     <ClInclude Include="Source\Global_Constants\GAME_STATES.h" />
     <ClInclude Include="Source\Inventory.h" />
+    <ClInclude Include="Source\ItemManager.h" />
     <ClInclude Include="Source\Light.h" />
     <ClInclude Include="Source\LoadOBJ.h" />
     <ClInclude Include="Source\LoadTGA.h" />
@@ -167,12 +167,12 @@
     <ClCompile Include="Source\Camera.cpp" />
     <ClCompile Include="Source\Camera2.cpp" />
     <ClCompile Include="Source\Item.cpp" />
-    <ClCompile Include="Source\LinkList.cpp" />
     <ClCompile Include="Source\Currency.cpp" />
     <ClCompile Include="Source\Helper\Cursor.cpp" />
     <ClCompile Include="Source\InitLightSettings.cpp" />
     <ClCompile Include="Source\InitShaderUniforms.cpp" />
     <ClCompile Include="Source\Inventory.cpp" />
+    <ClCompile Include="Source\ItemManager.cpp" />
     <ClCompile Include="Source\LoadOBJ.cpp" />
     <ClCompile Include="Source\LoadTGA.cpp" />
     <ClCompile Include="Source\main.cpp" />

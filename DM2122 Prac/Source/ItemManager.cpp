@@ -1,12 +1,12 @@
-#include "LinkList.h"
+#include "ItemManager.h"
 #include <iostream>
 
-LinkList::LinkList()
+ItemManager::ItemManager()
 {
 	head = nullptr;
 }
 
-LinkList::LinkList(int ID, string name, float price)
+ItemManager::ItemManager(int ID, string name, float price)
 {
 	head = nullptr;
 	for (int i = 0; i < ITEM_AMOUNT; ++i)
@@ -15,14 +15,14 @@ LinkList::LinkList(int ID, string name, float price)
 	}
 }
 
-LinkList::~LinkList()
+ItemManager::~ItemManager()
 {
 	while (!IsEmpty())
 		RemoveItem();
 
 }
 
-void LinkList::AddItem(int data, string name, float price)
+void ItemManager::AddItem(int data, string name, float price)
 {
 	Item* tmp;
 	tmp = new Item(data, name, price);
@@ -47,7 +47,7 @@ void LinkList::AddItem(int data, string name, float price)
 	}
 }
 
-void LinkList::RemoveItem()
+void ItemManager::RemoveItem()
 {
 	Item* tmp = head;
 	if (!IsEmpty())
@@ -60,7 +60,7 @@ void LinkList::RemoveItem()
 }
 
 
-void LinkList::Print()
+void ItemManager::Print()
 {
 	Item* current;
 	current = head;
@@ -80,17 +80,17 @@ void LinkList::Print()
 
 }
 
-std::string LinkList::Name()
+std::string ItemManager::Name()
 {
 	return head->ReturnName();
 }
 
-float LinkList::Price()
+float ItemManager::Price()
 {
 	return head->ReturnPrice();
 }
 
-bool LinkList::IsEmpty()
+bool ItemManager::IsEmpty()
 {
 	if (head == nullptr)
 		return true;
@@ -98,7 +98,7 @@ bool LinkList::IsEmpty()
 		return false;
 }
 
-bool LinkList::IsLastNode()
+bool ItemManager::IsLastNode()
 {
 	if (head->GetNext() == nullptr)
 		return true;
@@ -106,7 +106,7 @@ bool LinkList::IsLastNode()
 		return false;
 }
 
-Item* LinkList::GetItem()
+Item* ItemManager::GetItem()
 {
 	return head;
 }

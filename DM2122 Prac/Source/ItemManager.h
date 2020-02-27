@@ -1,5 +1,5 @@
-#ifndef LINKLIST_H
-#define LINKLIST_H
+#ifndef ITEMMANAGER_H
+#define ITEMMANAGER_H
 
 constexpr auto ITEM_AMOUNT = 5;
 
@@ -7,15 +7,15 @@ constexpr auto ITEM_AMOUNT = 5;
 
 #include <vector>
 
-class LinkList
+class ItemManager
 {
 private:
 	Item* head;
 
 public:
-	LinkList();
-	LinkList(int ID, string name, float price);
-	~LinkList();
+	ItemManager();
+	ItemManager(int ID, string name, float price);
+	~ItemManager();
 
 	void AddItem(int data, string name, float price);
 	void RemoveItem();
