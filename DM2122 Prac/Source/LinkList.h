@@ -26,6 +26,8 @@ public:
 
 	bool IsEmpty();
 	bool IsLastNode();
+
+	Item* GetItem();
 };
 
 #endif

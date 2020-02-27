@@ -8,6 +8,7 @@
 #include "Sun.h"
 
 #include "Vending.h"
+#include "NPC.h"
 
 enum UISTATE
 {
@@ -56,22 +57,15 @@ private:
 
 	Light light[2];
 
-	// For when vending is used
-	string itemChosen;
-	string itemIssued;
-
-	bool goingToBuyItem;
-	bool itemBought;
-
-	int buttonTrigger;
-	double gameTime;
-	double bounceTime;
-	bool somethingHappened;
+	NPC npc[5];
 
 	Vending vending[3];
 
-	void CheckInput();
-	void UpdateVending();
+	UISTATE eUIState = DEFAULT_UI;
+
+	double gameTime;
+	double bounceTime;
+	bool somethingHappened;
 
 	bool renderHitBox;
 
@@ -87,7 +81,7 @@ private:
 	void RenderMinimap();
 
 	void RenderUI();
-	void RenderNPCUI();
+	void RenderNPCUI(NPC npc);
 	void RenderVendingUI();
 
 	void CalculateFrameRate();

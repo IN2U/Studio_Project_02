@@ -20,7 +20,7 @@ Vending::~Vending()
 
 void Vending::FillMachine()
 {
-	
+
 }
 
 bool Vending::BuyItem(int choice)

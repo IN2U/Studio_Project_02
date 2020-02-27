@@ -11,8 +11,6 @@ private:
 	std::string questRequirement;
 	float questReward;
 
-	bool questActive;
-
 public:
 	Quest();
 	~Quest();
@@ -20,10 +18,6 @@ public:
 	std::string ReturnRequirement();
 	float ReturnReward();
 
-	bool QuestActive();
-
-	void SetToStartQuest();
-	void SetToCompleteQuest();
 };
 
 #endif

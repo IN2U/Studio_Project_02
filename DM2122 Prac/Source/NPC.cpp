@@ -17,6 +17,14 @@ NPC::NPC()
 
 	temp = "How can I help you?";
 	dialogue.push_back(temp);
+
+	temp = "You can approach any vending machine to buy items.";
+	tips.push_back(temp);
+
+	temp = "Try to explore the area, you might find easter eggs!";
+	tips.push_back(temp);
+
+	questActive = false;
 }
 
 NPC::~NPC()
@@ -30,9 +38,15 @@ std::string NPC::ReturnDialogue()
 	return dialogue.at(dialogueID);
 }
 
-std::string NPC::ReturnQuest()
+std::string NPC::ReturnTips()
 {
-	return NPCQuest.ReturnRequirement();
+	srand(time(NULL));
+	return tips.at(tipsID);
+}
+
+Quest NPC::ReturnQuest()
+{
+	return NPCQuest;
 }
 
 float NPC::ReturnReward()
@@ -45,17 +59,28 @@ void NPC::SelectRandomDialogue()
 	dialogueID = rand() % dialogue.size();
 }
 
+void NPC::SelectRandomTip()
+{
+	tipsID = rand() % tips.size();
+}
+
+bool NPC::QuestCompleted()
+{
+	return false;
+}
+
 void NPC::StartQuest()
 {
-	NPCQuest.SetToStartQuest();
+	questActive = true;
 }
 
-bool NPC::CheckQuestActive()
+void NPC::FinishQuest()
 {
-	return NPCQuest.QuestActive();
+	questActive = false;
 }
 
-void NPC::CompleteQuest()
+bool NPC::QuestIsActive()
 {
-	NPCQuest.SetToCompleteQuest();
+	return questActive;
 }
+

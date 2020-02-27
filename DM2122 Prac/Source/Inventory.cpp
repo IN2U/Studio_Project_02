@@ -34,7 +34,7 @@ bool Inventory::AddItemIntoInventory(Item* newItem)
 
 void Inventory::RemoveItemFromInventory(int ID)
 {
-	if(!itemInventory.empty())
+	if (!itemInventory.empty())
 		itemInventory.erase(itemInventory.begin() + ID - 1);
 }
 

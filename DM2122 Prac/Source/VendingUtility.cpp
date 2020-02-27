@@ -1,8 +1,11 @@
 #include "SceneText.h"
 #include "Vending.h"
 #include "Application.h"
+#include "Inventory.h"
 
-void SceneText::CheckInput()
+Inventory* inventory2 = Inventory::GetInstance();
+
+void Vending::CheckInput()
 {
 	if (Application::IsKeyPressed('1'))
 	{
@@ -58,19 +61,20 @@ void SceneText::CheckInput()
 		buttonTrigger++;
 		somethingHappened = true;
 	}
-	
 	else if (Application::IsKeyPressed(VK_RETURN))
 	{
 		buttonTrigger++;
 		somethingHappened = true;
 	}
-
 }
 
-void SceneText::UpdateVending()
+void Vending::UpdateVending()
 {
-	if (buttonTrigger >= 2)
+	somethingHappened = false;
+
+	if (buttonTrigger >= 2) {
 		goingToBuyItem = true;
+	}
 
 	if (!goingToBuyItem)
 	{
@@ -81,9 +85,9 @@ void SceneText::UpdateVending()
 	{
 		if (Application::IsKeyPressed('Y'))
 		{
-			vending[0].BuyItem(std::stoi(itemChosen));
-			itemIssued = vending[0].ReturnItemName(std::stoi(itemChosen));
-
+			this->BuyItem(std::stoi(itemChosen));
+			inventory2->AddItemIntoInventory(this->GetItem(std::stoi(itemChosen)));
+			itemIssued = this->ReturnItemName(std::stoi(itemChosen));
 			itemChosen = "";
 			buttonTrigger = 0;
 			itemBought = true;
@@ -99,4 +103,34 @@ void SceneText::UpdateVending()
 			somethingHappened = true;
 		}
 	}
+}
+
+string Vending::GetItemChosen()
+{
+	return itemChosen;
+}
+
+string Vending::GetItemIssued()
+{
+	return itemIssued;
+}
+
+Item* Vending::GetItem(int ID)
+{
+	return machineItems.at(ID)->GetItem();
+}
+
+bool Vending::BuyingItem()
+{
+	return goingToBuyItem;
+}
+
+bool Vending::ItemIsBought()
+{
+	return itemBought;
+}
+
+bool Vending::SomethingHappened()
+{
+	return somethingHappened;
 }

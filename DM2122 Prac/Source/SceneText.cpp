@@ -5,6 +5,7 @@
 #include "Currency.h"
 #include "Vending.h"
 #include "NPC.h"
+#include "Inventory.h"
 #include "shader.hpp"
 #include "Utility.h"
 
@@ -21,7 +22,7 @@
 
 Currency* currency = Currency::GetInstance();
 
-NPC npc[5];
+Inventory* inventory = Inventory::GetInstance();
 
 UISTATE eUIState = DEFAULT_UI;
 
@@ -29,12 +30,7 @@ SceneText::SceneText()
 {
 	gameTime = 0.0f;
 	bounceTime = 0.0f;
-	buttonTrigger = 0;
 	somethingHappened = false;
-	goingToBuyItem = false;
-	itemBought = false;
-	itemChosen = "";
-	itemIssued = "";
 
 	for (int i = 0; i < NUM_GEOMETRY; ++i)
 	{
@@ -188,8 +184,32 @@ void SceneText::Update(double dt)
 
 	if (eUIState == VENDING_UI)
 	{
-		UpdateVending();
+		vending[0].UpdateVending();
+		somethingHappened = vending[0].SomethingHappened();
 	}
+
+	if (Application::IsKeyPressed('B'))
+	{
+		if (eUIState == DEFAULT_UI) {
+			eUIState = NPC_UI;
+			somethingHappened = true;
+		}
+		else {
+			eUIState = DEFAULT_UI;
+			somethingHappened = true;
+		}
+	}
+
+	if (Application::IsKeyPressed('V'))
+	{
+		eUIState = VENDING_UI;
+	}
+
+	if (Application::IsKeyPressed('F'))
+	{
+		inventory->PrintInventory();
+	}
+
 
 	currency->AddCurrency(100 * dt);
 	currency->SortAndUpdateCurrency();
@@ -207,30 +227,30 @@ void SceneText::RenderUI()
 	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 15, 13);
 	RenderTextOnScreen(meshList[GEO_TEXT], "QUESTS", Color(0, 1, 0), 3, 5, 1);
 
-	if (npc[0].CheckQuestActive() == true)
-		RenderTextOnScreen(meshList[GEO_TEXT], npc[0].ReturnQuest(), Color(0, 1, 0), 3, 5, 0);
+	if (npc[0].QuestIsActive() == true)
+		RenderTextOnScreen(meshList[GEO_TEXT], npc[0].ReturnQuest().ReturnRequirement(), Color(0, 1, 0), 3, 5, 0);
 	else
 		RenderTextOnScreen(meshList[GEO_TEXT], "No current quests.", Color(0, 1, 0), 3, 5, 0);
 }
 
-void SceneText::RenderNPCUI()
+void SceneText::RenderNPCUI(NPC npc)
 {
 	RenderMeshOnScreen(meshList[TEXT_BORDER], 200.f, 50.f, 500.f, 100.f);
-	RenderTextOnScreen(meshList[GEO_TEXT], npc[0].ReturnDialogue(), Color(0, 1, 0), 3, 5, 1);
+	RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnDialogue(), Color(0, 1, 0), 3, 5, 1);
 }
 
 void SceneText::RenderVendingUI()
 {
-	if (!goingToBuyItem) {
+	if (!vending[0].BuyingItem()) {
 		RenderTextOnScreen(meshList[GEO_TEXT], "What would you like to buy?", Color(0, 1, 0), 2.5f, 3.f, 2.f);
-		RenderTextOnScreen(meshList[GEO_TEXT], itemChosen, Color(0, 1, 0), 3.f, 1.f, 5.f);
+		RenderTextOnScreen(meshList[GEO_TEXT], vending[0].GetItemChosen(), Color(0, 1, 0), 3.f, 1.f, 5.f);
 	}
 
-	if (goingToBuyItem)
-		RenderTextOnScreen(meshList[GEO_TEXT], "Buy item " + itemChosen + " ?(Y/N)", Color(0, 1, 0), 2.5f, 2.2f, 2.f);
+	if (vending[0].BuyingItem())
+		RenderTextOnScreen(meshList[GEO_TEXT], "Buy item " + vending[0].GetItemChosen() + " ?(Y/N)", Color(0, 1, 0), 2.5f, 2.2f, 2.f);
 
-	if (itemBought) {
-		RenderTextOnScreen(meshList[GEO_TEXT], "Item " + itemIssued + " bought.", Color(0, 1, 0), 2.3f, 2.2f, 22.f);
+	if (vending[0].ItemIsBought()) {
+		RenderTextOnScreen(meshList[GEO_TEXT], "Item " + vending[0].GetItemIssued() + " bought.", Color(0, 1, 0), 2.3f, 2.2f, 22.f);
 	}
 }
 
@@ -298,7 +318,7 @@ void SceneText::Render()
 	{
 	case DEFAULT_UI: RenderUI();
 		break;
-	case NPC_UI: RenderNPCUI();
+	case NPC_UI: RenderNPCUI(npc[0]);
 		break;
 	case VENDING_UI: RenderVendingUI();
 		break;

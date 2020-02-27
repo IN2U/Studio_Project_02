@@ -3,10 +3,21 @@
 
 #include "LinkList.h"
 
+
 class Vending
 {
 private:
 	vector<LinkList*> machineItems;
+
+	string itemChosen;
+	string itemIssued;
+
+	bool goingToBuyItem;
+	bool itemBought;
+
+	int buttonTrigger;
+
+	bool somethingHappened = true;
 
 public:
 	Vending();
@@ -22,6 +33,21 @@ public:
 	float ReturnItemPrice(int ID);
 
 	bool ItemAvailable(int ID);
+
+	void CheckInput();
+	void UpdateVending();
+
+	//getters
+	string GetItemChosen();
+	string GetItemIssued();
+
+	Item* GetItem(int ID);
+
+	bool BuyingItem();
+	bool ItemIsBought();
+
+	bool SomethingHappened();
+
 };
 
 #endif

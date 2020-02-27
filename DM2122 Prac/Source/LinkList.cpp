@@ -105,3 +105,8 @@ bool LinkList::IsLastNode()
 	else
 		return false;
 }
+
+Item* LinkList::GetItem()
+{
+	return head;
+}

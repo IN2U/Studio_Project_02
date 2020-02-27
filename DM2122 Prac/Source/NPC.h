@@ -10,27 +10,38 @@ class NPC
 {
 private:
 	int dialogueID = 0;
+	int tipsID = 0;
 	std::vector<std::string> dialogue;
+	std::vector<std::string> tips;
 	Quest NPCQuest;
 
+	bool questActive;
 
+	bool somethingHappened = false;
 
 public:
 	NPC();
 	~NPC();
 
 	std::string ReturnDialogue();
-	std::string ReturnQuest();
+	std::string ReturnTips();
 	float ReturnReward();
 
-	bool CheckQuestActive();
-	void CompleteQuest();
 	void SelectRandomDialogue();
+	void SelectRandomTip();
+
+	bool QuestCompleted();
 
 	void StartQuest();
-	
+	void FinishQuest();
 
-	
+	void CheckInput();
+	void UpdateNPC();
+
+	bool QuestIsActive();
+	bool SomethingHappened();
+
+	Quest ReturnQuest();
 };
 
 #endif
