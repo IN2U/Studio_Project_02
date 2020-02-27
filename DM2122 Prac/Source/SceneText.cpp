@@ -24,8 +24,19 @@ Currency* currency = Currency::GetInstance();
 
 NPC npc;
 
+UISTATE eUIState = DEFAULT_UI;
+
 SceneText::SceneText()
 {
+	gameTime = 0.0f;
+	bounceTime = 0.0f;
+	buttonTrigger = 0;
+	somethingHappened = false;
+	goingToBuyItem = false;
+	itemBought = false;
+	itemChosen = "";
+	itemIssued = "";
+
 	for (int i = 0; i < NUM_GEOMETRY; ++i)
 	{
 		meshList[i] = NULL;
@@ -73,11 +84,21 @@ void SceneText::Init()
 
 	InitMeshList();
 
+	gameTime = 0;
+
 	currency->SortAndUpdateCurrency();
 }
 
 void SceneText::Update(double dt)
 {
+	somethingHappened = false;
+
+	gameTime += dt;
+
+	if (bounceTime > gameTime) {
+		return;
+	}
+
 	if (Application::IsKeyPressed(0x31))
 	{
 		glDisable(GL_CULL_FACE);
@@ -161,11 +182,20 @@ void SceneText::Update(double dt)
 		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
 	}
 
+	if (eUIState == VENDING_UI)
+	{
+		UpdateVending();
+	}
+
 	currency->AddCurrency(100 * dt);
 	currency->SortAndUpdateCurrency();
 
 	camera.Update(dt);
 	CalculateFrameRate();
+
+	if (somethingHappened) {
+		bounceTime = gameTime + 0.5;
+	}
 }
 
 void SceneText::RenderUI()
@@ -183,6 +213,21 @@ void SceneText::RenderNPCUI()
 {
 	RenderMeshOnScreen(meshList[TEXT_BORDER], 200.f, 50.f, 500.f, 100.f);
 	RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnDialogue(), Color(0, 1, 0), 3, 5, 1);
+}
+
+void SceneText::RenderVendingUI()
+{
+	if (!goingToBuyItem) {
+		RenderTextOnScreen(meshList[GEO_TEXT], "What would you like to buy?", Color(0, 1, 0), 2.5f, 3.f, 2.f);
+		RenderTextOnScreen(meshList[GEO_TEXT], itemChosen, Color(0, 1, 0), 3.f, 1.f, 5.f);
+	}
+
+	if (goingToBuyItem)
+		RenderTextOnScreen(meshList[GEO_TEXT], "Buy item " + itemChosen + " ?(Y/N)", Color(0, 1, 0), 2.5f, 2.2f, 2.f);
+
+	if (itemBought) {
+		RenderTextOnScreen(meshList[GEO_TEXT], "Item " + itemIssued + " bought.", Color(0, 1, 0), 2.3f, 2.2f, 22.f);
+	}
 }
 
 void SceneText::Render()
@@ -246,10 +291,16 @@ void SceneText::Render()
 	}
 
 
-	if (defaultUI)
-		RenderUI();
-	else if (NPCUI)
-		RenderNPCUI();
+	switch (eUIState)
+	{
+	case DEFAULT_UI: RenderUI();
+		break;
+	case NPC_UI: RenderNPCUI();
+		break;
+	case VENDING_UI: RenderVendingUI();
+		break;
+	}
+
 
 	RenderMinimap();
 

@@ -7,6 +7,15 @@
 #include "Light.h"
 #include "Sun.h"
 
+#include "Vending.h"
+
+enum UISTATE
+{
+	DEFAULT_UI,
+	NPC_UI,
+	VENDING_UI,
+};
+
 class SceneText : public Scene
 {
 private:
@@ -47,6 +56,22 @@ private:
 
 	Light light[2];
 
+	// For when vending is used
+	string itemChosen;
+	string itemIssued;
+
+	bool goingToBuyItem;
+	bool itemBought;
+
+	int buttonTrigger;
+	double gameTime;
+	double bounceTime;
+	bool somethingHappened;
+	Vending vending;
+
+	void CheckInput();
+	void UpdateVending();
+
 	bool renderHitBox;
 
 	bool defaultUI = true;
@@ -62,6 +87,7 @@ private:
 
 	void RenderUI();
 	void RenderNPCUI();
+	void RenderVendingUI();
 
 	void CalculateFrameRate();
 

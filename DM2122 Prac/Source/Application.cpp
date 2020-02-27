@@ -17,8 +17,6 @@
 
 #include "TicTacToe.h"
 
-#include "SceneVending.h"
-
 #include "Helper/Cursor.h"
 #include "Helper/ButtonPos.h"
 #include "Helper/Window.h"
@@ -122,8 +120,7 @@ void Application::Run()
 	scene->AddScene(new SceneText); // 1
 	scene->AddScene(new SceneOptions); // 2
 	scene->AddScene(new TicTacToe); // 3
-	scene->AddScene(new SceneVending); // 4
-	//scene->AddScene(new TicTacToe); // 5
+	//scene->AddScene(new TicTacToe); // 4
 
 	scene->GetCurrScene()->Init();
 

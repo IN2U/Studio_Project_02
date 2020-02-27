@@ -152,7 +152,6 @@
     <ClInclude Include="Source\SceneMenu.h" />
     <ClInclude Include="Source\SceneOptions.h" />
     <ClInclude Include="Source\SceneText.h" />
-    <ClInclude Include="Source\SceneVending.h" />
     <ClInclude Include="Source\shader.hpp" />
     <ClInclude Include="Source\Sun.h" />
     <ClInclude Include="Source\Global_Constants\TEXT_BUTTON.h" />
@@ -194,7 +193,6 @@
     <ClCompile Include="Source\SceneMenu.cpp" />
     <ClCompile Include="Source\SceneOptions.cpp" />
     <ClCompile Include="Source\SceneText.cpp" />
-    <ClCompile Include="Source\SceneVending.cpp" />
     <ClCompile Include="Source\shader.cpp" />
     <ClCompile Include="Source\Sun.cpp" />
     <ClCompile Include="Source\TicTacToe.cpp" />
@@ -202,6 +200,7 @@
     <ClCompile Include="Source\Utility.cpp" />
     <ClCompile Include="Source\Vending.cpp" />
     <ClCompile Include="Source\Helper\Window.cpp" />
+    <ClCompile Include="Source\VendingUtility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
