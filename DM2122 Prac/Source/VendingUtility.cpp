@@ -10,25 +10,25 @@ void SceneText::CheckInput()
 		buttonTrigger++;
 		somethingHappened = true;
 	}
-	if (Application::IsKeyPressed('2'))
+	else if (Application::IsKeyPressed('2'))
 	{
 		itemChosen += "2";
 		buttonTrigger++;
 		somethingHappened = true;
 	}
-	if (Application::IsKeyPressed('3'))
+	else if (Application::IsKeyPressed('3'))
 	{
 		itemChosen += "3";
 		buttonTrigger++;
 		somethingHappened = true;
 	}
-	if (Application::IsKeyPressed('4'))
+	else if (Application::IsKeyPressed('4'))
 	{
 		itemChosen += "4";
 		buttonTrigger++;
 		somethingHappened = true;
 	}
-	if (Application::IsKeyPressed('5'))
+	else if (Application::IsKeyPressed('5'))
 	{
 		itemChosen += "5";
 		buttonTrigger++;
@@ -40,24 +40,31 @@ void SceneText::CheckInput()
 		buttonTrigger++;
 		somethingHappened = true;
 	}
-	if (Application::IsKeyPressed('7'))
+	else if (Application::IsKeyPressed('7'))
 	{
 		itemChosen += "7";
 		buttonTrigger++;
 		somethingHappened = true;
 	}
-	if (Application::IsKeyPressed('8'))
+	else if (Application::IsKeyPressed('8'))
 	{
 		itemChosen += "8";
 		buttonTrigger++;
 		somethingHappened = true;
 	}
-	if (Application::IsKeyPressed('9'))
+	else if (Application::IsKeyPressed('9'))
 	{
 		itemChosen += "9";
 		buttonTrigger++;
 		somethingHappened = true;
 	}
+	
+	else if (Application::IsKeyPressed(VK_RETURN))
+	{
+		buttonTrigger++;
+		somethingHappened = true;
+	}
+
 }
 
 void SceneText::UpdateVending()
