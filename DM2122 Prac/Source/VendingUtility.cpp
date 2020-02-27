@@ -2,8 +2,11 @@
 #include "Vending.h"
 #include "Application.h"
 #include "Inventory.h"
+#include "Currency.h"
 
 Inventory* inventory2 = Inventory::GetInstance();
+
+Currency* currency2 = Currency::GetInstance();
 
 void Vending::CheckInput()
 {
@@ -61,6 +64,12 @@ void Vending::CheckInput()
 		buttonTrigger++;
 		somethingHappened = true;
 	}
+	else if (Application::IsKeyPressed('0'))
+	{
+		itemChosen += "0";
+		buttonTrigger++;
+		somethingHappened = true;
+	}
 	else if (Application::IsKeyPressed(VK_RETURN))
 	{
 		buttonTrigger++;
@@ -87,6 +96,7 @@ void Vending::UpdateVending()
 		{
 			this->BuyItem(std::stoi(itemChosen));
 			inventory2->AddItemIntoInventory(this->GetItem(std::stoi(itemChosen)));
+			currency2->DeductCurrency(this->ReturnItemPrice(std::stoi(itemChosen)));
 			itemIssued = this->ReturnItemName(std::stoi(itemChosen));
 			itemChosen = "";
 			buttonTrigger = 0;

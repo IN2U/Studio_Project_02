@@ -255,6 +255,8 @@ void SceneText::RenderNPCUI(NPC npc)
 
 void SceneText::RenderVendingUI()
 {
+	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 15, 13);
+
 	if (!vending[0].BuyingItem()) {
 		RenderTextOnScreen(meshList[GEO_TEXT], "What would you like to buy?", Color(0, 1, 0), 2.5f, 3.f, 2.f);
 		RenderTextOnScreen(meshList[GEO_TEXT], vending[0].GetItemChosen(), Color(0, 1, 0), 3.f, 1.f, 5.f);

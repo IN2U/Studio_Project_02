@@ -7,6 +7,9 @@ Vending::Vending()
 		ItemManager* newManager = new ItemManager(i, "trashcan" + std::to_string(i), float(i * 3));
 		machineItems.push_back(newManager);
 	}
+
+	ItemManager* newManager = new ItemManager(10, "Soda", 1000.f);
+	machineItems.push_back(newManager);
 }
 
 Vending::~Vending()
