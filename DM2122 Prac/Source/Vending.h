@@ -1,12 +1,12 @@
 #ifndef VENDING_H
 #define VENDING_H
 
-#include "CLinkList.h"
+#include "LinkList.h"
 
 class Vending
 {
 private:
-	vector<CLinkList*> machineItems;
+	vector<LinkList*> machineItems;
 
 public:
 	Vending();

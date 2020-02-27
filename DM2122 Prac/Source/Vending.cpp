@@ -4,7 +4,7 @@ Vending::Vending()
 {
 	for (int i = 0; i < 10; ++i)
 	{
-		CLinkList* newList = new CLinkList(i, "trashcan" + std::to_string(i), float(i * 3));
+		LinkList* newList = new LinkList(i, "trashcan" + std::to_string(i), float(i * 3));
 		machineItems.push_back(newList);
 	}
 }
@@ -20,11 +20,7 @@ Vending::~Vending()
 
 void Vending::FillMachine()
 {
-	for (int i = 0; i < 10; ++i)
-	{
-		CLinkList* newList = new CLinkList(i, "trashcan" + std::to_string(i), float(i * 3));
-		machineItems.push_back(newList);
-	}
+	
 }
 
 bool Vending::BuyItem(int choice)

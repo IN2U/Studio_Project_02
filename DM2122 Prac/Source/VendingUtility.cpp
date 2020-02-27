@@ -81,8 +81,8 @@ void SceneText::UpdateVending()
 	{
 		if (Application::IsKeyPressed('Y'))
 		{
-			vending.BuyItem(std::stoi(itemChosen));
-			itemIssued = vending.ReturnItemName(std::stoi(itemChosen));
+			vending[0].BuyItem(std::stoi(itemChosen));
+			itemIssued = vending[0].ReturnItemName(std::stoi(itemChosen));
 
 			itemChosen = "";
 			buttonTrigger = 0;

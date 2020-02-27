@@ -67,7 +67,8 @@ private:
 	double gameTime;
 	double bounceTime;
 	bool somethingHappened;
-	Vending vending;
+
+	Vending vending[3];
 
 	void CheckInput();
 	void UpdateVending();

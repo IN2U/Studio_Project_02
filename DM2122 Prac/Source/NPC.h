@@ -13,6 +13,8 @@ private:
 	std::vector<std::string> dialogue;
 	Quest NPCQuest;
 
+
+
 public:
 	NPC();
 	~NPC();
@@ -21,11 +23,13 @@ public:
 	std::string ReturnQuest();
 	float ReturnReward();
 
-	bool CheckQuestIssued();
 	bool CheckQuestActive();
 	void CompleteQuest();
 	void SelectRandomDialogue();
+
+	void StartQuest();
 	
+
 	
 };
 

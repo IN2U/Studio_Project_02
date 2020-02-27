@@ -1,31 +1,34 @@
-#pragma once
+#ifndef ITEM_H
+#define ITEM_H
+
 #include <iostream>
 #include <vector>
 #include <string>
 
 using namespace std;
 
-class CItem
+class Item
 {
 private:
 	int itemID;
 	string name;
 	float itemPrice;
-	CItem* next;
+	Item* next;
 
 public:
-	CItem();
-	CItem(int ID, string name, float price);
-	~CItem();
+	Item();
+	Item(int ID, string name, float price);
+	~Item();
 
-	CItem* ReturnNext();
+	Item* ReturnNext();
 	int ReturnID();
 	string ReturnName();
 	float ReturnPrice();
 
-	void AssignNext(CItem* node);
+	void AssignNext(Item* node);
 
-	CItem* GetNext();
+	Item* GetNext();
 
 };
 
+#endif

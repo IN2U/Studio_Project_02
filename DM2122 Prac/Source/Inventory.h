@@ -2,14 +2,14 @@
 #define INVENTORY_H
 
 #include <vector>
-#include "CItem.h"
+#include "Item.h"
 
 class Inventory
 {
 private:
 	// Anyone can add more vectors of various items, eg your class of car keys
 	// CItem are the items in the vending machine
-	std::vector<CItem*> itemInventory;
+	std::vector<Item*> itemInventory;
 
 	Inventory();
 	~Inventory();
@@ -19,7 +19,7 @@ public:
 	static Inventory* GetInstance();
 
 	// Adding of items
-	bool AddItemIntoInventory(CItem* newItem);
+	bool AddItemIntoInventory(Item* newItem);
 
 	//removal of items
 	void RemoveItemFromInventory(int ID); // Discard, means the user does not get the effect of the item

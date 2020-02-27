@@ -40,6 +40,11 @@ bool Quest::QuestActive()
 	return questActive;
 }
 
+void Quest::SetToStartQuest()
+{
+	questActive = true;
+}
+
 void Quest::SetToCompleteQuest()
 {
 	questActive = false;

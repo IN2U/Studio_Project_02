@@ -22,6 +22,7 @@ public:
 
 	bool QuestActive();
 
+	void SetToStartQuest();
 	void SetToCompleteQuest();
 };
 

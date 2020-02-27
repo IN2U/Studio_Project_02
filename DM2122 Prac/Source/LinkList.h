@@ -1,21 +1,21 @@
-#ifndef CLINKLIST_H
-#define CLINKLIST_H
+#ifndef LINKLIST_H
+#define LINKLIST_H
 
 constexpr auto ITEM_AMOUNT = 5;
 
-#include "CItem.h"
+#include "Item.h"
 
 #include <vector>
 
-class CLinkList
+class LinkList
 {
 private:
-	CItem* head;
+	Item* head;
 
 public:
-	CLinkList();
-	CLinkList(int ID, string name, float price);
-	~CLinkList();
+	LinkList();
+	LinkList(int ID, string name, float price);
+	~LinkList();
 
 	void AddItem(int data, string name, float price);
 	void RemoveItem();

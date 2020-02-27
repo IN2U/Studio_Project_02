@@ -1,12 +1,12 @@
-#include "CLinkList.h"
+#include "LinkList.h"
 #include <iostream>
 
-CLinkList::CLinkList()
+LinkList::LinkList()
 {
 	head = nullptr;
 }
 
-CLinkList::CLinkList(int ID, string name, float price)
+LinkList::LinkList(int ID, string name, float price)
 {
 	head = nullptr;
 	for (int i = 0; i < ITEM_AMOUNT; ++i)
@@ -15,17 +15,17 @@ CLinkList::CLinkList(int ID, string name, float price)
 	}
 }
 
-CLinkList::~CLinkList()
+LinkList::~LinkList()
 {
 	while (!IsEmpty())
 		RemoveItem();
 
 }
 
-void CLinkList::AddItem(int data, string name, float price)
+void LinkList::AddItem(int data, string name, float price)
 {
-	CItem* tmp;
-	tmp = new CItem(data, name, price);
+	Item* tmp;
+	tmp = new Item(data, name, price);
 
 	if (head == nullptr)
 	{
@@ -36,7 +36,7 @@ void CLinkList::AddItem(int data, string name, float price)
 	{
 		//LL not empty
 		//transversing
-		CItem* current;
+		Item* current;
 		current = head;
 		while (current->ReturnNext() != nullptr)
 		{
@@ -47,9 +47,9 @@ void CLinkList::AddItem(int data, string name, float price)
 	}
 }
 
-void CLinkList::RemoveItem()
+void LinkList::RemoveItem()
 {
-	CItem* tmp = head;
+	Item* tmp = head;
 	if (!IsEmpty())
 	{
 		head = tmp->GetNext();
@@ -60,9 +60,9 @@ void CLinkList::RemoveItem()
 }
 
 
-void CLinkList::Print()
+void LinkList::Print()
 {
-	CItem* current;
+	Item* current;
 	current = head;
 
 	if (head == nullptr)
@@ -80,17 +80,17 @@ void CLinkList::Print()
 
 }
 
-std::string CLinkList::Name()
+std::string LinkList::Name()
 {
 	return head->ReturnName();
 }
 
-float CLinkList::Price()
+float LinkList::Price()
 {
 	return head->ReturnPrice();
 }
 
-bool CLinkList::IsEmpty()
+bool LinkList::IsEmpty()
 {
 	if (head == nullptr)
 		return true;
@@ -98,7 +98,7 @@ bool CLinkList::IsEmpty()
 		return false;
 }
 
-bool CLinkList::IsLastNode()
+bool LinkList::IsLastNode()
 {
 	if (head->GetNext() == nullptr)
 		return true;

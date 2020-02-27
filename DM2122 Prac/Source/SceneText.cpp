@@ -22,7 +22,7 @@
 
 Currency* currency = Currency::GetInstance();
 
-NPC npc;
+NPC npc[5];
 
 UISTATE eUIState = DEFAULT_UI;
 
@@ -182,6 +182,11 @@ void SceneText::Update(double dt)
 		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
 	}
 
+	if (eUIState == NPC_UI)
+	{
+		//do something
+	}
+
 	if (eUIState == VENDING_UI)
 	{
 		UpdateVending();
@@ -203,8 +208,8 @@ void SceneText::RenderUI()
 	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 15, 13);
 	RenderTextOnScreen(meshList[GEO_TEXT], "QUESTS", Color(0, 1, 0), 3, 5, 1);
 
-	if (npc.CheckQuestActive() == true)
-		RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnQuest(), Color(0, 1, 0), 3, 5, 0);
+	if (npc[0].CheckQuestActive() == true)
+		RenderTextOnScreen(meshList[GEO_TEXT], npc[0].ReturnQuest(), Color(0, 1, 0), 3, 5, 0);
 	else
 		RenderTextOnScreen(meshList[GEO_TEXT], "No current quests.", Color(0, 1, 0), 3, 5, 0);
 }
@@ -212,7 +217,7 @@ void SceneText::RenderUI()
 void SceneText::RenderNPCUI()
 {
 	RenderMeshOnScreen(meshList[TEXT_BORDER], 200.f, 50.f, 500.f, 100.f);
-	RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnDialogue(), Color(0, 1, 0), 3, 5, 1);
+	RenderTextOnScreen(meshList[GEO_TEXT], npc[0].ReturnDialogue(), Color(0, 1, 0), 3, 5, 1);
 }
 
 void SceneText::RenderVendingUI()
@@ -290,7 +295,6 @@ void SceneText::Render()
 		modelStack.PopMatrix();
 	}
 
-
 	switch (eUIState)
 	{
 	case DEFAULT_UI: RenderUI();
@@ -300,7 +304,6 @@ void SceneText::Render()
 	case VENDING_UI: RenderVendingUI();
 		break;
 	}
-
 
 	RenderMinimap();
 

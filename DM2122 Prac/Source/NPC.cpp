@@ -45,9 +45,9 @@ void NPC::SelectRandomDialogue()
 	dialogueID = rand() % dialogue.size();
 }
 
-bool NPC::CheckQuestIssued()
+void NPC::StartQuest()
 {
-	return false;
+	NPCQuest.SetToStartQuest();
 }
 
 bool NPC::CheckQuestActive()

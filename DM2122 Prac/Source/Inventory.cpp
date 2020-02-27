@@ -21,7 +21,7 @@ Inventory* Inventory::GetInstance()
 	return instance;
 }
 
-bool Inventory::AddItemIntoInventory(CItem* newItem)
+bool Inventory::AddItemIntoInventory(Item* newItem)
 {
 	if (itemInventory.size() <= 5) {
 		itemInventory.push_back(newItem);
