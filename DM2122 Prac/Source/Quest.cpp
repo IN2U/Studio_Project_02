@@ -33,3 +33,8 @@ float Quest::ReturnReward()
 	return questReward;
 }
 
+int Quest::ReturnTypeOfQuest()
+{
+	return typeOfQuest;
+}
+

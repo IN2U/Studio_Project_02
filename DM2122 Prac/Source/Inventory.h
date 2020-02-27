@@ -25,7 +25,7 @@ public:
 	void RemoveItemFromInventory(int ID); // Discard, means the user does not get the effect of the item
 	void UseItem(int ID); // Use, means the user gets the benefit of the used item
 
-	void PrintInventory();
+	bool isEmpty();
 };
 
 #endif
