@@ -40,6 +40,7 @@
     <ClCompile Include="Source\Mesh_Generation\Mesh.cpp" />
     <ClCompile Include="Source\Mesh_Generation\MeshBuilder.cpp" />
     <ClCompile Include="Source\Mesh_Generation\LoadOBJ.cpp" />
+    <ClCompile Include="Source\Render\RenderUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
