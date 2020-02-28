@@ -278,8 +278,8 @@ void SceneText::Render()
 	temp->Transform('S', 0.5f, 0.5f, 0.5f);
 	Objects->getLib().push_back(temp);
 
-	temp = Objects->AddObject("Dice", meshList[GEO_DICE], true);
-	Objects->getLib().push_back(temp);
+	/*temp = Objects->AddObject("One_1", meshList[ONE_1], true);
+	Objects->getLib().push_back(temp);*/
 
 	// RenderMesh
 	for (unsigned int i = 0; i < Objects->getLib().size(); i++) {

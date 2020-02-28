@@ -51,6 +51,12 @@ private:
 		GEO_VENDING_MENU,
 		TEXT_BORDER,
 
+		//Vehicles
+		FORD_GT,
+		FENYR,
+		LAMBORGHINI,
+		ONE_1,
+
 		//Food icons
 		HAMBURGER,
 		DRINK,

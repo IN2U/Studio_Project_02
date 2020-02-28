@@ -82,6 +82,18 @@ void SceneText::InitMeshList()
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//calibri.tga");
 
+	//Vehicles
+	/*meshList[FORD_GT] = MeshBuilder::GenerateOBJ("Ford_GT", "OBJ//ford_gt.obj");
+	meshList[FORD_GT]->textureID = LoadTGA("Image//ford_gt.tga");
+
+	meshList[FENYR] = MeshBuilder::GenerateOBJ("Fenyr", "OBJ//fenyr.obj");
+	meshList[FENYR]->textureID = LoadTGA("Image//fenyr.tga");
+
+	meshList[LAMBORGHINI] = MeshBuilder::GenerateOBJ("Lamborghini", "OBJ//Lamborghini.obj");
+	meshList[LAMBORGHINI]->textureID = LoadTGA("Image//Lamborghini.tga");*/
+
+	//meshList[ONE_1] = MeshBuilder::GenerateOBJ("One_1", "OBJ//one_1.obj");
+
 	//Food icons
 	meshList[HAMBURGER] = MeshBuilder::GenerateQuad("hamburger", Color(0, 1, 0), 1.f, 1.f);
 	meshList[HAMBURGER]->textureID = LoadTGA("Image//hamburger.tga");
