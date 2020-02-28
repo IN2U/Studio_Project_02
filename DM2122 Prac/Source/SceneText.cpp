@@ -9,6 +9,8 @@
 #include "shader.hpp"
 #include "Utility.h"
 
+#include "Texture_Mapping/LoadTGA.h";
+
 #include "Helper/Cursor.h"
 #include "Helper/Window.h"
 
@@ -236,6 +238,41 @@ void SceneText::RenderUI()
 		RenderTextOnScreen(meshList[GEO_TEXT], npc[0].ReturnQuest()->ReturnRequirement(), Color(0, 1, 0), 3, 5, 0.5);
 	else
 		RenderTextOnScreen(meshList[GEO_TEXT], "No current quests.", Color(0, 1, 0), 3, 5, 0.5);
+
+	if (!Application::IsKeyPressed('W')) {
+		RenderMeshOnScreen(meshList[BUTTON_W], 10.f, 11.f, 6.5f, 6.5f);
+	}
+	else {
+		RenderMeshOnScreen(meshList[BUTTON_W_HIGHLIGHT], 10.f, 11.f, 6.5f, 6.5f);
+	}
+
+	if (!Application::IsKeyPressed('A')) {
+		RenderMeshOnScreen(meshList[BUTTON_A], 4.f, 5.f, 6.5f, 6.5f);
+	}
+	else {
+		RenderMeshOnScreen(meshList[BUTTON_A_HIGHLIGHT], 4.f, 5.f, 6.5f, 6.5f);
+	}
+	
+	if (Application::IsKeyPressed('S')) {
+		RenderMeshOnScreen(meshList[BUTTON_S], 10.f, 5.f, 6.5f, 6.5f);
+	}
+	else {
+		RenderMeshOnScreen(meshList[BUTTON_S_HIGHLIGHT], 10.f, 5.f, 6.5f, 6.5f);
+	}
+
+	if (!Application::IsKeyPressed('D')) {
+		RenderMeshOnScreen(meshList[BUTTON_D], 16.f, 5.f, 6.5f, 6.5f);
+	}
+	else {
+		RenderMeshOnScreen(meshList[BUTTON_D_HIGHLIGHT], 16.f, 5.f, 6.5f, 6.5f);
+	}
+
+	if (!Application::IsKeyPressed(MK_LBUTTON)) {
+		RenderMeshOnScreen(meshList[L_MOUSE], 70.f, 5.f, 6.5f, 6.5f);
+	}
+	else {
+		RenderMeshOnScreen(meshList[L_MOUSE_HIGHLIGHT], 70.f, 5.f, 6.5f, 6.5f);
+	}
 }
 
 void SceneText::RenderNPCUI(NPC npc)

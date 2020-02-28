@@ -56,6 +56,19 @@ private:
 		DRINK,
 		STEAK,
 
+		//UI Icons
+		BUTTON_W,
+		BUTTON_W_HIGHLIGHT,
+		BUTTON_A,
+		BUTTON_A_HIGHLIGHT,
+		BUTTON_S,
+		BUTTON_S_HIGHLIGHT,
+		BUTTON_D,
+		BUTTON_D_HIGHLIGHT,
+
+		L_MOUSE,
+		L_MOUSE_HIGHLIGHT,
+
 		NUM_GEOMETRY,
 	}; 
 
@@ -105,6 +118,8 @@ private:
 	void InitLightSettings();
 
 	virtual void InitMeshList() override;
+
+	
 public:
 	SceneText();
 	~SceneText();

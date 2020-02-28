@@ -6,6 +6,7 @@
 #include "../../../glew/include/GL/glew.h"
 #include "LoadTGA.h"
 
+
 void SceneMenu::InitMeshList()
 {
 	meshList[MENU_SCREEN] = MeshBuilder::GenerateQuad("Menu_Screen", Color(1, 1, 1), 1.f, 1.f);
@@ -87,6 +88,38 @@ void SceneText::InitMeshList()
 
 	meshList[STEAK] = MeshBuilder::GenerateQuad("steak", Color(0, 1, 0), 1.f, 1.f);
 	meshList[STEAK]->textureID = LoadTGA("Image//steak.tga");
+
+	//UI Icons
+	meshList[BUTTON_W] = MeshBuilder::GenerateQuad("ButtonW_White", Color(0, 0, 0), 1.f, 1.f);
+	meshList[BUTTON_W]->textureID = LoadTGA("Image//W_WHITE.tga");
+
+	meshList[BUTTON_A] = MeshBuilder::GenerateQuad("ButtonA_White", Color(0, 0, 0), 1.f, 1.f);
+	meshList[BUTTON_A]->textureID = LoadTGA("Image//A_WHITE.tga");
+
+	meshList[BUTTON_S] = MeshBuilder::GenerateQuad("ButtonS_White", Color(0, 0, 0), 1.f, 1.f);
+	meshList[BUTTON_S]->textureID = LoadTGA("Image//S_WHITE.tga");
+
+	meshList[BUTTON_D] = MeshBuilder::GenerateQuad("ButtonD_White", Color(0, 0, 0), 1.f, 1.f);
+	meshList[BUTTON_D]->textureID = LoadTGA("Image//D_WHITE.tga");
+
+	meshList[BUTTON_W_HIGHLIGHT] = MeshBuilder::GenerateQuad("ButtonW_Red", Color(0, 0, 0), 1.f, 1.f);
+	meshList[BUTTON_W_HIGHLIGHT]->textureID = LoadTGA("Image//W_RED.tga");
+
+	meshList[BUTTON_A_HIGHLIGHT] = MeshBuilder::GenerateQuad("ButtonA_Red", Color(0, 0, 0), 1.f, 1.f);
+	meshList[BUTTON_A_HIGHLIGHT]->textureID = LoadTGA("Image//A_RED.tga");
+
+	meshList[BUTTON_S_HIGHLIGHT] = MeshBuilder::GenerateQuad("ButtonS_Red", Color(0, 0, 0), 1.f, 1.f);
+	meshList[BUTTON_S_HIGHLIGHT]->textureID = LoadTGA("Image//S_RED.tga");
+
+	meshList[BUTTON_D_HIGHLIGHT] = MeshBuilder::GenerateQuad("ButtonD_Red", Color(0, 0, 0), 1.f, 1.f);
+	meshList[BUTTON_D_HIGHLIGHT]->textureID = LoadTGA("Image//D_RED.tga");
+
+	meshList[L_MOUSE] = MeshBuilder::GenerateQuad("LeftMouseButton_White", Color(0, 1, 0), 1.f, 1.f);
+	meshList[L_MOUSE]->textureID = LoadTGA("Image//L_MOUSE_WHITE.tga");
+
+	meshList[L_MOUSE_HIGHLIGHT] = MeshBuilder::GenerateQuad("LeftMouseButton_Red", Color(0, 1, 0), 1.f, 1.f);
+	meshList[L_MOUSE_HIGHLIGHT]->textureID = LoadTGA("Image//L_MOUSE_RED.tga");
+
 }
 
 void TicTacToe::InitMeshList()
@@ -104,13 +137,4 @@ void TicTacToe::InitMeshList()
 
 	meshList[TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[TEXT]->textureID = LoadTGA("Image//arial-rounded-mt-bold.tga");
-}
-
-void SceneVending::InitMeshList()
-{
-	meshList[VENDING_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
-	meshList[VENDING_TEXT]->textureID = LoadTGA("Image//calibri.tga");
-
-	meshList[GEO_VENDING] = MeshBuilder::GenerateOBJ("dice", "OBJ//dice.obj");
-	meshList[GEO_VENDING]->textureID = LoadTGA("Image//dice.tga");
 }
