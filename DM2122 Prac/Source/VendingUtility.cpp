@@ -94,6 +94,7 @@ void Vending::UpdateVending()
 	{
 		if (Application::IsKeyPressed('Y'))
 		{
+		
 			this->BuyItem(std::stoi(itemChosen));
 			inventory2->AddItemIntoInventory(this->GetItem(std::stoi(itemChosen)));
 			currency2->DeductCurrency(this->ReturnItemPrice(std::stoi(itemChosen)));

@@ -15,6 +15,8 @@ enum UISTATE
 	DEFAULT_UI,
 	NPC_UI,
 	VENDING_UI,
+	INVENTORY_UI,
+	MENU_UI,
 };
 
 class SceneText : public Scene
@@ -48,6 +50,12 @@ private:
 		GEO_TEXT,
 		GEO_VENDING_MENU,
 		TEXT_BORDER,
+
+		//Food icons
+		HAMBURGER,
+		DRINK,
+		STEAK,
+
 		NUM_GEOMETRY,
 	}; 
 
@@ -83,6 +91,7 @@ private:
 	void RenderUI();
 	void RenderNPCUI(NPC npc);
 	void RenderVendingUI();
+	void RenderInventoryUI();
 
 	void CalculateFrameRate();
 

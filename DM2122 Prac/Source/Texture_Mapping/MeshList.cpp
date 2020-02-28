@@ -80,6 +80,13 @@ void SceneText::InitMeshList()
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//calibri.tga");
+
+	//Food icons
+	meshList[HAMBURGER] = MeshBuilder::GenerateQuad("hamburger", Color(0, 1, 0), 1.f, 1.f);
+	meshList[HAMBURGER]->textureID = LoadTGA("Image//hamburger.tga");
+
+	meshList[STEAK] = MeshBuilder::GenerateQuad("steak", Color(0, 1, 0), 1.f, 1.f);
+	meshList[STEAK]->textureID = LoadTGA("Image//steak.tga");
 }
 
 void TicTacToe::InitMeshList()

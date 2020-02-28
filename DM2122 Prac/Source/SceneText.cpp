@@ -182,11 +182,15 @@ void SceneText::Update(double dt)
 		npc[0].UpdateNPC();
 		somethingHappened = npc[0].SomethingHappened();
 	}
-
-	if (eUIState == VENDING_UI)
+	else if (eUIState == VENDING_UI)
 	{
 		vending[0].UpdateVending();
 		somethingHappened = vending[0].SomethingHappened();
+	}
+	else if (eUIState == INVENTORY_UI)
+	{
+		inventory->UpdateInventory();
+		somethingHappened = inventory->SomethingHappened();
 	}
 
 	if (Application::IsKeyPressed('B'))
@@ -204,6 +208,12 @@ void SceneText::Update(double dt)
 	if (Application::IsKeyPressed('V'))
 	{
 		eUIState = VENDING_UI;
+	}
+
+	if (Application::IsKeyPressed('F'))
+	{
+		//inventory->PrintInventory();
+		eUIState = INVENTORY_UI;
 	}
 
 	currency->AddCurrency(100 * dt);
@@ -240,17 +250,17 @@ void SceneText::RenderNPCUI(NPC npc)
 
 	RenderMeshOnScreen(meshList[TEXT_BORDER], 40.f, 5.f, 100.f, 15.f);
 
-	
+
 	RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnDialogue(), Color(0, 1, 0), 3, 5, 2.5);
 
 	RenderTextOnScreen(meshList[GEO_TEXT], "1. Talk", Color(0, 1, 0), 3, 5, 1.5);
 	RenderTextOnScreen(meshList[GEO_TEXT], "2. Accept a quest", Color(0, 1, 0), 3, 5, 0.5);
-	
+
 	if (npc.IsGoingToGiveTip())
 	{
 		RenderText(meshList[GEO_TEXT], npc.ReturnTips(), Color(0, 1, 0), 0.4f, 0.f, 0.f, 0.f);
 	}
-	
+
 }
 
 void SceneText::RenderVendingUI()
@@ -259,14 +269,29 @@ void SceneText::RenderVendingUI()
 
 	if (!vending[0].BuyingItem()) {
 		RenderTextOnScreen(meshList[GEO_TEXT], "What would you like to buy?", Color(0, 1, 0), 2.5f, 3.f, 2.f);
-		RenderTextOnScreen(meshList[GEO_TEXT], vending[0].GetItemChosen(), Color(0, 1, 0), 3.f, 1.f, 5.f);
+		RenderTextOnScreen(meshList[GEO_TEXT], vending[0].GetItemChosen(), Color(0, 1, 0), 3.5f, 12.f, 1.3f);
 	}
 
-	if (vending[0].BuyingItem())
-		RenderTextOnScreen(meshList[GEO_TEXT], "Buy item " + vending[0].GetItemChosen() + " ?(Y/N)", Color(0, 1, 0), 2.5f, 2.2f, 2.f);
+	if (vending[0].BuyingItem()) {
+		RenderTextOnScreen(meshList[GEO_TEXT], "Buy item " + vending[0].GetItemChosen() + " ?(Y/N)", Color(0, 1, 0), 3.5f, 2.2f, 1.3f);
+		RenderMeshOnScreen(meshList[STEAK], 10.f, 10.f, 7.f, 5.f);
+	}
 
 	if (vending[0].ItemIsBought()) {
 		RenderTextOnScreen(meshList[GEO_TEXT], "Item " + vending[0].GetItemIssued() + " bought.", Color(0, 1, 0), 2.3f, 2.2f, 22.f);
+	}
+
+}
+
+void SceneText::RenderInventoryUI()
+{
+	float valY = 16.f;
+
+	RenderTextOnScreen(meshList[GEO_TEXT], "INVENTORY: ", Color(0, 1, 0), 3.f, 1.f, valY + 1.f);
+	for (int i = 1; i < inventory->ReturnInventory().size() + 1; ++i)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT], std::to_string(i) + ". " + inventory->ReturnInventory().at(i - 1)->ReturnName(), Color(0, 1, 0), 3.f, 2.0f, valY);
+		valY -= 1.f;
 	}
 }
 
@@ -338,6 +363,8 @@ void SceneText::Render()
 		break;
 	case VENDING_UI: RenderVendingUI();
 		break;
+	case INVENTORY_UI: RenderInventoryUI();
+		break;
 	}
 
 	RenderMinimap();
@@ -365,7 +392,7 @@ void SceneText::CalculateFrameRate()
 	static float lastTime = 0.0f;
 	float currentTime = GetTickCount64() * 0.001f;
 	++framesPerSecond;
-	printf("Current Frames Per Second: %d\n\n", fps);
+	//printf("Current Frames Per Second: %d\n\n", fps);
 	if (currentTime - lastTime > 1.0f)
 	{
 		lastTime = currentTime;
