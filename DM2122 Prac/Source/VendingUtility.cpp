@@ -90,11 +90,11 @@ void Vending::UpdateVending()
 		CheckInput();
 	}
 
-	else if (goingToBuyItem)
+	else if (goingToBuyItem && CheckIfValidInput(std::stoi((itemChosen)) == true))
 	{
+		itemBought = false;
 		if (Application::IsKeyPressed('Y'))
 		{
-		
 			this->BuyItem(std::stoi(itemChosen));
 			inventory2->AddItemIntoInventory(this->GetItem(std::stoi(itemChosen)));
 			currency2->DeductCurrency(this->ReturnItemPrice(std::stoi(itemChosen)));
@@ -126,6 +126,17 @@ string Vending::GetItemIssued()
 	return itemIssued;
 }
 
+void Vending::SetToDefault()
+{
+	goingToBuyItem = false;
+	itemBought = false;
+	buttonTrigger = 0;
+	somethingHappened = false;
+
+	itemChosen = "";
+	itemIssued = "";
+}
+
 Item* Vending::GetItem(int ID)
 {
 	return machineItems.at(ID)->GetItem();
@@ -144,4 +155,14 @@ bool Vending::ItemIsBought()
 bool Vending::SomethingHappened()
 {
 	return somethingHappened;
+}
+
+bool Vending::CheckIfValidInput(int ID)
+{
+	if (ID < machineItems.size()) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }

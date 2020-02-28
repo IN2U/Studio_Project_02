@@ -10,6 +10,11 @@ Vending::Vending()
 
 	ItemManager* newManager = new ItemManager(10, "Soda", 1000.f);
 	machineItems.push_back(newManager);
+
+	goingToBuyItem = false;
+	itemBought = false;
+	buttonTrigger = 0;
+	somethingHappened = false;
 }
 
 Vending::~Vending()

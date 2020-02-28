@@ -17,7 +17,7 @@ private:
 
 	int buttonTrigger;
 
-	bool somethingHappened = true;
+	bool somethingHappened;
 
 public:
 	Vending();
@@ -41,12 +41,17 @@ public:
 	string GetItemChosen();
 	string GetItemIssued();
 
+	//setters
+	void SetToDefault();
+
 	Item* GetItem(int ID);
 
 	bool BuyingItem();
 	bool ItemIsBought();
 
 	bool SomethingHappened();
+
+	bool CheckIfValidInput(int ID);
 
 };
 

@@ -46,10 +46,10 @@ void SceneText::RenderUI()
 	}
 
 	if (!Application::IsKeyPressed(MK_LBUTTON)) {
-		RenderMeshOnScreen(meshList[L_MOUSE], 70.f, 5.f, 7.f, 7.f);
+		RenderMeshOnScreen(meshList[L_MOUSE], 75.f, 5.f, 7.f, 7.f);
 	}
 	else {
-		RenderMeshOnScreen(meshList[L_MOUSE_HIGHLIGHT], 70.f, 5.f, 7.f, 7.f);
+		RenderMeshOnScreen(meshList[L_MOUSE_HIGHLIGHT], 75.f, 5.f, 7.f, 7.f);
 	}
 }
 
@@ -91,13 +91,19 @@ void SceneText::RenderVendingUI()
 		RenderTextOnScreen(meshList[GEO_TEXT], vending[0].GetItemChosen(), Color(0, 1, 0), 3.5f, 12.f, 1.3f);
 	}
 
-	if (vending[0].BuyingItem()) {
-		RenderTextOnScreen(meshList[GEO_TEXT], "Buy item " + vending[0].GetItemChosen() + " ?(Y/N)", Color(0, 1, 0), 3.5f, 2.2f, 1.3f);
+	if (vending[0].BuyingItem() && vending[0].CheckIfValidInput(std::stoi(vending[0].GetItemChosen())) == true) {
+		RenderTextOnScreen(meshList[GEO_TEXT], "Buy " + vending[0].GetItem(std::stoi(vending[0].GetItemChosen()))->ReturnName() + " ?(Y/N)", Color(0, 1, 0), 3.5f, 2.2f, 1.3f);
 		RenderMeshOnScreen(meshList[STEAK], 10.f, 10.f, 7.f, 5.f);
 	}
 
+	else if(vending[0].BuyingItem() && vending[0].CheckIfValidInput(std::stoi(vending[0].GetItemChosen())) == false)
+	{
+		RenderTextOnScreen(meshList[GEO_TEXT], "Invalid Item.", Color(0, 1, 0), 3.5f, 2.2f, 1.3f);
+		vending[0].SetToDefault(); //Error sound can be played inside this function to give feedback that there is no such item.
+	}
+
 	if (vending[0].ItemIsBought()) {
-		RenderTextOnScreen(meshList[GEO_TEXT], "Item " + vending[0].GetItemIssued() + " bought.", Color(0, 1, 0), 2.3f, 2.2f, 22.f);
+		RenderTextOnScreen(meshList[GEO_TEXT], vending[0].GetItemIssued() + " bought.", Color(0, 1, 0), 2.5f, 3.f, 3.5f);
 	}
 
 }
