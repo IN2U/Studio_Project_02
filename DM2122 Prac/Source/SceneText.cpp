@@ -118,35 +118,6 @@ void SceneText::Update(double dt)
 	{
 		renderHitBox = true;
 	}
-	
-	if (Application::IsKeyPressed('I'))
-		light[0].position.z -= (float)(LSPEED * dt);
-	if (Application::IsKeyPressed('K'))
-		light[0].position.z += (float)(LSPEED * dt);
-	if (Application::IsKeyPressed('J'))
-		light[0].position.x -= (float)(LSPEED * dt);
-	if (Application::IsKeyPressed('L'))
-		light[0].position.x += (float)(LSPEED * dt);
-	if (Application::IsKeyPressed('O'))
-		light[0].position.y -= (float)(LSPEED * dt);
-	if (Application::IsKeyPressed('P'))
-		light[0].position.y += (float)(LSPEED * dt);
-
-	if (Application::IsKeyPressed('Q'))
-	{
-		//to do: switch light type to POINT and pass the information to
-		light[0].type = Light::LIGHT_POINT;
-	}
-	else if (Application::IsKeyPressed('W'))
-	{
-		//to do: switch light type to DIRECTIONAL and pass the
-		light[0].type = Light::LIGHT_DIRECTIONAL;
-	}
-	else if (Application::IsKeyPressed('E'))
-	{
-		//to do: switch light type to SPOT and pass the information to
-		light[0].type = Light::LIGHT_SPOT;
-	}
 
 	// Updates sun pos
 	sun.revolve(dt);
@@ -320,9 +291,9 @@ void SceneText::Render()
 	Objects->getLib().push_back(temp);
 
 	temp = Objects->AddObject("Floor", meshList[GEO_FLOOR], true);
-	//temp->Transform('T', 0.f, -1.f, 0.f);
-	temp->Transform('S', 100.f, 1.f, 100.f);
+	temp->Transform('T', 0.f, -1.f, 0.f);
 	temp->Transform(-90.f, 1.f, 0.f, 0.f);
+	temp->Transform('S', 100.f, 1.f, 100.f);
 	Objects->getLib().push_back(temp);
 
 	RenderNPC();

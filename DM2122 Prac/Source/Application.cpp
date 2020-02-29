@@ -127,7 +127,6 @@ void Application::Run()
 		// Open options
 		if (Application::IsKeyPressed(VK_ESCAPE))
 		{
-			//SceneManager* scene = SceneManager::getInstance();
 			if (scene->getCurrentSceneID() == STATE::GAME_SCENE)
 			{
 				scene->SetNextScene(STATE::MENU_SCENE);
