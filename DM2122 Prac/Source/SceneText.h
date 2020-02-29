@@ -48,14 +48,21 @@ private:
 		GEO_TEXT,
 		GEO_VENDING_MENU,
 		TEXT_BORDER,
+
+		GEO_NPC,
+		GEO_SPOTLIGHT_HEAD,
+		GEO_SPOTLIGHT_JOINT,
+		GEO_SPOTLIGHT_STAND,
+		
 		NUM_GEOMETRY,
 	}; 
 
 	Mesh* meshList[NUM_GEOMETRY];
 
+	// For minimap
 	MS modelStack_mini, viewStack_mini, projectionStack_mini;
 
-	Light light[2];
+	Light light[3];
 
 	NPC npc[5];
 
@@ -83,6 +90,13 @@ private:
 	void RenderUI();
 	void RenderNPCUI(NPC npc);
 	void RenderVendingUI();
+
+	void RenderNPC();
+	void RenderSpotlight();
+	void RenderSpotlightStand();
+	void RenderSpotlightJointPoint();
+	void RenderSpotlightJoint();
+	void RenderSpotlightHead();
 
 	void CalculateFrameRate();
 

@@ -25,6 +25,7 @@ public:
 	int getCurrentSceneID() const;
 	int getNextSceneID() const;
 	void Update(double ElapsedTime);
+	bool fromGame;
 };
 
 #endif

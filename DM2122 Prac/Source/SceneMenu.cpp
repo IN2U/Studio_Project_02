@@ -37,6 +37,11 @@ void SceneMenu::Init()
 	glUseProgram(m_programID);
 
 	InitMeshList();
+
+	if (SceneManager::getInstance()->fromGame == true)
+	{
+		menuCurrentState = OPTIONS_MENU;
+	}
 }
 
 void SceneMenu::Update(double dt)
@@ -98,7 +103,14 @@ void SceneMenu::Update(double dt)
 			else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
 				&& mouse->getMYPos() < button->getButton3MaxPosY() && mouse->getMYPos() > button->getButton3MinPosY())
 			{
-				menuCurrentState = MAIN_MENU;
+				if (scene->fromGame == true)
+				{
+					scene->SetNextScene(STATE::GAME_SCENE);
+				}
+				else
+				{
+					menuCurrentState = MAIN_MENU;
+				}
 			}
 		}
 
@@ -146,9 +158,4 @@ void SceneMenu::Exit()
 	// Cleanup VBO here
 	glDeleteVertexArrays(1, &m_vertexArrayID);
 	glDeleteProgram(m_programID);
-}
-
-int SceneMenu::getMenuCurrentState()
-{
-	return menuCurrentState;
 }

@@ -4,6 +4,7 @@
 SceneManager::SceneManager() {
 	currSceneID = STATE::MENU_SCENE;
 	nextSceneID = STATE::MENU_SCENE;
+	fromGame = false;
 }
 
 SceneManager::~SceneManager() {
@@ -56,3 +57,4 @@ void SceneManager::ChangeScene() {
 
 	currSceneID = nextSceneID;
 }
+

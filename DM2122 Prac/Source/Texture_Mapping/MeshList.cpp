@@ -80,6 +80,18 @@ void SceneText::InitMeshList()
 
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//calibri.tga");
+
+	meshList[GEO_NPC] = MeshBuilder::GenerateOBJ("NPC", "OBJ//NPC.obj");
+	meshList[GEO_NPC]->textureID = LoadTGA("Image//silver.tga");
+
+	meshList[GEO_SPOTLIGHT_STAND] = MeshBuilder::GenerateOBJ("Spotlight", "OBJ//Lamp_stand.obj");
+	meshList[GEO_SPOTLIGHT_STAND]->textureID = LoadTGA("Image/silver.tga");
+
+	meshList[GEO_SPOTLIGHT_JOINT] = MeshBuilder::GenerateOBJ("Spotlight", "OBJ//Lamp_joint.obj");
+	meshList[GEO_SPOTLIGHT_JOINT]->textureID = LoadTGA("Image//silver.tga");
+
+	meshList[GEO_SPOTLIGHT_HEAD] = MeshBuilder::GenerateOBJ("Spotlight", "OBJ//Lamp_head.obj");
+	meshList[GEO_SPOTLIGHT_HEAD]->textureID = LoadTGA("Image//silver.tga");
 }
 
 void TicTacToe::InitMeshList()

@@ -144,12 +144,11 @@ void SceneText::Update(double dt)
 		light[0].type = Light::LIGHT_SPOT;
 	}
 
-	// Need to render options without exiting scene
 	// Open options
 	if (Application::IsKeyPressed(VK_ESCAPE))
 	{
 		SceneManager* scene = SceneManager::getInstance();
-		//scene->SetNextScene(STATE::MENU_SCENE);
+		scene->SetNextScene(STATE::MENU_SCENE);
 	}
 
 	// Updates sun pos
@@ -283,7 +282,7 @@ void SceneText::Render()
 	modelStack.LoadIdentity();
 
 	// Pass light info to shader
-	for (int i = 0; i < 2; ++i)
+	for (int i = 0; i < 3; ++i)
 	{
 		// passing the light direction if it is a direction light	
 		if (light[i].type == Light::LIGHT_DIRECTIONAL)
@@ -321,6 +320,15 @@ void SceneText::Render()
 
 	temp = Objects->AddObject("Dice", meshList[GEO_DICE], true);
 	Objects->getLib().push_back(temp);
+
+	RenderNPC();
+	RenderSpotlight();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(-4.5f, 1.25f, 0.f);
+	modelStack.Scale(0.1f, 0.1f, 0.1f);
+	RenderMesh(meshList[GEO_LIGHTSPHERE], false);
+	modelStack.PopMatrix();
 
 	// RenderMesh
 	for (unsigned int i = 0; i < Objects->getLib().size(); i++) {

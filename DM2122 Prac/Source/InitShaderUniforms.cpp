@@ -1,6 +1,6 @@
 #include "Scene.h"
-#include "SceneText.h"
 #include "SceneMenu.h"
+#include "SceneText.h"
 #include "../../glew/include/GL/glew.h"
 
 void Scene::InitShaderUniforms()
@@ -48,6 +48,18 @@ void SceneText::InitLightShaderUniforms()
 	m_parameters[U_LIGHT_SUN_COSCUTOFF] = glGetUniformLocation(m_programID, "lights[1].cosCutoff");
 	m_parameters[U_LIGHT_SUN_COSINNER] = glGetUniformLocation(m_programID, "lights[1].cosInner");
 	m_parameters[U_LIGHT_SUN_EXPONENT] = glGetUniformLocation(m_programID, "lights[1].exponent");
+
+	m_parameters[U_SPOTLIGHT1_POSITION] = glGetUniformLocation(m_programID, "lights[2].position_cameraspace");
+	m_parameters[U_SPOTLIGHT1_COLOR] = glGetUniformLocation(m_programID, "lights[2].color");
+	m_parameters[U_SPOTLIGHT1_POWER] = glGetUniformLocation(m_programID, "lights[2].power");
+	m_parameters[U_SPOTLIGHT1_KC] = glGetUniformLocation(m_programID, "lights[2].kC");
+	m_parameters[U_SPOTLIGHT1_KL] = glGetUniformLocation(m_programID, "lights[2].kL");
+	m_parameters[U_SPOTLIGHT1_KQ] = glGetUniformLocation(m_programID, "lights[2].kQ");
+	m_parameters[U_SPOTLIGHT1_TYPE] = glGetUniformLocation(m_programID, "lights[2].type");
+	m_parameters[U_SPOTLIGHT1_SPOTDIRECTION] = glGetUniformLocation(m_programID, "lights[2].spotDirection");
+	m_parameters[U_SPOTLIGHT1_COSCUTOFF] = glGetUniformLocation(m_programID, "lights[2].cosCutoff");
+	m_parameters[U_SPOTLIGHT1_COSINNER] = glGetUniformLocation(m_programID, "lights[2].cosInner");
+	m_parameters[U_SPOTLIGHT1_EXPONENT] = glGetUniformLocation(m_programID, "lights[2].exponent");
 
 	m_parameters[U_LIGHTENABLED] = glGetUniformLocation(m_programID, "lightEnabled");
 	m_parameters[U_NUMLIGHTS] = glGetUniformLocation(m_programID, "numLights");
