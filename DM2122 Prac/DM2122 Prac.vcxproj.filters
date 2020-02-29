@@ -21,6 +21,7 @@
     <ClCompile Include="Source\SceneMenu.cpp" />
     <ClCompile Include="Source\SceneText.cpp" />
     <ClCompile Include="Source\shader.cpp" />
+    <ClCompile Include="Source\Sun.cpp" />
     <ClCompile Include="Source\TicTacToe.cpp" />
     <ClCompile Include="Source\TicTacToeMoves.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
@@ -45,7 +46,7 @@
     <ClCompile Include="Source\Render\RenderCar.cpp" />
     <ClCompile Include="Source\Render\RenderBuilding.cpp" />
     <ClCompile Include="Source\InventoryUtility.cpp" />
-    <ClCompile Include="Source\UpdateLights.cpp" />
+    <ClCompile Include="RenderPhone.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -64,6 +65,7 @@
     <ClInclude Include="Source\SceneMenu.h" />
     <ClInclude Include="Source\SceneText.h" />
     <ClInclude Include="Source\shader.hpp" />
+    <ClInclude Include="Source\Sun.h" />
     <ClInclude Include="Source\TicTacToe.h" />
     <ClInclude Include="Source\UNIFORM_TYPE.h" />
     <ClInclude Include="Source\Utility.h" />

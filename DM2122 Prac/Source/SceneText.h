@@ -5,6 +5,7 @@
 #include "Camera2.h"
 #include "Minimap.h"
 #include "Light.h"
+#include "Sun.h"
 
 #include "Vending.h"
 #include "NPC.h"
@@ -50,6 +51,13 @@ private:
 		TEXT_BORDER,
 
 		GEO_NPC,
+
+		//Phone
+		GEO_PHONE,
+
+		//Phone Gallery
+		GEO_GALLERY1,
+		GEO_GALLERY2,
 
 		// Spotlight
 		GEO_SPOTLIGHT_HEAD,
@@ -129,6 +137,9 @@ private:
 	void RenderVendingUI();
 	void RenderInventoryUI();
 
+	void RenderPhone();
+	bool phoneUse;
+
 	void RenderNPC();
 
 	void RenderSpotlight();
@@ -137,15 +148,13 @@ private:
 
 	void RenderBuilding();
 
-	void RevolveSun(double);
-	void UpdateSpotlights(double);
-
 	void UpdateUIButtons();
 
 	void CalculateFrameRate();
 
-	float sunAngle;
-	float spotlightAngle;
+	Sun sun;
+
+	float angle;
 
 	void RenderMiniMesh(Mesh* mesh);
 	void RenderText(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z);
