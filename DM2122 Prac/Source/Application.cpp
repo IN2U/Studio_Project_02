@@ -124,23 +124,31 @@ void Application::Run()
 
 	while (!glfwWindowShouldClose(m_window) && scene->getInstance()->getNextSceneID() != STATE::EXIT_SCENE)
 	{
+		// Open options
+		if (Application::IsKeyPressed(VK_ESCAPE))
+		{
+			//SceneManager* scene = SceneManager::getInstance();
+			if (scene->getCurrentSceneID() == STATE::GAME_SCENE)
+			{
+				scene->SetNextScene(STATE::MENU_SCENE);
+			}
+		}
+
 		// When esc is pressed while in main game scene, render menu scene without exiting game scene
 		if (scene->getCurrentSceneID() == STATE::GAME_SCENE && scene->getNextSceneID() == STATE::MENU_SCENE)
 		{
-				scene->ChangeScene();
-				scene->fromGame = true;
-				scene->GetCurrScene()->Init();
+			scene->fromGame = true;
+			scene->ChangeScene();
 		}
 		// When back is pressed from options screen in game scene, exit menu scene
 		else if (scene->getNextSceneID() == STATE::GAME_SCENE && scene->fromGame == true)
 		{
-			scene->GetCurrScene()->Exit();
 			scene->ChangeScene();
 		}
 		// Checks if next scene has been set to something else
 		else if (scene->getCurrentSceneID() != scene->getNextSceneID())
 		{
-			scene->GetCurrScene()->Exit();
+			//scene->GetCurrScene()->Exit();
 			scene->ChangeScene();
 			scene->GetCurrScene()->Init();
 		}

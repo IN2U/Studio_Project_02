@@ -146,13 +146,6 @@ void SceneText::Update(double dt)
 		light[0].type = Light::LIGHT_SPOT;
 	}
 
-	// Open options
-	if (Application::IsKeyPressed(VK_ESCAPE))
-	{
-		SceneManager* scene = SceneManager::getInstance();
-		scene->SetNextScene(STATE::MENU_SCENE);
-	}
-
 	// Updates sun pos
 	sun.revolve(dt);
 
