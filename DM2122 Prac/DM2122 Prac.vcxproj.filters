@@ -42,6 +42,7 @@
     <ClCompile Include="Source\Mesh_Generation\LoadOBJ.cpp" />
     <ClCompile Include="Source\Render\RenderNPC.cpp" />
     <ClCompile Include="Source\Render\RenderSpotlight.cpp" />
+    <ClCompile Include="Source\Render\RenderUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />

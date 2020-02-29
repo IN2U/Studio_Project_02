@@ -14,6 +14,8 @@ private:
 	Inventory();
 	~Inventory();
 
+	bool somethingHappened;
+
 	static Inventory* instance;
 public:
 	static Inventory* GetInstance();
@@ -26,6 +28,15 @@ public:
 	void UseItem(int ID); // Use, means the user gets the benefit of the used item
 
 	bool isEmpty();
+
+	void PrintInventory();
+
+	std::vector<Item*> ReturnInventory();
+
+	void CheckInput();
+	void UpdateInventory();
+
+	bool SomethingHappened();
 };
 
 #endif

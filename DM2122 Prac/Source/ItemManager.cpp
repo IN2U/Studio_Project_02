@@ -53,7 +53,7 @@ void ItemManager::RemoveItem()
 	if (!IsEmpty())
 	{
 		head = tmp->GetNext();
-		delete tmp;
+		//delete tmp;
 	}
 	else
 		/*cout << "STOCK EMPTY" << endl*/;
@@ -92,7 +92,7 @@ float ItemManager::Price()
 
 bool ItemManager::IsEmpty()
 {
-	if (head == nullptr)
+	if (head->GetNext() != nullptr)
 		return true;
 	else
 		return false;
