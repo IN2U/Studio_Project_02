@@ -22,10 +22,13 @@ public:
 	void ChangeScene();
 	void AddScene(Scene* scene);
 	void SetNextScene(int sceneID);
+
 	int getCurrentSceneID() const;
 	int getNextSceneID() const;
 	void Update(double ElapsedTime);
 	bool fromGame;
+
+	void SetGameScene();
 };
 
 #endif

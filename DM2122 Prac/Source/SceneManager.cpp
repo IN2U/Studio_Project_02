@@ -27,6 +27,7 @@ Scene* SceneManager::GetCurrScene() {
 	return sceneLib[currSceneID];
 }
 
+
 void SceneManager::AddScene(Scene* scene) {
 
 	sceneLib.push_back(scene);
@@ -52,6 +53,13 @@ void SceneManager::Update(double ElapsedTime) {
 	sceneLib[currSceneID]->Update(ElapsedTime);
 	sceneLib[currSceneID]->Render();
 }
+
+void SceneManager::SetGameScene()
+{
+	SceneManager* scene = SceneManager::getInstance();
+	scene->SetNextScene(STATE::GAME_SCENE);
+}
+
 
 void SceneManager::ChangeScene() {
 

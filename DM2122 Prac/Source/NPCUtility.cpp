@@ -2,6 +2,8 @@
 #include "NPC.h"
 #include "Application.h"
 
+#include "Currency.h"
+
 void NPC::CheckInput()
 {
 	if (Application::IsKeyPressed('1'))

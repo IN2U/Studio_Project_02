@@ -15,6 +15,17 @@ private:
 	float itemPrice;
 	Item* next;
 
+	int itemEffectID;
+	string itemEffect;
+	enum ItemEffects
+	{
+		FAST_CURRENCY_REGEN,
+		ADD_CURRENCY,
+		FILLER,
+		NUM_EFFECT,
+	};
+
+	ItemEffects e_ItemEffects;
 public:
 	Item();
 	Item(int ID, string name, float price);
@@ -24,6 +35,13 @@ public:
 	int ReturnID();
 	string ReturnName();
 	float ReturnPrice();
+
+	void SetItemEffect(string eff);
+	string ReturnItemEffect();
+	void SetItemEffectID(int ID);
+	int ReturnItemEffectID();
+
+	int ReturnListOfItemEffects();
 
 	void AssignNext(Item* node);
 

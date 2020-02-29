@@ -52,7 +52,6 @@ void SceneText::RenderVendingUI()
 {
 	Currency* currency = Currency::GetInstance();
 
-
 	if (!vending[0].BuyingItem()) {
 		RenderTextOnScreen(meshList[GEO_TEXT], "What would you like to buy?", Color(0, 1, 0), 2.5f, 3.f, 2.f);
 		RenderTextOnScreen(meshList[GEO_TEXT], vending[0].GetItemChosen(), Color(0, 1, 0), 3.5f, 12.f, 1.3f);
@@ -80,6 +79,8 @@ void SceneText::RenderInventoryUI()
 {
 	Inventory* inventory = Inventory::GetInstance();
 
+	Currency* currency = Currency::GetInstance();
+
 	float valY = 16.f;
 
 	RenderTextOnScreen(meshList[GEO_TEXT], "INVENTORY: ", Color(0, 1, 0), 3.f, 1.f, valY + 1.f);
@@ -88,6 +89,8 @@ void SceneText::RenderInventoryUI()
 		RenderTextOnScreen(meshList[GEO_TEXT], std::to_string(i) + ". " + inventory->ReturnInventory().at(i - 1)->ReturnName(), Color(0, 1, 0), 3.f, 2.0f, valY);
 		valY -= 1.f;
 	}
+
+	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 15, 13);
 }
 
 void SceneText::UpdateUIButtons()

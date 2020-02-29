@@ -45,6 +45,7 @@
     <ClCompile Include="Source\Render\RenderUI.cpp" />
     <ClCompile Include="Source\Render\RenderCar.cpp" />
     <ClCompile Include="Source\Render\RenderBuilding.cpp" />
+    <ClCompile Include="Source\InventoryUtility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />

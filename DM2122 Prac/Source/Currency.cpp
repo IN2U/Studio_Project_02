@@ -5,6 +5,7 @@ Currency::Currency()
 	totalCurrency = 300000;  // Set to any value for starting currency
 	sortedCurrency = "";     // Set to nothing at the start
 	adjustedCurrency = "";   // Set to nothing at the start
+	regeneration = 100.0;
 }
 
 Currency::~Currency()
@@ -90,4 +91,14 @@ bool Currency::DeductCurrency(int amount)
 		totalCurrency -= amount;
 	else
 		return false;
+}
+
+double Currency::ReturnRegeneration()
+{
+	return regeneration;
+}
+
+void Currency::SetRegeneration(double newRegen)
+{
+	regeneration = newRegen;
 }

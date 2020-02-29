@@ -37,21 +37,22 @@ void SceneMenu::Init()
 	glUseProgram(m_programID);
 
 	InitMeshList();
-
-	if (SceneManager::getInstance()->fromGame == true)
-	{
-		menuCurrentState = OPTIONS_MENU;
-	}
 }
 
 void SceneMenu::Update(double dt)
 {
+	if (SceneManager::getInstance()->fromGame == true)
+	{
+		menuCurrentState = OPTIONS_MENU;
+	}
+
 	sceneTime += dt;
 
 	bool clicked = false;
 
 	if (debounceTime > sceneTime)
 		return;
+
 
 	if (Application::IsKeyPressed(MK_LBUTTON))
 	{
@@ -105,7 +106,7 @@ void SceneMenu::Update(double dt)
 			{
 				if (scene->fromGame == true)
 				{
-					scene->SetNextScene(STATE::GAME_SCENE);
+					scene->SetGameScene();
 				}
 				else
 				{

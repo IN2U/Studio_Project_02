@@ -148,13 +148,6 @@ void SceneText::Update(double dt)
 		light[0].type = Light::LIGHT_SPOT;
 	}
 
-	// Open options
-	if (Application::IsKeyPressed(VK_ESCAPE))
-	{
-		SceneManager* scene = SceneManager::getInstance();
-		scene->SetNextScene(STATE::MENU_SCENE);
-	}
-
 	// Updates sun pos
 	sun.revolve(dt);
 
@@ -263,7 +256,7 @@ void SceneText::Update(double dt)
 		eUIState = INVENTORY_UI;
 	}
 
-	currency->AddCurrency(100 * dt);
+	currency->AddCurrency(currency->ReturnRegeneration() * dt);
 	currency->SortAndUpdateCurrency();
 
 	camera.Update(dt);
@@ -324,6 +317,12 @@ void SceneText::Render()
 	Objects->getLib().push_back(temp);
 
 	temp = Objects->AddObject("RaceTrack", meshList[GEO_RACE_TRACK], true);
+	Objects->getLib().push_back(temp);
+
+	temp = Objects->AddObject("Floor", meshList[GEO_FLOOR], true);
+	//temp->Transform('T', 0.f, -1.f, 0.f);
+	temp->Transform('S', 100.f, 1.f, 100.f);
+	temp->Transform(-90.f, 1.f, 0.f, 0.f);
 	Objects->getLib().push_back(temp);
 
 	RenderNPC();
