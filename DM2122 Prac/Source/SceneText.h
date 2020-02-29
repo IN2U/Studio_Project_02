@@ -125,6 +125,7 @@ private:
 	void RenderInventoryUI();
 
 	void RenderNPC();
+
 	void RenderSpotlight();
 	void RenderSpotlightStand();
 	void RenderSpotlightJointPoint();

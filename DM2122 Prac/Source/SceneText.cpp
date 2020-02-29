@@ -9,7 +9,7 @@
 #include "shader.hpp"
 #include "Utility.h"
 
-#include "Texture_Mapping/LoadTGA.h";
+#include "Texture_Mapping/LoadTGA.h"
 
 #include "Helper/Cursor.h"
 #include "Helper/Window.h"
