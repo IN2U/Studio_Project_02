@@ -1,5 +1,7 @@
 #include "Inventory.h"
+#include "Currency.h"
 #include "Application.h"
+#include <time.h>
 
 Inventory::Inventory()
 {
@@ -35,14 +37,37 @@ bool Inventory::AddItemIntoInventory(Item* newItem)
 
 void Inventory::RemoveItemFromInventory(int ID)
 {
-	if (!itemInventory.empty() && itemInventory.at(ID - 1) != nullptr)
+	if (!itemInventory.empty() && itemInventory.at(ID - 1) != nullptr) {
+		//std::cout << itemInventory.at(ID - 1)->ReturnItemEffect() << std::endl;
 		itemInventory.erase(itemInventory.begin() + ID - 1);
+	}
 }
 
 void Inventory::UseItem(int ID)
 {
-	if (!itemInventory.empty() && itemInventory.at(ID) != nullptr)
+	srand((time)(NULL));
+	itemInventory.at(ID - 1)->SetItemEffectID(rand() % itemInventory.at(ID - 1)->ReturnListOfItemEffects());
+	Currency* currency = Currency::GetInstance();
+	switch (itemInventory.at(ID - 1)->ReturnItemEffectID())
+	{
+	case 0:
+		itemInventory.at(ID - 1)->SetItemEffect("REGEN");
+		currency->SetRegeneration(currency->ReturnRegeneration() + 100.0);
+		break;
+	case 1:
+		itemInventory.at(ID - 1)->SetItemEffect("CURRENCY");
+		currency->AddCurrency(1000);
+		break;
+	case 2:
+		itemInventory.at(ID - 1)->SetItemEffect("BOOST");
+		currency->AddCurrency(10000);
+		break;
+	}
+
+	if (!itemInventory.empty() && itemInventory.at(ID - 1) != nullptr) {
+		std::cout << itemInventory.at(ID - 1)->ReturnItemEffect() << std::endl;
 		itemInventory.erase(itemInventory.begin() + ID - 1);
+	}
 }
 
 bool Inventory::isEmpty()
@@ -55,8 +80,7 @@ bool Inventory::isEmpty()
 
 void Inventory::PrintInventory()
 {
-	for (int i = 0; i < itemInventory.size(); ++i)
-	{
+	for (int i = 0; i < itemInventory.size(); ++i){
 		std::cout << itemInventory.at(i)->ReturnName() << std::endl;
 	}
 }
@@ -64,66 +88,4 @@ void Inventory::PrintInventory()
 std::vector<Item*> Inventory::ReturnInventory()
 {
 	return itemInventory;
-}
-
-void Inventory::CheckInput()
-{
-	if (Application::IsKeyPressed('1'))
-	{
-		RemoveItemFromInventory(1);
-		somethingHappened = true;
-	}
-	if (Application::IsKeyPressed('2'))
-	{
-		RemoveItemFromInventory(2);
-		somethingHappened = true;
-	}
-	if (Application::IsKeyPressed('3'))
-	{
-		RemoveItemFromInventory(3);
-		somethingHappened = true;
-	}
-	if (Application::IsKeyPressed('4'))
-	{
-		RemoveItemFromInventory(4);
-		somethingHappened = true;
-	}
-	if (Application::IsKeyPressed('5'))
-	{
-		RemoveItemFromInventory(5);
-		somethingHappened = true;
-	}
-	if (Application::IsKeyPressed('6'))
-	{
-		RemoveItemFromInventory(6);
-		somethingHappened = true;
-	}
-	if (Application::IsKeyPressed('7'))
-	{
-		RemoveItemFromInventory(7);
-		somethingHappened = true;
-	}
-	if (Application::IsKeyPressed('8'))
-	{
-		RemoveItemFromInventory(8);
-		somethingHappened = true;
-	}
-	if (Application::IsKeyPressed('9'))
-	{
-		RemoveItemFromInventory(9);
-		somethingHappened = true;
-	}
-
-}
-
-void Inventory::UpdateInventory()
-{
-	somethingHappened = false;
-
-	CheckInput();
-}
-
-bool Inventory::SomethingHappened()
-{
-	return somethingHappened;
 }

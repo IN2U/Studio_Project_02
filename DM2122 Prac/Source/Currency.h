@@ -13,6 +13,7 @@ class Currency
 {
 private:
 	int totalCurrency;
+	double regeneration;
 	std::string sortedCurrency;
 	std::string adjustedCurrency;
 
@@ -31,6 +32,9 @@ public:
 
 	bool AddCurrency(int amount);
 	bool DeductCurrency(int amount);
+
+	double ReturnRegeneration();
+	void SetRegeneration(double newRegen);
 };
 
 #endif
