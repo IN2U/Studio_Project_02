@@ -92,6 +92,17 @@ void SceneText::InitMeshList()
 	meshList[GEO_RACE_TRACK]->textureID = LoadTGA("Image//track.tga");
 
 
+	// Environment objects
+	meshList[GEO_VENDING] = MeshBuilder::GenerateOBJ("Vending", "OBJ//vending.obj");
+	meshList[GEO_VENDING]->textureID = LoadTGA("Image//VENDING.tga");
+
+	meshList[GEO_RACE_TRACK] = MeshBuilder::GenerateOBJ("Track", "OBJ//racetrack.obj");
+	meshList[GEO_RACE_TRACK]->textureID = LoadTGA("Image//track.tga");
+
+	meshList[GEO_FLOOR] = MeshBuilder::GenerateQuad("Floor", Color(0, 1, 0), 1.f, 1.f);
+	meshList[GEO_FLOOR]->textureID = LoadTGA("Image//concrete.tga");
+
+
 	meshList[GEO_SPOTLIGHT_STAND] = MeshBuilder::GenerateOBJ("Spotlight", "OBJ//Lamp_stand.obj");
 	meshList[GEO_SPOTLIGHT_STAND]->textureID = LoadTGA("Image/silver.tga");
 

@@ -3,8 +3,8 @@
 void SceneText::RenderSkybox()
 {
 	modelStack.PushMatrix();
-	modelStack.Translate(-50.f, 0.f, 0.f);
-	modelStack.Scale(100.f, 100.f, 100.f);
+	modelStack.Translate(-50.f, 20.f, 0.f);
+	modelStack.Scale(102.f, 102.f, 102.f);
 	modelStack.Rotate(90.f, 0.f, 1.f, 0.f);
 
 	if (sun.getY() > 0)
@@ -15,8 +15,8 @@ void SceneText::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(50.f, 0.f, 0.f);
-	modelStack.Scale(100.f, 100.f, 100.f);
+	modelStack.Translate(50.f, 20.f, 0.f);
+	modelStack.Scale(102.f, 102.f, 102.f);
 	modelStack.Rotate(-90.f, 0.f, 1.f, 0.f);
 
 	if (sun.getY() > 0)
@@ -26,8 +26,8 @@ void SceneText::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 50.f, 0.f);
-	modelStack.Scale(100.f, 100.f, 100.f);
+	modelStack.Translate(0.f, 70.f, 0.f);
+	modelStack.Scale(102.f, 102.f, 102.f);
 	modelStack.Rotate(90.f, 1.f, 0.f, 0.f);
 	modelStack.PushMatrix();
 	modelStack.Rotate(180.f, 0.f, 0.f, 1.f);
@@ -41,8 +41,8 @@ void SceneText::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, -50.f, 0.f);
-	modelStack.Scale(100.f, 100.f, 100.f);
+	modelStack.Translate(0.f, -30.f, 0.f);
+	modelStack.Scale(102.f, 102.f, 102.f);
 	modelStack.Rotate(-90.f, 1.f, 0.f, 0.f);
 
 	if (sun.getY() > 0)
@@ -53,8 +53,8 @@ void SceneText::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.f, -50.f);
-	modelStack.Scale(100.f, 100.f, 100.f);
+	modelStack.Translate(0.f, 20.f, -50.f);
+	modelStack.Scale(102.f, 102.f, 102.f);
 
 	if (sun.getY() > 0)
 		RenderMesh(meshList[SKYBOX_FRONT_DAY], false);
@@ -64,8 +64,8 @@ void SceneText::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.f, 50.f);
-	modelStack.Scale(100.f, 100.f, 100.f);
+	modelStack.Translate(0.f, 20.f, 50.f);
+	modelStack.Scale(102.f, 102.f, 102.f);
 	modelStack.Rotate(180.f, 0.f, 1.f, 0.f);
 
 	if (sun.getY() > 0)

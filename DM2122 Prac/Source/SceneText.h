@@ -52,11 +52,6 @@ private:
 
 		GEO_NPC,
 
-		// Spotlight
-		GEO_SPOTLIGHT_HEAD,
-		GEO_SPOTLIGHT_JOINT,
-		GEO_SPOTLIGHT_STAND,
-		
 		// Vehicles
 		FORD_GT,
 		FENYR,
@@ -67,6 +62,11 @@ private:
 		BUILDING,
 		GEO_VENDING,
 		GEO_RACE_TRACK,
+		GEO_FLOOR,
+		// Spotlight
+		GEO_SPOTLIGHT_HEAD,
+		GEO_SPOTLIGHT_JOINT,
+		GEO_SPOTLIGHT_STAND,
 
 		// Food icons
 		HAMBURGER,
