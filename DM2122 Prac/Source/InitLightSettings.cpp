@@ -50,9 +50,9 @@ void SceneText::InitLightSettings()
 	glUniform1f(m_parameters[U_LIGHT_SUN_EXPONENT], light[1].exponent);
 
 	light[2].type = Light::LIGHT_SPOT;
-	light[2].position.Set(-4.5f, 1.25f, 0.f);
+	light[2].position.Set(5.25f, 0.5f, -15.f);
 	light[2].color.Set(1.f, 1.f, 1.f);
-	light[2].power = 10.f;
+	light[2].power = 0.f;
 	light[2].kC = 1.f;
 	light[2].kL = 0.01f;
 	light[2].kQ = 0.001f;

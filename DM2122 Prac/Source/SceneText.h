@@ -52,6 +52,8 @@ private:
 		TEXT_BORDER,
 
 		GEO_NPC,
+
+		// Spotlight
 		GEO_SPOTLIGHT_HEAD,
 		GEO_SPOTLIGHT_JOINT,
 		GEO_SPOTLIGHT_STAND,
@@ -61,6 +63,8 @@ private:
 		FENYR,
 		LAMBORGHINI,
 		ONE_1,
+
+		BUILDING,
 
 		//Food icons
 		HAMBURGER,
@@ -124,6 +128,8 @@ private:
 	void RenderSpotlightJointPoint();
 	void RenderSpotlightJoint();
 	void RenderSpotlightHead();
+
+	void RenderCar();
 
 	void CalculateFrameRate();
 

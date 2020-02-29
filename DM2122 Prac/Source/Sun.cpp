@@ -46,16 +46,16 @@ void Sun::revolve(double dt)
 	{
 		angle += float(dt);
 
-		if (angle < 90)
+		if (angle < 70)
 		{
 			intensity += float(dt / 20000);
 		}
-		// Set intensity to 0 at noon
-		else if (angle > 85 && angle < 95)
+		// Prevents intensity from increasing at noon
+		else if (angle > 70 && angle < 110)
 		{
 			intensity = 0.f;
 		}
-		else if (angle > 90 && angle < 180)
+		else if (angle > 110 && angle < 180)
 		{
 			intensity += float(dt / 20000);
 		}
@@ -72,6 +72,6 @@ void Sun::revolve(double dt)
 	}
 
 	//pi / 180
-	x = 30 * float(cos(angle * 0.01745329251));
-	y = 30 * float(sin(angle * 0.01745329251));
+	x = 50 * float(cos(angle * 0.01745329251));
+	y = 50 * float(sin(angle * 0.01745329251));
 }

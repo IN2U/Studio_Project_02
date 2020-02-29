@@ -6,7 +6,6 @@
 #include "../../../glew/include/GL/glew.h"
 #include "LoadTGA.h"
 
-
 void SceneMenu::InitMeshList()
 {
 	meshList[MENU_SCREEN] = MeshBuilder::GenerateQuad("Menu_Screen", Color(1, 1, 1), 1.f, 1.f);
@@ -95,14 +94,17 @@ void SceneText::InitMeshList()
 	meshList[GEO_SPOTLIGHT_HEAD]->textureID = LoadTGA("Image//silver.tga");
 
 	//Vehicles
-	/*meshList[FORD_GT] = MeshBuilder::GenerateOBJ("Ford_GT", "OBJ//ford_gt.obj");
+	meshList[FORD_GT] = MeshBuilder::GenerateOBJ("Ford_GT", "OBJ//ford_gt.obj");
 	meshList[FORD_GT]->textureID = LoadTGA("Image//ford_gt.tga");
 
 	meshList[FENYR] = MeshBuilder::GenerateOBJ("Fenyr", "OBJ//fenyr.obj");
 	meshList[FENYR]->textureID = LoadTGA("Image//fenyr.tga");
 
 	meshList[LAMBORGHINI] = MeshBuilder::GenerateOBJ("Lamborghini", "OBJ//Lamborghini.obj");
-	meshList[LAMBORGHINI]->textureID = LoadTGA("Image//Lamborghini.tga");*/
+	meshList[LAMBORGHINI]->textureID = LoadTGA("Image//Lamborghini.tga");
+
+	meshList[BUILDING] = MeshBuilder::GenerateOBJ("Building", "OBJ//Building.obj");
+	meshList[BUILDING]->textureID = LoadTGA("Image//silver.tga");
 
 	//meshList[ONE_1] = MeshBuilder::GenerateOBJ("One_1", "OBJ//one_1.obj");
 
@@ -143,8 +145,6 @@ void SceneText::InitMeshList()
 
 	meshList[L_MOUSE_HIGHLIGHT] = MeshBuilder::GenerateQuad("LeftMouseButton_Red", Color(0, 1, 0), 1.f, 1.f);
 	meshList[L_MOUSE_HIGHLIGHT]->textureID = LoadTGA("Image//L_MOUSE_RED.tga");
-
->>>>>>> 24a22a27ee71c6727f98c7913845fb570df554ac
 }
 
 void TicTacToe::InitMeshList()
