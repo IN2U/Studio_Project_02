@@ -3,91 +3,56 @@
 
 void SceneText::RenderSpotlight()
 {
-	modelStack.PushMatrix();
-	modelStack.Translate(25.f, 0.f, -15.f);
-	modelStack.Scale(0.5f, 0.5f, 0.5f);
-	RenderSpotlightStand();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(-0.6f, -0.05f, -0.04f);
-	RenderSpotlightJointPoint();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0.6f, 0.2f, 0.05f);
-	RenderSpotlightJoint();
-
-	modelStack.PushMatrix();
-	RenderSpotlightHead();
-
-	modelStack.PopMatrix();
-	modelStack.PopMatrix();
-	modelStack.PopMatrix();
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-		modelStack.Translate(5.f, 0.f, -15.f);
+	// +x side
+	for (int i = 0; i < 2; ++i)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(25.f - 20.f * (float)i, 0.f, -15.f);
 		modelStack.Scale(0.5f, 0.5f, 0.5f);
 		RenderSpotlightStand();
 
 		modelStack.PushMatrix();
-			modelStack.Translate(-0.6f, -0.05f, -0.04f);
-			RenderSpotlightJointPoint();
-				
-				modelStack.PushMatrix();
-				modelStack.Translate(0.6f, 0.2f, 0.05f);
-				RenderSpotlightJoint();
+		modelStack.Translate(-0.6f, -0.05f, -0.04f);
+		RenderSpotlightJointPoint();
 
-				modelStack.PushMatrix();
-				RenderSpotlightHead();
+		modelStack.PushMatrix();
+		modelStack.Translate(0.6f, 0.2f, 0.05f);
+		RenderSpotlightJoint();
 
-			modelStack.PopMatrix();
-			modelStack.PopMatrix();
+		modelStack.PushMatrix();
+		RenderSpotlightHead();
+
 		modelStack.PopMatrix();
-	modelStack.PopMatrix();
+		modelStack.PopMatrix();
+		modelStack.PopMatrix();
+		modelStack.PopMatrix();
+	}
 
-	modelStack.PushMatrix();
-	modelStack.Translate(-5.f, 0.f, -15.f);
-	modelStack.Scale(0.5f, 0.5f, 0.5f);
-	RenderSpotlightStand();
+	// -x side
+	for (int i = 0; i < 2; ++i)
+	{
+		modelStack.PushMatrix();
+		modelStack.Translate(-25.f + 20.f * (float)i, 0.f, -15.f);
+		modelStack.Scale(0.5f, 0.5f, 0.5f);
+		RenderSpotlightStand();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(-0.6f, -0.05f, -0.04f);
-	modelStack.Rotate(180.f, 0.f, 1.f, 0.f);
-	RenderSpotlightJointPoint();
+		modelStack.PushMatrix();
+		modelStack.Translate(-0.6f, -0.05f, -0.04f);
+		modelStack.Rotate(180.f, 0.f, 1.f, 0.f);
+		RenderSpotlightJointPoint();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(0.6f, 0.2f, 0.05f);
-	RenderSpotlightJoint();
+		modelStack.PushMatrix();
+		modelStack.Translate(0.6f, 0.2f, 0.05f);
+		RenderSpotlightJoint();
 
-	modelStack.PushMatrix();
-	RenderSpotlightHead();
+		modelStack.PushMatrix();
+		RenderSpotlightHead();
 
-	modelStack.PopMatrix();
-	modelStack.PopMatrix();
-	modelStack.PopMatrix();
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(-25.f, 0.f, -15.f);
-	modelStack.Scale(0.5f, 0.5f, 0.5f);
-	RenderSpotlightStand();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(-0.6f, -0.05f, -0.04f);
-	modelStack.Rotate(180.f, 0.f, 1.f, 0.f);
-	RenderSpotlightJointPoint();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0.6f, 0.2f, 0.05f);
-	RenderSpotlightJoint();
-
-	modelStack.PushMatrix();
-	RenderSpotlightHead();
-
-	modelStack.PopMatrix();
-	modelStack.PopMatrix();
-	modelStack.PopMatrix();
-	modelStack.PopMatrix();
+		modelStack.PopMatrix();
+		modelStack.PopMatrix();
+		modelStack.PopMatrix();
+		modelStack.PopMatrix();
+	}
 }
 
 void SceneText::RenderSpotlightStand()

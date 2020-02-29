@@ -131,6 +131,8 @@ private:
 
 	void RenderCar();
 
+	void RenderBuilding();
+
 	void CalculateFrameRate();
 
 	Sun sun;

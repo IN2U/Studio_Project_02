@@ -1,19 +1,20 @@
 #include "../SceneText.h"
+#include "../ObjectManager.h"
 
 void SceneText::RenderCar()
 {
-	modelStack.PushMatrix();
-	modelStack.Translate(10.f, 0.f, -20.f);
-	RenderMesh(meshList[FORD_GT], true);
-	modelStack.PopMatrix();
+	ObjectManager* Objects = ObjectManager::getInstance();
+	Object* car;
 
-	modelStack.PushMatrix();
-	modelStack.Translate(-10.f, 0.f, -20.f);
-	RenderMesh(meshList[FENYR], true);
-	modelStack.PopMatrix();
+	car = Objects->AddObject("Car", meshList[FORD_GT], true);
+	car->Transform('T', 10.f, 0.f, -20.f);
+	Objects->getLib().push_back(car);
 
-	modelStack.PushMatrix();
-	modelStack.Translate(-30.f, 0.f, -20.f);
-	RenderMesh(meshList[LAMBORGHINI], true);
-	modelStack.PopMatrix();
+	car = Objects->AddObject("Car", meshList[FENYR], true);
+	car->Transform('T', -10.f, 0.f, -20.f);
+	Objects->getLib().push_back(car);
+
+	car = Objects->AddObject("Car", meshList[LAMBORGHINI], true);
+	car->Transform('T', -30.f, 0.f, -20.f);
+	Objects->getLib().push_back(car);
 }

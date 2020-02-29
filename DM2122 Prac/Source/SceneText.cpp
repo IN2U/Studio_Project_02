@@ -281,21 +281,18 @@ void SceneText::Render()
 	//Objects->getLib().push_back(temp);
 
 	RenderNPC();
+
 	RenderSpotlight();
 
-	modelStack.PushMatrix();
-	modelStack.Translate(5.25f, 0.5f, -15.f);
-	modelStack.Scale(0.1f, 0.1f, 0.1f);
-	RenderMesh(meshList[GEO_LIGHTSPHERE], false);
-	modelStack.PopMatrix();
-
-	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 0.f, -40.f);
-	modelStack.Scale(0.25f, 0.1f, 0.1f);
-	RenderMesh(meshList[BUILDING], true);
-	modelStack.PopMatrix();
-
 	RenderCar();
+
+	//modelStack.PushMatrix();
+	//modelStack.Translate(5.25f, 0.5f, -15.f);
+	//modelStack.Scale(0.1f, 0.1f, 0.1f);
+	//RenderMesh(meshList[GEO_LIGHTSPHERE], false);
+	//modelStack.PopMatrix();
+
+	RenderBuilding();
 
 	// RenderMesh
 	for (unsigned int i = 0; i < Objects->getLib().size(); i++) {
