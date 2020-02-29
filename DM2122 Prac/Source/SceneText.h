@@ -48,7 +48,6 @@ private:
 		GEO_DICE,
 		GEO_LIGHTSPHERE,
 		GEO_TEXT,
-		GEO_VENDING_MENU,
 		TEXT_BORDER,
 
 		GEO_NPC,
@@ -58,20 +57,23 @@ private:
 		GEO_SPOTLIGHT_JOINT,
 		GEO_SPOTLIGHT_STAND,
 		
-		//Vehicles
+		// Vehicles
 		FORD_GT,
 		FENYR,
 		LAMBORGHINI,
 		ONE_1,
 
+		// Environment objects
 		BUILDING,
+		GEO_VENDING,
+		GEO_RACE_TRACK,
 
-		//Food icons
+		// Food icons
 		HAMBURGER,
 		DRINK,
 		STEAK,
 
-		//UI Icons
+		// UI Icons
 		BUTTON_W,
 		BUTTON_W_HIGHLIGHT,
 		BUTTON_A,
@@ -130,6 +132,8 @@ private:
 	void RenderSpotlightHead();
 
 	void RenderCar();
+
+	void UpdateUIButtons();
 
 	void CalculateFrameRate();
 
