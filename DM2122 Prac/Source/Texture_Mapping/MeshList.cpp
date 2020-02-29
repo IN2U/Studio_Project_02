@@ -84,6 +84,14 @@ void SceneText::InitMeshList()
 	meshList[GEO_NPC] = MeshBuilder::GenerateOBJ("NPC", "OBJ//NPC.obj");
 	meshList[GEO_NPC]->textureID = LoadTGA("Image//silver.tga");
 
+	// Environment objects
+	meshList[GEO_VENDING] = MeshBuilder::GenerateOBJ("Vending", "OBJ//vending.obj");
+	meshList[GEO_VENDING]->textureID = LoadTGA("Image//VENDING.tga");
+
+	meshList[GEO_RACE_TRACK] = MeshBuilder::GenerateOBJ("Track", "OBJ//racetrack.obj");
+	meshList[GEO_RACE_TRACK]->textureID = LoadTGA("Image//track.tga");
+
+
 	meshList[GEO_SPOTLIGHT_STAND] = MeshBuilder::GenerateOBJ("Spotlight", "OBJ//Lamp_stand.obj");
 	meshList[GEO_SPOTLIGHT_STAND]->textureID = LoadTGA("Image/silver.tga");
 
@@ -93,7 +101,7 @@ void SceneText::InitMeshList()
 	meshList[GEO_SPOTLIGHT_HEAD] = MeshBuilder::GenerateOBJ("Spotlight", "OBJ//Lamp_head.obj");
 	meshList[GEO_SPOTLIGHT_HEAD]->textureID = LoadTGA("Image//silver.tga");
 
-	//Vehicles
+	// Vehicles
 	meshList[FORD_GT] = MeshBuilder::GenerateOBJ("Ford_GT", "OBJ//ford_gt.obj");
 	meshList[FORD_GT]->textureID = LoadTGA("Image//ford_gt.tga");
 
@@ -108,14 +116,14 @@ void SceneText::InitMeshList()
 
 	//meshList[ONE_1] = MeshBuilder::GenerateOBJ("One_1", "OBJ//one_1.obj");
 
-	//Food icons
+	// Food icons
 	meshList[HAMBURGER] = MeshBuilder::GenerateQuad("hamburger", Color(0, 1, 0), 1.f, 1.f);
 	meshList[HAMBURGER]->textureID = LoadTGA("Image//hamburger.tga");
 
 	meshList[STEAK] = MeshBuilder::GenerateQuad("steak", Color(0, 1, 0), 1.f, 1.f);
 	meshList[STEAK]->textureID = LoadTGA("Image//steak.tga");
 
-	//UI Icons
+	// UI Icons
 	meshList[BUTTON_W] = MeshBuilder::GenerateQuad("ButtonW_White", Color(0, 0, 0), 1.f, 1.f);
 	meshList[BUTTON_W]->textureID = LoadTGA("Image//W_WHITE.tga");
 

@@ -277,8 +277,9 @@ void SceneText::Render()
 	temp->Transform('S', 0.5f, 0.5f, 0.5f);
 	Objects->getLib().push_back(temp);
 
-	//temp = Objects->AddObject("One_1", meshList[ONE_1], true);
-	//Objects->getLib().push_back(temp);
+	temp = Objects->AddObject("RaceTrack", meshList[GEO_RACE_TRACK], true);
+	Objects->getLib().push_back(temp);
+
 
 	RenderNPC();
 
