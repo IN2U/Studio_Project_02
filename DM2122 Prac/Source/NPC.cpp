@@ -41,13 +41,13 @@ NPC::~NPC()
 
 std::string NPC::ReturnDialogue()
 {
-	srand(time(NULL));
+	srand(static_cast<unsigned int>(time(nullptr)));
 	return dialogue.at(dialogueID);
 }
 
 std::string NPC::ReturnTips()
 {
-	srand(time(NULL));
+	srand(static_cast<unsigned int>(time(nullptr)));
 	return tips.at(tipsID);
 }
 
@@ -58,8 +58,12 @@ Quest* NPC::ReturnQuest()
 
 float NPC::ReturnReward()
 {
-	if(questActive)
+	if (questActive) {
 		return NPCQuest->ReturnReward();
+	}
+	else {
+		return 0.f;
+	}
 }
 
 void NPC::SelectRandomDialogue()
@@ -88,7 +92,7 @@ void NPC::FinishQuest()
 	if (QuestRequirementMet())
 	{
 		Currency* currency3 = Currency::GetInstance();
-		currency3->AddCurrency(NPCQuest->ReturnReward());
+		currency3->AddCurrency(int(NPCQuest->ReturnReward()));
 		delete NPCQuest;
 		questActive = false;
 	}
@@ -131,5 +135,9 @@ bool NPC::QuestRequirementMet()
 		{
 			return true;
 		}
+	}
+	else
+	{
+		return false;
 	}
 }

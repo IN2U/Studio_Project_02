@@ -84,7 +84,7 @@ void SceneText::RenderInventoryUI()
 	float valY = 16.f;
 
 	RenderTextOnScreen(meshList[GEO_TEXT], "INVENTORY: ", Color(0, 1, 0), 3.f, 1.f, valY + 1.f);
-	for (int i = 1; i < inventory->ReturnInventory().size() + 1; ++i)
+	for (size_t i = 1; i < inventory->ReturnInventory().size() + 1; ++i)
 	{
 		RenderTextOnScreen(meshList[GEO_TEXT], std::to_string(i) + ". " + inventory->ReturnInventory().at(i - 1)->ReturnName(), Color(0, 1, 0), 3.f, 2.0f, valY);
 		valY -= 1.f;

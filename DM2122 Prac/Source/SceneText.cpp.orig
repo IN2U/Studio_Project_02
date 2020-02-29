@@ -159,10 +159,14 @@ void SceneText::Update(double dt)
 		eUIState = INVENTORY_UI;
 	}
 
+<<<<<<< HEAD
 	RevolveSun(dt);
 	UpdateSpotlights(dt);
 
+	currency->AddCurrency(currency->ReturnRegeneration() * dt);
+=======
 	currency->AddCurrency(int(currency->ReturnRegeneration() * dt));
+>>>>>>> 2146704f5b68ecaee433e7ae965531e72446838f
 	currency->SortAndUpdateCurrency();
 
 	camera.Update(dt);

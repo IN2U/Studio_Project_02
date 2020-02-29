@@ -12,7 +12,6 @@ public:
 	void Run();
 	void Exit();
 	static bool IsKeyPressed(unsigned short key);
-
 private:
 	//Declare a window object
 	StopWatch m_timer;

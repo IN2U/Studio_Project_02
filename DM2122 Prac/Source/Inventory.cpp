@@ -45,7 +45,7 @@ void Inventory::RemoveItemFromInventory(int ID)
 
 void Inventory::UseItem(int ID)
 {
-	srand((time)(NULL));
+	srand(static_cast<unsigned int>(time(nullptr)));
 	itemInventory.at(ID - 1)->SetItemEffectID(rand() % itemInventory.at(ID - 1)->ReturnListOfItemEffects());
 	Currency* currency = Currency::GetInstance();
 	switch (itemInventory.at(ID - 1)->ReturnItemEffectID())
@@ -80,7 +80,7 @@ bool Inventory::isEmpty()
 
 void Inventory::PrintInventory()
 {
-	for (int i = 0; i < itemInventory.size(); ++i){
+	for (size_t i = 0; i < itemInventory.size(); ++i){
 		std::cout << itemInventory.at(i)->ReturnName() << std::endl;
 	}
 }

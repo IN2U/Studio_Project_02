@@ -87,10 +87,13 @@ bool Currency::AddCurrency(int amount)
 
 bool Currency::DeductCurrency(int amount)
 {
-	if (totalCurrency > amount)
+	if (totalCurrency > amount) {
 		totalCurrency -= amount;
-	else
+		return true;
+	}
+	else {
 		return false;
+	}
 }
 
 double Currency::ReturnRegeneration()
