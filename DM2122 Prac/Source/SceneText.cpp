@@ -227,7 +227,7 @@ void SceneText::Update(double dt)
 		eUIState = INVENTORY_UI;
 	}
 
-	currency->AddCurrency(currency->ReturnRegeneration() * dt);
+	currency->AddCurrency(int(currency->ReturnRegeneration() * dt));
 	currency->SortAndUpdateCurrency();
 
 	camera.Update(dt);
