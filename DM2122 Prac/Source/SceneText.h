@@ -54,8 +54,6 @@ private:
 
 		// Spotlight
 		GEO_SPOTLIGHT_HEAD,
-		GEO_SPOTLIGHT_JOINT,
-		GEO_SPOTLIGHT_STAND,
 		
 		// Vehicles
 		FORD_GT,
@@ -94,7 +92,7 @@ private:
 	// For minimap
 	MS modelStack_mini, viewStack_mini, projectionStack_mini;
 
-	Light light[3];
+	Light light[10];
 
 	NPC npc[5];
 
@@ -110,6 +108,13 @@ private:
 
 	bool defaultUI = true;
 	bool NPCUI = false;
+
+	const int dFromCarCentre;
+	const float Car1X;
+	const float Car2X;
+	const float Car3X;
+	const float Car4X;
+	const float CarZ;
 
 	Camera2 camera;
 
@@ -127,10 +132,6 @@ private:
 	void RenderNPC();
 
 	void RenderSpotlight();
-	void RenderSpotlightStand();
-	void RenderSpotlightJointPoint();
-	void RenderSpotlightJoint();
-	void RenderSpotlightHead();
 
 	void RenderCar();
 
@@ -141,6 +142,8 @@ private:
 	void CalculateFrameRate();
 
 	Sun sun;
+
+	float angle;
 
 	void RenderMiniMesh(Mesh* mesh);
 	void RenderText(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z);

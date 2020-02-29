@@ -91,13 +91,6 @@ void SceneText::InitMeshList()
 	meshList[GEO_RACE_TRACK] = MeshBuilder::GenerateOBJ("Track", "OBJ//racetrack.obj");
 	meshList[GEO_RACE_TRACK]->textureID = LoadTGA("Image//track.tga");
 
-
-	meshList[GEO_SPOTLIGHT_STAND] = MeshBuilder::GenerateOBJ("Spotlight", "OBJ//Lamp_stand.obj");
-	meshList[GEO_SPOTLIGHT_STAND]->textureID = LoadTGA("Image/silver.tga");
-
-	meshList[GEO_SPOTLIGHT_JOINT] = MeshBuilder::GenerateOBJ("Spotlight", "OBJ//Lamp_joint.obj");
-	meshList[GEO_SPOTLIGHT_JOINT]->textureID = LoadTGA("Image//silver.tga");
-
 	meshList[GEO_SPOTLIGHT_HEAD] = MeshBuilder::GenerateOBJ("Spotlight", "OBJ//Lamp_head.obj");
 	meshList[GEO_SPOTLIGHT_HEAD]->textureID = LoadTGA("Image//silver.tga");
 
@@ -112,7 +105,7 @@ void SceneText::InitMeshList()
 	meshList[LAMBORGHINI]->textureID = LoadTGA("Image//Lamborghini.tga");
 
 	meshList[BUILDING] = MeshBuilder::GenerateOBJ("Building", "OBJ//Building.obj");
-	meshList[BUILDING]->textureID = LoadTGA("Image//silver.tga");
+	meshList[BUILDING]->textureID = LoadTGA("Image//BuildingTexture.tga");
 
 	//meshList[ONE_1] = MeshBuilder::GenerateOBJ("One_1", "OBJ//one_1.obj");
 

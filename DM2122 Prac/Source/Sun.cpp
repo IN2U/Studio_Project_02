@@ -48,7 +48,7 @@ void Sun::revolve(double dt)
 
 		if (angle < 70)
 		{
-			intensity += float(dt / 20000);
+			intensity += float(dt / 40000);
 		}
 		// Prevents intensity from increasing at noon
 		else if (angle > 70 && angle < 110)
@@ -57,7 +57,7 @@ void Sun::revolve(double dt)
 		}
 		else if (angle > 110 && angle < 180)
 		{
-			intensity += float(dt / 20000);
+			intensity += float(dt / 40000);
 		}
 		// Set intensity to 0 at night
 		else

@@ -3,83 +3,67 @@
 
 void SceneText::RenderSpotlight()
 {
-	// +x side
-	for (int i = 0; i < 2; ++i)
-	{
-		modelStack.PushMatrix();
-		modelStack.Translate(25.f - 20.f * (float)i, 0.f, -15.f);
-		modelStack.Scale(0.5f, 0.5f, 0.5f);
-		RenderSpotlightStand();
-
-		modelStack.PushMatrix();
-		modelStack.Translate(-0.6f, -0.05f, -0.04f);
-		RenderSpotlightJointPoint();
-
-		modelStack.PushMatrix();
-		modelStack.Translate(0.6f, 0.2f, 0.05f);
-		RenderSpotlightJoint();
-
-		modelStack.PushMatrix();
-		RenderSpotlightHead();
-
-		modelStack.PopMatrix();
-		modelStack.PopMatrix();
-		modelStack.PopMatrix();
-		modelStack.PopMatrix();
-	}
-
-	// -x side
-	for (int i = 0; i < 2; ++i)
-	{
-		modelStack.PushMatrix();
-		modelStack.Translate(-25.f + 20.f * (float)i, 0.f, -15.f);
-		modelStack.Scale(0.5f, 0.5f, 0.5f);
-		RenderSpotlightStand();
-
-		modelStack.PushMatrix();
-		modelStack.Translate(-0.6f, -0.05f, -0.04f);
-		modelStack.Rotate(180.f, 0.f, 1.f, 0.f);
-		RenderSpotlightJointPoint();
-
-		modelStack.PushMatrix();
-		modelStack.Translate(0.6f, 0.2f, 0.05f);
-		RenderSpotlightJoint();
-
-		modelStack.PushMatrix();
-		RenderSpotlightHead();
-
-		modelStack.PopMatrix();
-		modelStack.PopMatrix();
-		modelStack.PopMatrix();
-		modelStack.PopMatrix();
-	}
-}
-
-void SceneText::RenderSpotlightStand()
-{
+	// Car 1
 	modelStack.PushMatrix();
-	RenderMesh(meshList[GEO_SPOTLIGHT_STAND], true);
+	modelStack.Translate(Car1X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
+	modelStack.Rotate(180.f, 0.f, 0.f, 1.f);
+	modelStack.Scale(0.1f, 0.1f, 0.1f);
+	RenderMesh(meshList[GEO_SPOTLIGHT_HEAD], false);
 	modelStack.PopMatrix();
-}
 
-void SceneText::RenderSpotlightJointPoint()
-{
 	modelStack.PushMatrix();
-	modelStack.Scale(0.03f, 0.03f, 0.03f);
-	RenderMesh(meshList[GEO_LIGHTSPHERE], false);
+	modelStack.Translate(Car1X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
+	modelStack.Rotate(180.f, 0.f, 0.f, 1.f);
+	modelStack.Scale(0.1f, 0.1f, 0.1f);
+	RenderMesh(meshList[GEO_SPOTLIGHT_HEAD], false);
 	modelStack.PopMatrix();
-}
+	// ~Car1
 
-void SceneText::RenderSpotlightJoint()
-{
+	// Car 2
 	modelStack.PushMatrix();
-	RenderMesh(meshList[GEO_SPOTLIGHT_JOINT], true);
+	modelStack.Translate(Car2X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
+	modelStack.Rotate(180.f, 0.f, 0.f, 1.f);
+	modelStack.Scale(0.1f, 0.1f, 0.1f);
+	RenderMesh(meshList[GEO_SPOTLIGHT_HEAD], false);
 	modelStack.PopMatrix();
-}
 
-void SceneText::RenderSpotlightHead()
-{
 	modelStack.PushMatrix();
-	RenderMesh(meshList[GEO_SPOTLIGHT_HEAD], true);
+	modelStack.Translate(Car2X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
+	modelStack.Rotate(180.f, 0.f, 0.f, 1.f);
+	modelStack.Scale(0.1f, 0.1f, 0.1f);
+	RenderMesh(meshList[GEO_SPOTLIGHT_HEAD], false);
 	modelStack.PopMatrix();
+	// ~Car2
+
+	// Car 3
+	modelStack.PushMatrix();
+	modelStack.Translate(Car3X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
+	modelStack.Rotate(180.f, 0.f, 0.f, 1.f);
+	modelStack.Scale(0.1f, 0.1f, 0.1f);
+	RenderMesh(meshList[GEO_SPOTLIGHT_HEAD], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(Car3X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
+	modelStack.Rotate(180.f, 0.f, 0.f, 1.f);
+	modelStack.Scale(0.1f, 0.1f, 0.1f);
+	RenderMesh(meshList[GEO_SPOTLIGHT_HEAD], false);
+	modelStack.PopMatrix();
+	// ~Car3
+
+	// Car 4
+	modelStack.PushMatrix();
+	modelStack.Translate(Car4X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
+	modelStack.Rotate(180.f, 0.f, 0.f, 1.f);
+	modelStack.Scale(0.1f, 0.1f, 0.1f);
+	RenderMesh(meshList[GEO_SPOTLIGHT_HEAD], false);
+	modelStack.PopMatrix();
+
+	modelStack.PushMatrix();
+	modelStack.Translate(Car4X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
+	modelStack.Rotate(180.f, 0.f, 0.f, 1.f);
+	modelStack.Scale(0.1f, 0.1f, 0.1f);
+	RenderMesh(meshList[GEO_SPOTLIGHT_HEAD], false);
+	modelStack.PopMatrix();
+	// ~Car4
 }

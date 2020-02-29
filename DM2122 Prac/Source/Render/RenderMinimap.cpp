@@ -5,13 +5,12 @@
 void SceneText::RenderMinimap()
 {
 	// Sets the viewport for minimap
-	glViewport(0, 450, Window::getInstance()->getWidth() / 5, Window::getInstance()->getHeight() / 5);
+	glViewport(0, Window::getInstance()->getHeight() / 1.25, Window::getInstance()->getWidth() / 5, Window::getInstance()->getHeight() / 5);
 
 	viewStack_mini.LoadIdentity();
 	viewStack_mini.LookAt(minimapCamera.position.x, minimapCamera.position.y, minimapCamera.position.z, minimapCamera.target.x, minimapCamera.target.y, minimapCamera.target.z, minimapCamera.up.x, minimapCamera.up.y, minimapCamera.up.z);
 	modelStack_mini.LoadIdentity();
 
-	// Plan: change character to a arrow pointer
 	ObjectManager* Objects = ObjectManager::getInstance();
 	Objects->Update();
 
@@ -22,10 +21,32 @@ void SceneText::RenderMinimap()
 	mini->Transform('S', 10.f, 1.f, 10.f);
 	Objects->getLib().push_back(mini);
 
-	mini = Objects->AddObject("pointer", meshList[PLAYER_POINTER], false);
-	mini->Transform('T', 0.f, 0.1f, 0.f);
-	mini->Transform(90.f, -1.f, 0.f, 0.f);
+	mini = Objects->AddObject("RaceTrack", meshList[GEO_RACE_TRACK], false);
+	mini->Transform('T', 0.f, 0.f, 2.f);
+	mini->Transform('S', 0.1f, 0.1f, 0.1f);
 	Objects->getLib().push_back(mini);
+
+	mini = Objects->AddObject("Building", meshList[BUILDING], true);
+	mini->Transform('T', -0.2f, 0.f, -1.2f);
+	mini->Transform(90.f, 0.f, -1.f, 0.f);
+	mini->Transform('S', 0.1f, 0.1f, 0.05f);
+	Objects->getLib().push_back(mini);
+
+	mini = Objects->AddObject("Car1", meshList[FORD_GT], true);
+	mini->Transform('T', 1.5f, 0.f, -0.3f);
+	mini->Transform('S', 0.1f, 0.1f, 0.1f);
+	Objects->getLib().push_back(mini);
+
+	mini= Objects->AddObject("Car2", meshList[FENYR], true);
+	mini->Transform('T', 0.5f, 0.f, -0.3f);
+	mini->Transform('S', 0.1f, 0.1f, 0.1f);
+	Objects->getLib().push_back(mini);
+
+	mini= Objects->AddObject("Car3", meshList[LAMBORGHINI], true);
+	mini->Transform('T', -0.5f, 0.f, -0.3f);
+	mini->Transform('S', 0.1f, 0.1f, 0.1f);
+	Objects->getLib().push_back(mini);
+
 
 	for (unsigned int i = 0; i < Objects->getLib().size(); i++) {
 		modelStack_mini.PushMatrix();

@@ -28,11 +28,13 @@ Inventory* inventory = Inventory::GetInstance();
 
 UISTATE eUIState = DEFAULT_UI;
 
-SceneText::SceneText()
+SceneText::SceneText() : dFromCarCentre(2),  Car1X(30.f), Car2X(10.f), Car3X(-10.f) , Car4X(-30.f), CarZ(-20.f)
 {
 	gameTime = 0.0f;
 	bounceTime = 0.0f;
 	somethingHappened = false;
+
+	angle = 0.f;
 
 	for (int i = 0; i < NUM_GEOMETRY; ++i)
 	{
@@ -164,12 +166,38 @@ void SceneText::Update(double dt)
 	{
 		light[1].power = 0;
 		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
+
+		for (int i = 2; i < 10; ++i)
+		{
+			light[i].power = 1.f;
+		}
+		glUniform1f(m_parameters[U_CAR1_SPOTLIGHT1_POWER], light[2].power);
+		glUniform1f(m_parameters[U_CAR1_SPOTLIGHT2_POWER], light[3].power);
+		glUniform1f(m_parameters[U_CAR2_SPOTLIGHT1_POWER], light[4].power);
+		glUniform1f(m_parameters[U_CAR2_SPOTLIGHT2_POWER], light[5].power);
+		glUniform1f(m_parameters[U_CAR3_SPOTLIGHT1_POWER], light[6].power);
+		glUniform1f(m_parameters[U_CAR3_SPOTLIGHT2_POWER], light[7].power);
+		glUniform1f(m_parameters[U_CAR4_SPOTLIGHT1_POWER], light[8].power);
+		glUniform1f(m_parameters[U_CAR4_SPOTLIGHT2_POWER], light[9].power);
 	}
 	// Morning
 	else if (sun.getAngle() < 90)
 	{
 		light[1].power += sun.getIntensity();
 		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
+
+		for (int i = 2; i < 10; ++i)
+		{
+			light[i].power = 0.f;
+		}
+		glUniform1f(m_parameters[U_CAR1_SPOTLIGHT1_POWER], light[2].power);
+		glUniform1f(m_parameters[U_CAR1_SPOTLIGHT2_POWER], light[3].power);
+		glUniform1f(m_parameters[U_CAR2_SPOTLIGHT1_POWER], light[4].power);
+		glUniform1f(m_parameters[U_CAR2_SPOTLIGHT2_POWER], light[5].power);
+		glUniform1f(m_parameters[U_CAR3_SPOTLIGHT1_POWER], light[6].power);
+		glUniform1f(m_parameters[U_CAR3_SPOTLIGHT2_POWER], light[7].power);
+		glUniform1f(m_parameters[U_CAR4_SPOTLIGHT1_POWER], light[8].power);
+		glUniform1f(m_parameters[U_CAR4_SPOTLIGHT2_POWER], light[9].power);
 	}
 	// Afternoon
 	else if (sun.getAngle() > 90)
@@ -177,6 +205,24 @@ void SceneText::Update(double dt)
 		light[1].power -= sun.getIntensity();
 		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
 	}
+
+	angle += 100 * float(dt);
+
+	// Car1 spotlight
+	light[2].position.Set(Car1X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
+	light[3].position.Set(Car1X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
+
+	// Car2 spotlight
+	light[4].position.Set(Car2X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
+	light[5].position.Set(Car2X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
+
+	// Car3 spotlight
+	light[6].position.Set(Car3X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
+	light[7].position.Set(Car3X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
+
+	// Car4 spotlight
+	light[8].position.Set(Car4X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
+	light[9].position.Set(Car4X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
 
 	if (eUIState == NPC_UI)
 	{
@@ -241,7 +287,7 @@ void SceneText::Render()
 	modelStack.LoadIdentity();
 
 	// Pass light info to shader
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < 10; ++i)
 	{
 		// passing the light direction if it is a direction light	
 		if (light[i].type == Light::LIGHT_DIRECTIONAL)
@@ -280,18 +326,11 @@ void SceneText::Render()
 	temp = Objects->AddObject("RaceTrack", meshList[GEO_RACE_TRACK], true);
 	Objects->getLib().push_back(temp);
 
-
 	RenderNPC();
 
 	RenderSpotlight();
 
 	RenderCar();
-
-	//modelStack.PushMatrix();
-	//modelStack.Translate(5.25f, 0.5f, -15.f);
-	//modelStack.Scale(0.1f, 0.1f, 0.1f);
-	//RenderMesh(meshList[GEO_LIGHTSPHERE], false);
-	//modelStack.PopMatrix();
 
 	RenderBuilding();
 
