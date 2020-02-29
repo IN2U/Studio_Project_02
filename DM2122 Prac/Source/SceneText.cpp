@@ -34,7 +34,8 @@ SceneText::SceneText() : dFromCarCentre(2),  Car1X(30.f), Car2X(10.f), Car3X(-10
 	bounceTime = 0.0f;
 	somethingHappened = false;
 
-	angle = 0.f;
+	sunAngle = 0.f;
+	spotlightAngle = 0.f;
 
 	for (int i = 0; i < NUM_GEOMETRY; ++i)
 	{
@@ -119,75 +120,6 @@ void SceneText::Update(double dt)
 		renderHitBox = true;
 	}
 
-	// Updates sun pos
-	sun.revolve(dt);
-
-	// Updates sunlight pos
-	light[1].position.Set(sun.getX(), sun.getY(), sun.getZ());
-
-	// Night
-	if (sun.getAngle() > 180)
-	{
-		light[1].power = 0;
-		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
-
-		for (int i = 2; i < 10; ++i)
-		{
-			light[i].power = 1.f;
-		}
-		glUniform1f(m_parameters[U_CAR1_SPOTLIGHT1_POWER], light[2].power);
-		glUniform1f(m_parameters[U_CAR1_SPOTLIGHT2_POWER], light[3].power);
-		glUniform1f(m_parameters[U_CAR2_SPOTLIGHT1_POWER], light[4].power);
-		glUniform1f(m_parameters[U_CAR2_SPOTLIGHT2_POWER], light[5].power);
-		glUniform1f(m_parameters[U_CAR3_SPOTLIGHT1_POWER], light[6].power);
-		glUniform1f(m_parameters[U_CAR3_SPOTLIGHT2_POWER], light[7].power);
-		glUniform1f(m_parameters[U_CAR4_SPOTLIGHT1_POWER], light[8].power);
-		glUniform1f(m_parameters[U_CAR4_SPOTLIGHT2_POWER], light[9].power);
-	}
-	// Morning
-	else if (sun.getAngle() < 90)
-	{
-		light[1].power += sun.getIntensity();
-		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
-
-		for (int i = 2; i < 10; ++i)
-		{
-			light[i].power = 0.f;
-		}
-		glUniform1f(m_parameters[U_CAR1_SPOTLIGHT1_POWER], light[2].power);
-		glUniform1f(m_parameters[U_CAR1_SPOTLIGHT2_POWER], light[3].power);
-		glUniform1f(m_parameters[U_CAR2_SPOTLIGHT1_POWER], light[4].power);
-		glUniform1f(m_parameters[U_CAR2_SPOTLIGHT2_POWER], light[5].power);
-		glUniform1f(m_parameters[U_CAR3_SPOTLIGHT1_POWER], light[6].power);
-		glUniform1f(m_parameters[U_CAR3_SPOTLIGHT2_POWER], light[7].power);
-		glUniform1f(m_parameters[U_CAR4_SPOTLIGHT1_POWER], light[8].power);
-		glUniform1f(m_parameters[U_CAR4_SPOTLIGHT2_POWER], light[9].power);
-	}
-	// Afternoon
-	else if (sun.getAngle() > 90)
-	{
-		light[1].power -= sun.getIntensity();
-		glUniform1f(m_parameters[U_LIGHT_SUN_POWER], light[1].power);
-	}
-
-	angle += 100 * float(dt);
-
-	// Car1 spotlight
-	light[2].position.Set(Car1X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
-	light[3].position.Set(Car1X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
-
-	// Car2 spotlight
-	light[4].position.Set(Car2X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
-	light[5].position.Set(Car2X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
-
-	// Car3 spotlight
-	light[6].position.Set(Car3X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
-	light[7].position.Set(Car3X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
-
-	// Car4 spotlight
-	light[8].position.Set(Car4X + dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ + dFromCarCentre * float(sin(angle * 0.01745329251)));
-	light[9].position.Set(Car4X - dFromCarCentre * float(cos(angle * 0.01745329251)), 10, CarZ - dFromCarCentre * float(sin(angle * 0.01745329251)));
-
 	if (eUIState == NPC_UI)
 	{
 		npc[0].UpdateNPC();
@@ -226,6 +158,9 @@ void SceneText::Update(double dt)
 		//inventory->PrintInventory();
 		eUIState = INVENTORY_UI;
 	}
+
+	RevolveSun(dt);
+	UpdateSpotlights(dt);
 
 	currency->AddCurrency(currency->ReturnRegeneration() * dt);
 	currency->SortAndUpdateCurrency();
@@ -282,8 +217,13 @@ void SceneText::Render()
 	Objects->Update();
 	Object* temp;
 	
+	//temp = Objects->AddObject("Sun", meshList[GEO_SUN], false);
+	//temp->Transform('T', sun.getX(), sun.getY(), sun.getZ());
+	//temp->Transform('S', 0.5f, 0.5f, 0.5f);
+	//Objects->getLib().push_back(temp);
+
 	temp = Objects->AddObject("Sun", meshList[GEO_SUN], false);
-	temp->Transform('T', sun.getX(), sun.getY(), sun.getZ());
+	temp->Transform('T', light[1].position.x, light[1].position.y, light[1].position.z);
 	temp->Transform('S', 0.5f, 0.5f, 0.5f);
 	Objects->getLib().push_back(temp);
 

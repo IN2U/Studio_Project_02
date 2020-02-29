@@ -132,7 +132,6 @@ void Application::Run()
 				scene->SetNextScene(STATE::MENU_SCENE);
 			}
 		}
-
 		// When esc is pressed while in main game scene, render menu scene without exiting game scene
 		if (scene->getCurrentSceneID() == STATE::GAME_SCENE && scene->getNextSceneID() == STATE::MENU_SCENE)
 		{

@@ -5,7 +5,6 @@
 #include "Camera2.h"
 #include "Minimap.h"
 #include "Light.h"
-#include "Sun.h"
 
 #include "Vending.h"
 #include "NPC.h"
@@ -138,13 +137,15 @@ private:
 
 	void RenderBuilding();
 
+	void RevolveSun(double);
+	void UpdateSpotlights(double);
+
 	void UpdateUIButtons();
 
 	void CalculateFrameRate();
 
-	Sun sun;
-
-	float angle;
+	float sunAngle;
+	float spotlightAngle;
 
 	void RenderMiniMesh(Mesh* mesh);
 	void RenderText(Mesh* mesh, std::string text, Color color, float size, float x, float y, float z);
