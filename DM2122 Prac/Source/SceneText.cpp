@@ -222,6 +222,11 @@ void SceneText::Update(double dt)
 
 	SceneManager* scene = SceneManager::getInstance();
 
+	if (Application::IsKeyPressed('M'))
+	{
+		scene->SetNextScene(STATE::TIC_TAC_TOE_SCENE);
+	}
+
 	// Open options
 	if (Application::IsKeyPressed(VK_ESCAPE))
 	{

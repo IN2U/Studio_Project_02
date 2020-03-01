@@ -79,8 +79,6 @@ void Application::Init()
 	//Create a window and create its OpenGL context
 	m_window = glfwCreateWindow(Window::getInstance()->getWidth(), Window::getInstance()->getHeight(), "Motor Show 2077", NULL, NULL);
 
-	//glfwSetCursorPos(m_window, 280, 390);
-
 	//If the window couldn't be created
 	if (!m_window)
 	{

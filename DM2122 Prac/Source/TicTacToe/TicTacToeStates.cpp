@@ -82,10 +82,7 @@ void TicTacToe::endState()
 		if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
 			&& mouse->getMYPos() < button->getButton1MaxPosY() && mouse->getMYPos() > button->getButton1MinPosY())
 		{
-			//if (scene->getCurrentSceneID() == 3)
-			//	scene->SetNextScene(4);
-			//else
-			//	scene->SetNextScene(3);
+
 		}
 		// Exit game
 		else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
