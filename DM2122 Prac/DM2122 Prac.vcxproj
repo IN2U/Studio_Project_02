@@ -195,6 +195,7 @@
     <ClCompile Include="Source\Render\RenderNPC.cpp" />
     <ClCompile Include="Source\Render\RenderSpotlight.cpp" />
     <ClCompile Include="Source\Render\RenderSun.cpp" />
+    <ClCompile Include="Source\Render\RenderTurntable.cpp" />
     <ClCompile Include="Source\Render\RenderUI.cpp" />
     <ClCompile Include="Source\Texture_Mapping\LoadTGA.cpp" />
     <ClCompile Include="Source\main.cpp" />

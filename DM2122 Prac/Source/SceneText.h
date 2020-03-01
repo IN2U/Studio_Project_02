@@ -144,7 +144,7 @@ private:
 
 	Minimap minimapCamera;
 
-	unsigned int anglex;
+	float anglex;
 
 	float anglea1;
 	float angleb1;
@@ -185,6 +185,8 @@ private:
 	void UpdateUIButtons();
 
 	void CalculateFrameRate();
+
+	void RenderTurntable();
 
 	void RenderHitbox(ObjectManager*& Objects);
 

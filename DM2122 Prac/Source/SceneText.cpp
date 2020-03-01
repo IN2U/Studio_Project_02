@@ -46,23 +46,23 @@ NULL, NULL, NULL, NULL, NULL, NULL }
 	sunAngle = 0.f;
 	spotlightAngle = 0.f;
 
-	anglex = 0;
+	anglex = 0.f;
 
-	anglea1 = 0;
-	angleb1 = 0;
-	anglec1 = 0;
+	anglea1 = 0.f;
+	angleb1 = 0.f;
+	anglec1 = 0.f;
 
-	anglea2 = 0;
-	angleb2 = 0;
-	anglec2 = 0;
+	anglea2 = 0.f;
+	angleb2 = 0.f;
+	anglec2 = 0.f;
 
-	anglea3 = 0;
-	angleb3 = 0;
-	anglec3 = 0;
+	anglea3 = 0.f;
+	angleb3 = 0.f;
+	anglec3 = 0.f;
 
-	anglea4 = 0;
-	angleb4 = 0;
-	anglec4 = 0;
+	anglea4 = 0.f;
+	angleb4 = 0.f;
+	anglec4 = 0.f;
 
 	carrotate = true;
 	clickL1 = false;
@@ -127,23 +127,7 @@ void SceneText::Update(double dt)
 		return;
 	}
 
-	if (Application::IsKeyPressed(0x31))
-	{
-		glDisable(GL_CULL_FACE);
-	}
-	else if (Application::IsKeyPressed(0x32))
-	{
-		glEnable(GL_CULL_FACE);
-	}
-	else if (Application::IsKeyPressed(0x33))
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}
-	else if (Application::IsKeyPressed(0x34))
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	}
-	else if (Application::IsKeyPressed(0x35))
+	if (Application::IsKeyPressed(0x35))
 	{
 		renderHitBox = true;
 	}
@@ -445,6 +429,7 @@ void SceneText::Render()
 	RenderSpotlight();
 
 	RenderCar();
+	RenderTurntable();
 
 	RenderBuilding();
 

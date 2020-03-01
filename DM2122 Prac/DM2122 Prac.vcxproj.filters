@@ -58,6 +58,7 @@
     <ClCompile Include="Source\raceInitShaderUniforms.cpp" />
     <ClCompile Include="Source\raceRenderSkyboxAndTrack.cpp" />
     <ClCompile Include="Source\raceInitLightSettings.cpp" />
+    <ClCompile Include="Source\Render\RenderTurntable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />

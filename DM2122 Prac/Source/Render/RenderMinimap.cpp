@@ -12,8 +12,6 @@ void SceneText::RenderMinimap()
 	modelStack_mini.LoadIdentity();
 
 	ObjectManager* Objects = ObjectManager::getInstance();
-	Objects->Update();
-
 	Object* mini;
 
 	mini = Objects->AddObject("minimap_border", meshList[MINIMAP_BORDER], false);
@@ -27,23 +25,23 @@ void SceneText::RenderMinimap()
 	Objects->getLib().push_back(mini);
 
 	mini = Objects->AddObject("Building", meshList[BUILDING], true);
-	mini->Transform('T', -0.2f, 0.f, -1.2f);
+	mini->Transform('T', -2.5f, 0.f, -22.5f);
 	mini->Transform(90.f, 0.f, -1.f, 0.f);
 	mini->Transform('S', 0.1f, 0.1f, 0.05f);
 	Objects->getLib().push_back(mini);
 
 	mini = Objects->AddObject("Car1", meshList[FORD_GT], true);
-	mini->Transform('T', 1.5f, 0.f, -0.3f);
+	mini->Transform('T', 10.5f, 0.f, 0.f);
 	mini->Transform('S', 0.1f, 0.1f, 0.1f);
 	Objects->getLib().push_back(mini);
 
 	mini= Objects->AddObject("Car2", meshList[FENYR], true);
-	mini->Transform('T', 0.5f, 0.f, -0.3f);
+	mini->Transform('T', 0.f, 0.f, 0.f);
 	mini->Transform('S', 0.1f, 0.1f, 0.1f);
 	Objects->getLib().push_back(mini);
 
 	mini= Objects->AddObject("Car3", meshList[LAMBORGHINI], true);
-	mini->Transform('T', -0.5f, 0.f, -0.3f);
+	mini->Transform('T', -10.5f, 0.f, 0.f);
 	mini->Transform('S', 0.1f, 0.1f, 0.1f);
 	Objects->getLib().push_back(mini);
 
