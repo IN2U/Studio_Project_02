@@ -127,9 +127,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
+    <ClInclude Include="Source\Collision.h" />
     <ClInclude Include="Source\Helper\ButtonPos.h" />
     <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Source\Camera2.h" />
+    <ClInclude Include="Source\Hitbox.h" />
     <ClInclude Include="Source\Item.h" />
     <ClInclude Include="Source\Currency.h" />
     <ClInclude Include="Source\Helper\Cursor.h" />
@@ -138,6 +140,9 @@
     <ClInclude Include="Source\ItemManager.h" />
     <ClInclude Include="Source\Light.h" />
     <ClInclude Include="Source\Mesh_Generation\LoadOBJ.h" />
+    <ClInclude Include="Source\race.h" />
+    <ClInclude Include="Source\raceCar.h" />
+    <ClInclude Include="Source\raceInitLightSettings.h" />
     <ClInclude Include="Source\Texture_Mapping\LoadTGA.h" />
     <ClInclude Include="Source\Material.h" />
     <ClInclude Include="Source\Mesh_Generation\Mesh.h" />
@@ -161,6 +166,14 @@
     <ClInclude Include="Source\Helper\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Collision.cpp" />
+    <ClCompile Include="Source\Hitbox.cpp" />
+    <ClCompile Include="Source\race.cpp" />
+    <ClCompile Include="Source\raceCar.cpp" />
+    <ClCompile Include="Source\raceCarControls.cpp" />
+    <ClCompile Include="Source\raceInitMeshList.cpp" />
+    <ClCompile Include="Source\raceInitShaderUniforms.cpp" />
+    <ClCompile Include="Source\raceRenderSkyboxAndTrack.cpp" />
     <ClCompile Include="Source\Render\RenderPhone.cpp" />
     <ClCompile Include="Source\Application.cpp" />
     <ClCompile Include="Source\Helper\ButtonPos.cpp" />

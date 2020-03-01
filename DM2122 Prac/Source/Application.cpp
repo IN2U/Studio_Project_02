@@ -13,6 +13,7 @@
 #include "SceneMenu.h"
 #include "SceneText.h"
 #include "TicTacToe/TicTacToe.h"
+#include "race.h"
 
 #include "Helper/Cursor.h"
 #include "Helper/ButtonPos.h"
@@ -116,6 +117,7 @@ void Application::Run()
 	scene->AddScene(new SceneMenu); // 0
 	scene->AddScene(new SceneText); // 1
 	scene->AddScene(new TicTacToe); // 2
+	scene->AddScene(new SceneRace);
 
 	scene->GetCurrScene()->Init();
 

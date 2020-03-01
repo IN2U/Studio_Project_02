@@ -9,6 +9,10 @@
 #include "Vending.h"
 #include "NPC.h"
 
+#include "ObjectManager.h"
+
+#include "Collision.h"
+
 enum UISTATE
 {
 	DEFAULT_UI,
@@ -124,6 +128,8 @@ private:
 	const float CarZ;
 
 	Camera2 camera;
+	ObjectManager* Objects;
+	Collisions Collide;
 
 	Minimap minimapCamera;
 	
@@ -150,6 +156,8 @@ private:
 	void UpdateUIButtons();
 
 	void CalculateFrameRate();
+
+	void RenderHitbox(ObjectManager*& Objects);
 
 	float sunAngle;
 	float spotlightAngle;

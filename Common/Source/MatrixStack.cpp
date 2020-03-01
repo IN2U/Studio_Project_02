@@ -133,6 +133,11 @@ void MS::Rotate(float degrees, float axisX, float axisY, float axisZ) {
 	ms.top() = ms.top() * mat;
 }
 
+void MS::Rotate(Mtx44 rotate) {
+	Mtx44 mat = rotate;
+	ms.top() = ms.top() * mat;
+}
+
 /******************************************************************************/
 /*!
 \brief

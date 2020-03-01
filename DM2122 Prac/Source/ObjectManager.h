@@ -18,7 +18,7 @@ public:
 
 	~ObjectManager();
 	static ObjectManager* getInstance();
-	Object* GetObject(std::string ID);
+	Object* getObject(std::string ID);
 	std::vector< Object* > &getLib();
 	Object* AddObject(std::string ID, Mesh* object, bool light);
 	Object* AddObject(std::string ID, Mesh* object, bool light, std::string parentID);

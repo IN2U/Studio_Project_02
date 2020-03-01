@@ -32,6 +32,7 @@ public:
 	void LoadMatrix(const Mtx44 &matrix);
 	void MultMatrix(const Mtx44 &matrix);
 	void Rotate(float degrees, float axisX, float axisY, float axisZ);
+	void Rotate(Mtx44 rotate);
 	void Scale(float scaleX, float scaleY, float scaleZ);
 	void Translate(float translateX, float translateY, float translateZ);
 	void Frustum(double left, double right, double	bottom, double top, double near, double far);

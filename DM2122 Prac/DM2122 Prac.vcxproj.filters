@@ -49,6 +49,14 @@
     <ClCompile Include="Source\TicTacToe\TicTacToeMoves.cpp" />
     <ClCompile Include="Source\TicTacToe\TicTacToeStates.cpp" />
     <ClCompile Include="Source\Render\RenderPhone.cpp" />
+    <ClCompile Include="Source\Collision.cpp" />
+    <ClCompile Include="Source\Hitbox.cpp" />
+    <ClCompile Include="Source\race.cpp" />
+    <ClCompile Include="Source\raceCar.cpp" />
+    <ClCompile Include="Source\raceCarControls.cpp" />
+    <ClCompile Include="Source\raceInitMeshList.cpp" />
+    <ClCompile Include="Source\raceInitShaderUniforms.cpp" />
+    <ClCompile Include="Source\raceRenderSkyboxAndTrack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -84,5 +92,10 @@
     <ClInclude Include="Source\Mesh_Generation\Mesh.h" />
     <ClInclude Include="Source\Mesh_Generation\LoadOBJ.h" />
     <ClInclude Include="Source\TicTacToe\TicTacToe.h" />
+    <ClInclude Include="Source\Collision.h" />
+    <ClInclude Include="Source\Hitbox.h" />
+    <ClInclude Include="Source\race.h" />
+    <ClInclude Include="Source\raceCar.h" />
+    <ClInclude Include="Source\raceInitLightSettings.h" />
   </ItemGroup>
 </Project>

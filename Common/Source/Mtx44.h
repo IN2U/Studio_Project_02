@@ -35,6 +35,7 @@ public:
 	Vector3 operator*(const Vector3& rhs) const;
 	Mtx44 operator*(const Mtx44& rhs) const;
 	Mtx44 operator+(const Mtx44& rhs) const;
+	Mtx44 operator-(const Mtx44& rhs) const;
 	Mtx44& operator=(const Mtx44& rhs);
 	Mtx44 operator*(float scalar) const;
 	void SetToRotation(float degrees, float axisX, float axisY, float axisZ) throw( DivideByZero );

@@ -249,6 +249,41 @@ Mtx44 Mtx44::operator+(const Mtx44& rhs) const {
 /******************************************************************************/
 /*!
 \brief
+operator+ overload for matrix-matrix subtraction
+\param rhs
+	Matrix to subtract with
+\return
+	Resulting matrix
+*/
+/******************************************************************************/
+Mtx44 Mtx44::operator-(const Mtx44& rhs) const {
+	return Mtx44(
+		a[0] - rhs.a[0],
+		a[1] - rhs.a[1],
+		a[2] - rhs.a[2],
+		a[3] - rhs.a[3],
+		a[4] - rhs.a[4],
+		a[5] - rhs.a[5],
+		a[6] - rhs.a[6],
+		a[7] - rhs.a[7],
+		a[8] - rhs.a[8],
+		a[9] - rhs.a[9],
+		a[10] - rhs.a[10],
+		a[11] - rhs.a[11],
+		a[12] - rhs.a[12],
+		a[13] - rhs.a[13],
+		a[14] - rhs.a[14],
+		a[15] - rhs.a[15]
+	);
+}
+
+/******************************************************************************/
+/*!
+\brief
+
+/******************************************************************************/
+/*!
+\brief
 operator= overload for assignment
 
 \param rhs

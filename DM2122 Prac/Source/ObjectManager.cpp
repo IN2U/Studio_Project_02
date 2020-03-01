@@ -27,7 +27,7 @@ std::vector< Object* >& ObjectManager::getLib()
 	return objectLib;
 }
 
-Object* ObjectManager::GetObject(std::string ID) 
+Object* ObjectManager::getObject(std::string ID) 
 {
 	for (unsigned int i = 0; i < objectLib.size(); i++)
 	{
@@ -47,7 +47,7 @@ Object* ObjectManager::AddObject(std::string ID, Mesh* object, bool light)
 
 Object* ObjectManager::AddObject(std::string ID, Mesh* object, bool light, std::string parentID) 
 {
-	Object* parent = this->GetObject(parentID);
+	Object* parent = this->getObject(parentID);
 	Object* temp = new Object(ID, object, light, parent);
 	return temp;
 }
