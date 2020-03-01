@@ -5,7 +5,7 @@
 void SceneText::RenderMinimap()
 {
 	// Sets the viewport for minimap
-	glViewport(0, Window::getInstance()->getHeight() / 1.25, Window::getInstance()->getWidth() / 5, Window::getInstance()->getHeight() / 5);
+	glViewport(0, GLint(Window::getInstance()->getHeight() / 1.25), Window::getInstance()->getWidth() / 5, Window::getInstance()->getHeight() / 5);
 
 	viewStack_mini.LoadIdentity();
 	viewStack_mini.LookAt(minimapCamera.position.x, minimapCamera.position.y, minimapCamera.position.z, minimapCamera.target.x, minimapCamera.target.y, minimapCamera.target.z, minimapCamera.up.x, minimapCamera.up.y, minimapCamera.up.z);

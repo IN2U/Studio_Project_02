@@ -28,7 +28,13 @@ Inventory* inventory = Inventory::GetInstance();
 
 UISTATE eUIState = DEFAULT_UI;
 
-SceneText::SceneText() : dFromCarCentre(2),  Car1X(30.f), Car2X(10.f), Car3X(-10.f) , Car4X(-30.f), CarZ(-20.f)
+SceneText::SceneText() : dFromCarCentre(2),  Car1X(30.f), Car2X(10.f), Car3X(-10.f) , Car4X(-30.f), CarZ(-20.f),
+meshList{ 
+NULL,NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 
+NULL, NULL, NULL, NULL, NULL, NULL }
 {
 	gameTime = 0.0f;
 	bounceTime = 0.0f;
@@ -36,11 +42,6 @@ SceneText::SceneText() : dFromCarCentre(2),  Car1X(30.f), Car2X(10.f), Car3X(-10
 
 	sunAngle = 0.f;
 	spotlightAngle = 0.f;
-
-	for (int i = 0; i < NUM_GEOMETRY; ++i)
-	{
-		meshList[i] = NULL;
-	}
 }
 
 SceneText::~SceneText()

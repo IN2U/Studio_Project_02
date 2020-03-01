@@ -21,8 +21,6 @@
     <ClCompile Include="Source\SceneMenu.cpp" />
     <ClCompile Include="Source\SceneText.cpp" />
     <ClCompile Include="Source\shader.cpp" />
-    <ClCompile Include="Source\TicTacToe.cpp" />
-    <ClCompile Include="Source\TicTacToeMoves.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
     <ClCompile Include="Source\Vending.cpp" />
     <ClCompile Include="Source\Helper\Window.cpp" />
@@ -32,7 +30,6 @@
     <ClCompile Include="Source\VendingUtility.cpp" />
     <ClCompile Include="Source\NPCUtility.cpp" />
     <ClCompile Include="Source\Item.cpp" />
-    <ClCompile Include="Source\TicTacToeStates.cpp" />
     <ClCompile Include="Source\ItemManager.cpp" />
     <ClCompile Include="Source\Texture_Mapping\MeshList.cpp" />
     <ClCompile Include="Source\Texture_Mapping\LoadTGA.cpp" />
@@ -49,6 +46,9 @@
     <ClCompile Include="Source\Render\RenderSun.cpp" />
     <ClCompile Include="Source\UpdateLights.cpp" />
     <ClCompile Include="Source\Render\RenderFloor.cpp" />
+    <ClCompile Include="Source\TicTacToe\TicTacToe.cpp" />
+    <ClCompile Include="Source\TicTacToe\TicTacToeMoves.cpp" />
+    <ClCompile Include="Source\TicTacToe\TicTacToeStates.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -67,7 +67,6 @@
     <ClInclude Include="Source\SceneMenu.h" />
     <ClInclude Include="Source\SceneText.h" />
     <ClInclude Include="Source\shader.hpp" />
-    <ClInclude Include="Source\TicTacToe.h" />
     <ClInclude Include="Source\UNIFORM_TYPE.h" />
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vending.h" />
@@ -84,5 +83,6 @@
     <ClInclude Include="Source\Mesh_Generation\MeshBuilder.h" />
     <ClInclude Include="Source\Mesh_Generation\Mesh.h" />
     <ClInclude Include="Source\Mesh_Generation\LoadOBJ.h" />
+    <ClInclude Include="Source\TicTacToe\TicTacToe.h" />
   </ItemGroup>
 </Project>

@@ -23,8 +23,3 @@ void Minimap::Update(double dt)
 {
 
 }
-
-void Minimap::Reset()
-{
-
-}

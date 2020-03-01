@@ -12,7 +12,7 @@
 #include "SceneManager.h"
 #include "SceneMenu.h"
 #include "SceneText.h"
-#include "TicTacToe.h"
+#include "TicTacToe/TicTacToe.h"
 
 #include "Helper/Cursor.h"
 #include "Helper/ButtonPos.h"

@@ -1,10 +1,10 @@
 #include "TicTacToe.h"
 #include "GL\glew.h"
-#include "shader.hpp"
-#include "Application.h"
-#include "SceneManager.h"
+#include "../shader.hpp"
+#include "../Application.h"
+#include "../SceneManager.h"
 
-#include "Global_Constants/TEXT_BUTTON.h"
+#include "../Global_Constants/TEXT_BUTTON.h"
 
 TicTacToe::TicTacToe() : INVALID_VAL(-1), NO_VAL(0), PLAYER_VAL(1), CPU_VAL(2),
 MARK_COLOR(0.f), MARK_SIZE(8.f), MARK_X(1.4f), MARK_Y(5.75f),

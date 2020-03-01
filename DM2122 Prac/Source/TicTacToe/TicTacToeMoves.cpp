@@ -1,8 +1,8 @@
 #include "TicTacToe.h"
-#include "Application.h"
+#include "../Application.h"
 
-#include "Helper/Cursor.h"
-#include "Helper/Window.h"
+#include "../Helper/Cursor.h"
+#include "../Helper/Window.h"
 
 void TicTacToe::Human_Move()
 {

@@ -1,6 +1,6 @@
 #include "../SceneText.h"
 #include "../SceneMenu.h"
-#include "../TicTacToe.h"
+#include "../TicTacToe/TicTacToe.h"
 #include "../Mesh_Generation/MeshBuilder.h"
 #include "../../../glew/include/GL/glew.h"
 #include "LoadTGA.h"

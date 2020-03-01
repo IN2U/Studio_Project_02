@@ -25,22 +25,22 @@ Mesh* MeshBuilder::GenerateAxes(const std::string &meshName, float lengthX, floa
 	// 3 lines using 6 vertices
 	vertex_buffer_data.reserve(6);
 
-	v.pos.Set(0 - lengthX * 0.5, 0, 0);
+	v.pos.Set(0 - lengthX * (float)0.5, 0, 0);
 	v.color.Set(1, 0, 0);
 	vertex_buffer_data.push_back(v);
-	v.pos.Set(lengthX * 0.5, 0, 0);
+	v.pos.Set(lengthX * (float)0.5, 0, 0);
 	v.color.Set(1, 0, 0);
 	vertex_buffer_data.push_back(v);
-	v.pos.Set(0, 0 - lengthX * 0.5, 0);
+	v.pos.Set(0, 0 - lengthX * (float)0.5, 0);
 	v.color.Set(0, 1, 0);
 	vertex_buffer_data.push_back(v);
-	v.pos.Set(0, lengthX * 0.5, 0);
+	v.pos.Set(0, lengthX * (float)0.5, 0);
 	v.color.Set(0, 1, 0);
 	vertex_buffer_data.push_back(v);
-	v.pos.Set(0, 0, 0 - lengthX * 0.5);
+	v.pos.Set(0, 0, 0 - lengthX * (float)0.5);
 	v.color.Set(0, 0, 1);
 	vertex_buffer_data.push_back(v);
-	v.pos.Set(0, 0, lengthX * 0.5);
+	v.pos.Set(0, 0, lengthX * (float)0.5);
 	v.color.Set(0, 0, 1);
 	vertex_buffer_data.push_back(v);
 
@@ -88,8 +88,8 @@ Mesh* MeshBuilder::GenerateQuad(const std::string& meshName, Color color, float 
 	v.color = color;
 	v.normal.Set(0, 0, 1.0f);
 
-	float midvalueX = lengthX * 0.5;
-	float midvalueY = lengthY * 0.5;
+	float midvalueX = lengthX * (float)0.5;
+	float midvalueY = lengthY * (float)0.5;
 	v.pos.Set(-midvalueX, midvalueY, 0);
 	v.texCoord.Set(0, 1.f);
 	vertex_buffer_data.push_back(v);
@@ -148,9 +148,9 @@ Mesh* MeshBuilder::GenerateCuboid(const std::string& meshName, Color color, floa
 	std::vector<Vertex> vertex_buffer_data;
 	std::vector<GLuint> index_buffer_data;
 
-	float midvalueX = lengthX * 0.5;
-	float midvalueY = lengthY * 0.5;
-	float midvalueZ = lengthZ * 0.5;
+	float midvalueX = lengthX * (float)0.5;
+	float midvalueY = lengthY * (float)0.5;
+	float midvalueZ = lengthZ * (float)0.5;
 	v.color = color;
 
 	//Top

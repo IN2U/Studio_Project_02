@@ -1,11 +1,11 @@
 #include "TicTacToe.h"
-#include "Application.h"
-#include "SceneManager.h"
+#include "../Application.h"
+#include "../SceneManager.h"
 
-#include "Helper/ButtonPos.h"
-#include "Helper/Cursor.h"
+#include "../Helper/ButtonPos.h"
+#include "../Helper/Cursor.h"
 
-#include "Global_Constants/GAME_STATES.h"
+#include "../Global_Constants/GAME_STATES.h"
 
 void TicTacToe::startState()
 {
