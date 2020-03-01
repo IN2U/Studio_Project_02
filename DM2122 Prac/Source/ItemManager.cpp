@@ -85,7 +85,7 @@ std::string ItemManager::Name()
 	return head->ReturnName();
 }
 
-float ItemManager::Price()
+int ItemManager::Price()
 {
 	return head->ReturnPrice();
 }

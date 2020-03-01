@@ -57,7 +57,7 @@ public:
 	void PrintAvailability(int choice);
 
 	std::string ReturnItemName(int ID);
-	float ReturnItemPrice(int ID);
+	int ReturnItemPrice(int ID);
 
 	bool ItemAvailable(int ID);
 

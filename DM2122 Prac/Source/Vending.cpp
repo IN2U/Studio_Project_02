@@ -50,7 +50,7 @@ std::string Vending::ReturnItemName(int ID)
 
 }
 
-float Vending::ReturnItemPrice(int ID)
+int Vending::ReturnItemPrice(int ID)
 {
 	if (ID > int(machineItems.size()))
 		return 0.f;

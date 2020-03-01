@@ -28,7 +28,7 @@ private:
 	ItemEffects e_ItemEffects;
 public:
 	Item();
-	Item(int ID, string name, float price);
+	Item(int ID, string name, int price);
 	~Item();
 
 	Item* ReturnNext();

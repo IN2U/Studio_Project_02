@@ -86,7 +86,8 @@ void Vending::UpdateVending()
 {
 	somethingHappened = false;
 
-	if (buttonTrigger >= 2) {
+	if (buttonTrigger >= 2) 
+	{
 		goingToBuyItem = true;
 	}
 
@@ -95,28 +96,32 @@ void Vending::UpdateVending()
 		CheckInput();
 	}
 
-	else if (goingToBuyItem == true && CheckIfValidInput(std::stoi((itemChosen)) == true))
+	else if (goingToBuyItem)
 	{
 		itemBought = false;
-		if (Application::IsKeyPressed('Y'))
+		if (CheckIfValidInput(std::stoi((itemChosen)) == true))
 		{
-			this->BuyItem(std::stoi(itemChosen));
-			inventory2->AddItemIntoInventory(this->GetItem(std::stoi(itemChosen)));
-			currency2->DeductCurrency(this->ReturnItemPrice(std::stoi(itemChosen)));
-			itemIssued = this->ReturnItemName(std::stoi(itemChosen));
-			itemChosen = "";
-			buttonTrigger = 0;
-			itemBought = true;
-			goingToBuyItem = false;
-			somethingHappened = true;
-		}
-		else if (Application::IsKeyPressed('N'))
-		{
-			itemChosen = "";
-			itemIssued = "";
-			buttonTrigger = 0;
-			goingToBuyItem = false;
-			somethingHappened = true;
+			if (Application::IsKeyPressed('Y'))
+			{
+				this->BuyItem(std::stoi(itemChosen));
+				inventory2->AddItemIntoInventory(this->GetItem(std::stoi(itemChosen)));
+				currency2->DeductCurrency(this->ReturnItemPrice(std::stoi(itemChosen)));
+				itemIssued = this->ReturnItemName(std::stoi(itemChosen));
+				itemChosen = "";
+				buttonTrigger = 0;
+				itemBought = true;
+				goingToBuyItem = false;
+				somethingHappened = true;
+			}
+			else if (Application::IsKeyPressed('N'))
+			{
+				itemChosen = "";
+				itemIssued = "";
+				buttonTrigger = 0;
+				goingToBuyItem = false;
+				somethingHappened = true;
+			}
+		
 		}
 	}
 }

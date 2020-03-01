@@ -9,7 +9,7 @@ Item::Item()
 	itemEffect = "NIL";
 	itemEffectID = 0;
 }
-Item::Item(int data, string name, float price)
+Item::Item(int data, string name, int price)
 {
 	itemID = data;
 	this->name = name;

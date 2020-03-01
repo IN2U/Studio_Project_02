@@ -22,7 +22,7 @@ public:
 	void Print();
 
 	std::string Name();
-	float Price();
+	int Price();
 
 	bool IsEmpty();
 	bool IsLastNode();
