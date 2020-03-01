@@ -59,6 +59,7 @@
     <ClCompile Include="Source\raceRenderSkyboxAndTrack.cpp" />
     <ClCompile Include="Source\raceInitLightSettings.cpp" />
     <ClCompile Include="Source\Render\RenderTurntable.cpp" />
+    <ClCompile Include="Source\Render\RenderVending.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />

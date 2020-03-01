@@ -191,6 +191,8 @@ private:
 
 	void RenderTurntable();
 
+	void RenderVendingMachine();
+
 	void RenderHitbox(ObjectManager*& Objects);
 
 	float sunAngle;

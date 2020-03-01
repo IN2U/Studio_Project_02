@@ -197,6 +197,7 @@
     <ClCompile Include="Source\Render\RenderSun.cpp" />
     <ClCompile Include="Source\Render\RenderTurntable.cpp" />
     <ClCompile Include="Source\Render\RenderUI.cpp" />
+    <ClCompile Include="Source\Render\RenderVending.cpp" />
     <ClCompile Include="Source\Texture_Mapping\LoadTGA.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Mesh_Generation\Mesh.cpp" />

@@ -404,6 +404,8 @@ void SceneText::Render()
 
 	RenderBuilding();
 
+	RenderVendingMachine();
+
 	if (phoneUse == true)
 	{
 		RenderPhone();
