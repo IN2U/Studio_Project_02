@@ -48,29 +48,34 @@ void SceneText::RenderNPCUI(NPC npc)
 
 }
 
-void SceneText::RenderVendingUI()
+void SceneText::RenderVendingUI(int ID)
 {
 	Currency* currency = Currency::GetInstance();
 
-	if (!vending[0].BuyingItem()) {
+	if (!vending[ID].BuyingItem()) {
 		RenderTextOnScreen(meshList[GEO_TEXT], "What would you like to buy?", Color(0, 1, 0), 2.5f, 3.f, 2.f);
-		RenderTextOnScreen(meshList[GEO_TEXT], vending[0].GetItemChosen(), Color(0, 1, 0), 3.5f, 12.f, 1.3f);
+		RenderTextOnScreen(meshList[GEO_TEXT], vending[ID].GetItemChosen(), Color(0, 1, 0), 3.5f, 12.f, 1.3f);
 	}
 
-	if (vending[0].BuyingItem() && vending[0].CheckIfValidInput(std::stoi(vending[0].GetItemChosen())) == true) {
-		RenderTextOnScreen(meshList[GEO_TEXT], "Buy " + vending[0].GetItem(std::stoi(vending[0].GetItemChosen()))->ReturnName() + " for " +
-			std::to_string(vending[0].GetItem((std::stoi(vending[0].GetItemChosen())))->ReturnPrice()) + " ?(Y/N)", Color(0, 1, 0), 3.5f, 2.2f, 1.3f);
-		//RenderMeshOnScreen(meshList[STEAK], 10.f, 10.f, 7.f, 5.f);
+	if (vending[ID].BuyingItem() && vending[ID].CheckIfValidInput(std::stoi(vending[ID].GetItemChosen())) == true) {
+		RenderTextOnScreen(meshList[GEO_TEXT], "Buy " + vending[ID].GetItem(std::stoi(vending[ID].GetItemChosen()))->ReturnName() + " for "
+			+ std::to_string(vending[ID].ReturnItemPrice(std::stoi(vending[ID].GetItemChosen()))) + " ?(Y/N)", Color(0, 1, 0), 3.5f, 2.2f, 1.3f);
+		RenderMeshOnScreen(meshList[STEAK], 10.f, 10.f, 7.f, 5.f);
 	}
 
-	else if (vending[0].BuyingItem() && vending[0].CheckIfValidInput(std::stoi(vending[0].GetItemChosen())) == false)
+	else if (vending[ID].BuyingItem() && vending[ID].CheckIfValidInput(std::stoi(vending[ID].GetItemChosen())) == false)
 	{
 		RenderTextOnScreen(meshList[GEO_TEXT], "Invalid Item.", Color(0, 1, 0), 3.5f, 2.2f, 1.3f);
-		vending[0].SetToDefault(); //Error sound can be played inside this function to give feedback that there is no such item.
+		vending[ID].SetToDefault(); //Error sound can be played inside this function to give feedback that there is no such item.
 	}
 
-	if (vending[0].ItemIsBought()) {
-		RenderTextOnScreen(meshList[GEO_TEXT], vending[0].GetItemIssued() + " bought.", Color(0, 1, 0), 2.5f, 3.f, 3.5f);
+	if (vending[ID].ItemIsBought()) {
+		RenderTextOnScreen(meshList[GEO_TEXT], vending[ID].GetItemIssued() + " bought.", Color(0, 1, 0), 2.5f, 3.f, 3.5f);
+	}
+
+	if (vendingMenuAppear)
+	{
+		RenderMeshOnScreen(meshList[GEO_VENDING_MENU], 15.f, 30.f, 25.f, 30.f);
 	}
 
 	RenderTextOnScreen(meshList[GEO_TEXT], currency->ReturnAdjustedCurrency(), Color(0, 1, 0), 4, 15, 13);

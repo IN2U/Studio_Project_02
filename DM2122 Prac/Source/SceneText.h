@@ -51,6 +51,7 @@ private:
 		GEO_DICE,
 		GEO_LIGHTSPHERE,
 		GEO_TEXT,
+		GEO_VENDING_MENU,
 		TEXT_BORDER,
 
 		GEO_NPC,
@@ -115,6 +116,9 @@ private:
 	double bounceTime;
 	bool somethingHappened;
 
+	int vendingID;
+	bool vendingMenuAppear;
+
 	bool renderHitBox;
 
 	bool defaultUI = true;
@@ -139,7 +143,7 @@ private:
 
 	void RenderUI();
 	void RenderNPCUI(NPC npc);
-	void RenderVendingUI();
+	void RenderVendingUI(int ID);
 	void RenderInventoryUI();
 
 	void RenderPhone();

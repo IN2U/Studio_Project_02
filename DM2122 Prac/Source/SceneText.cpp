@@ -40,6 +40,9 @@ NULL, NULL, NULL, NULL, NULL, NULL }
 	bounceTime = 0.0f;
 	somethingHappened = false;
 
+	vendingMenuAppear = false;
+	vendingID = 0;
+
 	sunAngle = 0.f;
 	spotlightAngle = 0.f;
 }
@@ -151,7 +154,24 @@ void SceneText::Update(double dt)
 
 	if (Application::IsKeyPressed('V'))
 	{
-		eUIState = VENDING_UI;
+		if (eUIState == VENDING_UI)
+		{
+			if (vendingMenuAppear == false)
+			{
+				vendingMenuAppear = true;
+				somethingHappened = true;
+			}
+			else
+			{
+				vendingMenuAppear = false;
+				somethingHappened = true;
+			}
+
+		}
+		else
+		{
+			eUIState = VENDING_UI;
+		}
 	}
 
 	if (Application::IsKeyPressed('F'))
@@ -276,7 +296,7 @@ void SceneText::Render()
 		break;
 	case NPC_UI: RenderNPCUI(npc[0]);
 		break;
-	case VENDING_UI: RenderVendingUI();
+	case VENDING_UI: RenderVendingUI(vendingID);
 		break;
 	case INVENTORY_UI: RenderInventoryUI();
 		break;

@@ -80,6 +80,9 @@ void SceneText::InitMeshList()
 	meshList[GEO_TEXT] = MeshBuilder::GenerateText("text", 16, 16);
 	meshList[GEO_TEXT]->textureID = LoadTGA("Image//calibri.tga");
 
+	meshList[GEO_VENDING_MENU] = MeshBuilder::GenerateQuad("vending_menu", Color(0, 1, 0), 1.f, 1.f);
+	meshList[GEO_VENDING_MENU]->textureID = LoadTGA("Image//vending_menu.tga");
+
 	meshList[GEO_NPC] = MeshBuilder::GenerateOBJ("NPC", "OBJ//NPC.obj");
 	meshList[GEO_NPC]->textureID = LoadTGA("Image//silver.tga");
 

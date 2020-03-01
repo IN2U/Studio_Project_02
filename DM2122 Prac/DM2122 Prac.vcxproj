@@ -171,6 +171,7 @@
     <ClCompile Include="Source\race.cpp" />
     <ClCompile Include="Source\raceCar.cpp" />
     <ClCompile Include="Source\raceCarControls.cpp" />
+    <ClCompile Include="Source\raceInitLightSettings.cpp" />
     <ClCompile Include="Source\raceInitMeshList.cpp" />
     <ClCompile Include="Source\raceInitShaderUniforms.cpp" />
     <ClCompile Include="Source\raceRenderSkyboxAndTrack.cpp" />

@@ -77,7 +77,9 @@ void Vending::CheckInput()
 	}
 	else if (Application::IsKeyPressed(VK_BACK))
 	{
+		buttonTrigger--;
 		itemChosen = itemChosen.substr(0, itemChosen.size() - 1);
+		somethingHappened = true;
 	}
 }
 
