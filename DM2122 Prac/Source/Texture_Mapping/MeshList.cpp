@@ -155,6 +155,9 @@ void SceneText::InitMeshList()
 
 	meshList[L_MOUSE_HIGHLIGHT] = MeshBuilder::GenerateQuad("LeftMouseButton_Red", Color(0, 1, 0), 1.f, 1.f);
 	meshList[L_MOUSE_HIGHLIGHT]->textureID = LoadTGA("Image//L_MOUSE_RED.tga");
+
+	meshList[GEO_PHONE] = MeshBuilder::GenerateOBJ("phone", "OBJ//Phone.obj");
+	meshList[GEO_PHONE]->textureID = LoadTGA("Image//Phone_uv.tga");
 }
 
 void TicTacToe::InitMeshList()

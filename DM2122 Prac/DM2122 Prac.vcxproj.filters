@@ -42,13 +42,13 @@
     <ClCompile Include="Source\Render\RenderCar.cpp" />
     <ClCompile Include="Source\Render\RenderBuilding.cpp" />
     <ClCompile Include="Source\InventoryUtility.cpp" />
-    <ClCompile Include="RenderPhone.cpp" />
     <ClCompile Include="Source\Render\RenderSun.cpp" />
     <ClCompile Include="Source\UpdateLights.cpp" />
     <ClCompile Include="Source\Render\RenderFloor.cpp" />
     <ClCompile Include="Source\TicTacToe\TicTacToe.cpp" />
     <ClCompile Include="Source\TicTacToe\TicTacToeMoves.cpp" />
     <ClCompile Include="Source\TicTacToe\TicTacToeStates.cpp" />
+    <ClCompile Include="Source\Render\RenderPhone.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />

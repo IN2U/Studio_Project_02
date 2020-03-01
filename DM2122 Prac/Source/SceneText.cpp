@@ -160,19 +160,19 @@ void SceneText::Update(double dt)
 		eUIState = INVENTORY_UI;
 	}
 
-
-	//Phone
-
+	// Phone
 	if (Application::IsKeyPressed('C'))
 	{
 		if (phoneUse == false)
 		{
-			phoneUse == true;
+			phoneUse = true;
+			somethingHappened = true;
 		}
 
 		else
 		{
-			phoneUse == false;
+			phoneUse = false;
+			somethingHappened = true;
 		}
 	}
 
@@ -252,15 +252,15 @@ void SceneText::Render()
 	RenderNPC();
 
 	RenderSpotlight();
-	
-	if (phoneUse == true)
-	{
-	RenderPhone();
-	}
 
 	RenderCar();
 
 	RenderBuilding();
+
+	if (phoneUse == true)
+	{
+		RenderPhone();
+	}
 
 	// RenderMesh
 	for (unsigned int i = 0; i < Objects->getLib().size(); i++) {
