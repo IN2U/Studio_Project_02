@@ -152,7 +152,6 @@
     <ClInclude Include="Source\SceneMenu.h" />
     <ClInclude Include="Source\SceneText.h" />
     <ClInclude Include="Source\shader.hpp" />
-    <ClInclude Include="Source\Sun.h" />
     <ClInclude Include="Source\Global_Constants\TEXT_BUTTON.h" />
     <ClInclude Include="Source\TicTacToe.h" />
     <ClInclude Include="Source\UNIFORM_TYPE.h" />
@@ -178,8 +177,10 @@
     <ClCompile Include="Source\Mesh_Generation\LoadOBJ.cpp" />
     <ClCompile Include="Source\Render\RenderBuilding.cpp" />
     <ClCompile Include="Source\Render\RenderCar.cpp" />
+    <ClCompile Include="Source\Render\RenderFloor.cpp" />
     <ClCompile Include="Source\Render\RenderNPC.cpp" />
     <ClCompile Include="Source\Render\RenderSpotlight.cpp" />
+    <ClCompile Include="Source\Render\RenderSun.cpp" />
     <ClCompile Include="Source\Render\RenderUI.cpp" />
     <ClCompile Include="Source\Texture_Mapping\LoadTGA.cpp" />
     <ClCompile Include="Source\main.cpp" />
@@ -200,10 +201,10 @@
     <ClCompile Include="Source\SceneMenu.cpp" />
     <ClCompile Include="Source\SceneText.cpp" />
     <ClCompile Include="Source\shader.cpp" />
-    <ClCompile Include="Source\Sun.cpp" />
     <ClCompile Include="Source\TicTacToe.cpp" />
     <ClCompile Include="Source\TicTacToeMoves.cpp" />
     <ClCompile Include="Source\TicTacToeStates.cpp" />
+    <ClCompile Include="Source\UpdateLights.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
     <ClCompile Include="Source\Vending.cpp" />
     <ClCompile Include="Source\Helper\Window.cpp" />

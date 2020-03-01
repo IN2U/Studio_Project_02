@@ -116,7 +116,6 @@ void Application::Run()
 	scene->AddScene(new SceneMenu); // 0
 	scene->AddScene(new SceneText); // 1
 	scene->AddScene(new TicTacToe); // 2
-	//scene->AddScene(new TicTacToe); // 4
 
 	scene->GetCurrScene()->Init();
 
@@ -124,15 +123,6 @@ void Application::Run()
 
 	while (!glfwWindowShouldClose(m_window) && scene->getInstance()->getNextSceneID() != STATE::EXIT_SCENE)
 	{
-		// Open options
-		if (Application::IsKeyPressed(VK_ESCAPE))
-		{
-			if (scene->getCurrentSceneID() == STATE::GAME_SCENE)
-			{
-				scene->SetNextScene(STATE::MENU_SCENE);
-			}
-		}
-
 		// When esc is pressed while in main game scene, render menu scene without exiting game scene
 		if (scene->getCurrentSceneID() == STATE::GAME_SCENE && scene->getNextSceneID() == STATE::MENU_SCENE)
 		{

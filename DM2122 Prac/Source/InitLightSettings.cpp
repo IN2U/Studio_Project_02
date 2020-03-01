@@ -27,7 +27,7 @@ void SceneText::InitLightSettings()
 	glUniform1f(m_parameters[U_LIGHT0_EXPONENT], light[0].exponent);
 
 	light[1].type = Light::LIGHT_DIRECTIONAL;
-	light[1].position.Set(sun.getX(), sun.getY(), sun.getZ());
+	light[1].position.Set(0.f, 0.f, 0.f);
 	light[1].color.Set(1.f, 1.f, 1.f);
 	light[1].power = 0;
 	light[1].kC = 1.f;
