@@ -3,7 +3,7 @@
 void SceneText::RenderSkybox()
 {
 	modelStack.PushMatrix();
-	modelStack.Translate(-50.f, 20.f, 0.f);
+	modelStack.Translate(-50.f + camera.target.x, 0.f + camera.target.y, 0.f + camera.target.z);
 	modelStack.Scale(102.f, 102.f, 102.f);
 	modelStack.Rotate(90.f, 0.f, 1.f, 0.f);
 
@@ -15,7 +15,7 @@ void SceneText::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(50.f, 20.f, 0.f);
+	modelStack.Translate(50.f + camera.target.x, 0.f + camera.target.y, 0.f + camera.target.z);
 	modelStack.Scale(102.f, 102.f, 102.f);
 	modelStack.Rotate(-90.f, 0.f, 1.f, 0.f);
 
@@ -26,7 +26,7 @@ void SceneText::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 70.f, 0.f);
+	modelStack.Translate(0.f + camera.target.x, 50.f  + camera.target.y, 0.f  + camera.target.z);
 	modelStack.Scale(102.f, 102.f, 102.f);
 	modelStack.Rotate(90.f, 1.f, 0.f, 0.f);
 	modelStack.PushMatrix();
@@ -41,7 +41,7 @@ void SceneText::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, -30.f, 0.f);
+	modelStack.Translate(0.f + camera.target.x, -50.f  + camera.target.y, 0.f + camera.target.z);
 	modelStack.Scale(102.f, 102.f, 102.f);
 	modelStack.Rotate(-90.f, 1.f, 0.f, 0.f);
 
@@ -53,7 +53,7 @@ void SceneText::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 20.f, -50.f);
+	modelStack.Translate(0.f + camera.target.x, 0.f + camera.target.y, -50.f + camera.target.z);
 	modelStack.Scale(102.f, 102.f, 102.f);
 
 	if (light[1].position.y > 0)
@@ -64,7 +64,7 @@ void SceneText::RenderSkybox()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(0.f, 20.f, 50.f);
+	modelStack.Translate(0.f + camera.target.x, 0.f + camera.target.y, 50.f + camera.target.z);
 	modelStack.Scale(102.f, 102.f, 102.f);
 	modelStack.Rotate(180.f, 0.f, 1.f, 0.f);
 

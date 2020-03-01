@@ -45,6 +45,30 @@ NULL, NULL, NULL, NULL, NULL, NULL }
 
 	sunAngle = 0.f;
 	spotlightAngle = 0.f;
+
+	anglex = 0;
+
+	anglea1 = 0;
+	angleb1 = 0;
+	anglec1 = 0;
+
+	anglea2 = 0;
+	angleb2 = 0;
+	anglec2 = 0;
+
+	anglea3 = 0;
+	angleb3 = 0;
+	anglec3 = 0;
+
+	anglea4 = 0;
+	angleb4 = 0;
+	anglec4 = 0;
+
+	carrotate = true;
+	clickL1 = false;
+	clickL2 = false;
+	clickL3 = false;
+	clickL4 = false;
 }
 
 SceneText::~SceneText()
@@ -215,6 +239,148 @@ void SceneText::Update(double dt)
 
 	if (somethingHappened) {
 		bounceTime = gameTime + 0.2;
+	}
+
+	if (carrotate == true)
+	{
+		anglex += (float)(1.5);
+	}
+	if (camera.position.x > 15 && camera.position.x < 17 && camera.position.z <= -17)
+	{
+		clickL1 = true;
+	}
+	if (clickL1 == true)
+	{
+		if (eUIState == DEFAULT_UI) {
+			eUIState = NPC_UI;
+			somethingHappened = true;
+		}
+		anglea1 -= (float)(1.5);
+		angleb1 -= (float)(5.5);
+		anglec1 += (float)(4.5);
+	}
+	if (anglea1 <= -30)
+	{
+		clickL1 = false;
+	}
+	if (clickL1 == false && anglea1 < 0)
+	{
+
+		anglea1 += (float)(1.5);
+		angleb1 += (float)(5.5);
+		anglec1 -= (float)(4.5);
+	}
+	if (anglea1 >= 0)
+	{
+		if (eUIState == NPC_UI) {
+			eUIState = DEFAULT_UI;
+			somethingHappened = true;
+		}
+	}
+	if (camera.position.x > 35 && camera.position.x < 37 && camera.position.z <= -17)
+	{
+		clickL2 = true;
+	}
+	if (clickL2 == true)
+	{
+		if (eUIState == DEFAULT_UI) {
+			eUIState = NPC_UI;
+			somethingHappened = true;
+		}
+		else {
+			eUIState = DEFAULT_UI;
+			somethingHappened = true;
+		}
+		anglea2 -= (float)(1.5);
+		angleb2 -= (float)(5.5);
+		anglec2 += (float)(4.5);
+	}
+	if (anglea2 <= -30)
+	{
+		clickL2 = false;
+	}
+	if (clickL2 == false && anglea2 < 0)
+	{
+		anglea2 += (float)(1.5);
+		angleb2 += (float)(5.5);
+		anglec2 -= (float)(4.5);
+	}
+	if (anglea2 >= 0)
+	{
+		if (eUIState == NPC_UI) {
+			eUIState = DEFAULT_UI;
+			somethingHappened = true;
+		}
+	}
+	if (camera.position.x > -17 && camera.position.x < -15 && camera.position.z <= -17)
+	{
+		clickL3 = true;
+	}
+	if (clickL3 == true)
+	{
+		if (eUIState == DEFAULT_UI) {
+			eUIState = NPC_UI;
+			somethingHappened = true;
+		}
+		else {
+			eUIState = DEFAULT_UI;
+			somethingHappened = true;
+		}
+		anglea3 -= (float)(1.5);
+		angleb3 -= (float)(5.5);
+		anglec3 += (float)(4.5);
+	}
+	if (anglea3 <= -30)
+	{
+		clickL3 = false;
+	}
+	if (clickL3 == false && anglea3 < 0)
+	{
+		anglea3 += (float)(1.5);
+		angleb3 += (float)(5.5);
+		anglec3 -= (float)(4.5);
+	}
+	if (anglea3 >= 0)
+	{
+		if (eUIState == NPC_UI) {
+			eUIState = DEFAULT_UI;
+			somethingHappened = true;
+		}
+	}
+	if (camera.position.x > -37 && camera.position.x < -35 && camera.position.z <= -17)
+	{
+		clickL4 = true;
+	}
+	if (clickL4 == true)
+	{
+		if (eUIState == DEFAULT_UI) {
+			eUIState = NPC_UI;
+			somethingHappened = true;
+		}
+		else {
+			eUIState = DEFAULT_UI;
+			somethingHappened = true;
+		}
+		anglea4 -= (float)(1.5);
+		angleb4 -= (float)(5.5);
+		anglec4 += (float)(4.5);
+	}
+	if (anglea4 <= -30)
+	{
+		clickL4 = false;
+	}
+	if (clickL4 == false && anglea4 < 0)
+	{
+		anglea4 += (float)(1.5);
+		angleb4 += (float)(5.5);
+		anglec4 -= (float)(4.5);
+	}
+	if (anglea4 >= 0)
+	{
+		if (eUIState == NPC_UI) {
+			eUIState = DEFAULT_UI;
+			somethingHappened = true;
+		}
 	}
 }
 

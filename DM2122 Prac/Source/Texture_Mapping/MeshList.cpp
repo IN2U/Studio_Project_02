@@ -106,6 +106,9 @@ void SceneText::InitMeshList()
 	meshList[GEO_SPOTLIGHT_HEAD] = MeshBuilder::GenerateOBJ("Spotlight", "OBJ//Lamp_head.obj");
 	meshList[GEO_SPOTLIGHT_HEAD]->textureID = LoadTGA("Image//silver.tga");
 
+	meshList[GEO_TURNTABLE] = MeshBuilder::GenerateOBJ("turntable", "OBJ//turntable.obj");
+	meshList[GEO_TURNTABLE]->textureID = LoadTGA("Image//turntable.tga");
+
 	// Vehicles
 	meshList[FORD_GT] = MeshBuilder::GenerateOBJ("Ford_GT", "OBJ//ford_gt.obj");
 	meshList[FORD_GT]->textureID = LoadTGA("Image//ford_gt.tga");

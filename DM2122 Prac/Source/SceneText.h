@@ -77,6 +77,7 @@ private:
 		GEO_VENDING,
 		GEO_RACE_TRACK,
 		GEO_FLOOR,
+		GEO_TURNTABLE,
 
 		// Food icons
 		HAMBURGER,
@@ -116,6 +117,12 @@ private:
 	double bounceTime;
 	bool somethingHappened;
 
+	bool carrotate;
+	bool clickL1;
+	bool clickL2;
+	bool clickL3;
+	bool clickL4;
+
 	int vendingID;
 	bool vendingMenuAppear;
 
@@ -136,6 +143,24 @@ private:
 	Collisions Collide;
 
 	Minimap minimapCamera;
+
+	unsigned int anglex;
+
+	float anglea1;
+	float angleb1;
+	float anglec1;
+
+	float anglea2;
+	float angleb2;
+	float anglec2;
+
+	float anglea3;
+	float angleb3;
+	float anglec3;
+
+	float anglea4;
+	float angleb4;
+	float anglec4;
 	
 	void RenderSkybox();
 
