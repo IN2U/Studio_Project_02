@@ -58,8 +58,9 @@ void SceneText::RenderVendingUI()
 	}
 
 	if (vending[0].BuyingItem() && vending[0].CheckIfValidInput(std::stoi(vending[0].GetItemChosen())) == true) {
-		RenderTextOnScreen(meshList[GEO_TEXT], "Buy " + vending[0].GetItem(std::stoi(vending[0].GetItemChosen()))->ReturnName() + " ?(Y/N)", Color(0, 1, 0), 3.5f, 2.2f, 1.3f);
-		RenderMeshOnScreen(meshList[STEAK], 10.f, 10.f, 7.f, 5.f);
+		RenderTextOnScreen(meshList[GEO_TEXT], "Buy " + vending[0].GetItem(std::stoi(vending[0].GetItemChosen()))->ReturnName() + " for " +
+			std::to_string(vending[0].GetItem((std::stoi(vending[0].GetItemChosen())))->ReturnPrice()) + " ?(Y/N)", Color(0, 1, 0), 3.5f, 2.2f, 1.3f);
+		//RenderMeshOnScreen(meshList[STEAK], 10.f, 10.f, 7.f, 5.f);
 	}
 
 	else if (vending[0].BuyingItem() && vending[0].CheckIfValidInput(std::stoi(vending[0].GetItemChosen())) == false)

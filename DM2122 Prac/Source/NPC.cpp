@@ -41,13 +41,13 @@ NPC::~NPC()
 
 std::string NPC::ReturnDialogue()
 {
-	srand(static_cast<unsigned int>(time(nullptr)));
+	srand(static_cast<unsigned int>(time(NULL)));
 	return dialogue.at(dialogueID);
 }
 
 std::string NPC::ReturnTips()
 {
-	srand(static_cast<unsigned int>(time(nullptr)));
+	srand(static_cast<unsigned int>(time(NULL)));
 	return tips.at(tipsID);
 }
 
@@ -129,11 +129,17 @@ bool NPC::QuestRequirementMet()
 				return false;
 			}
 			else
+			{
 				return true;
+			}
 		}
 		else if (NPCQuest->ReturnTypeOfQuest() == 2) // customise car once
 		{
 			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 	else

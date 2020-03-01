@@ -19,6 +19,33 @@ private:
 
 	bool somethingHappened;
 
+	const int BASE_ITEM_PRICE = 1000;
+
+	enum ITEMS
+	{
+		NUM_START,
+		SODA,
+		POTATO_CHIPS,
+		CHOCOLATE,
+		NOODLES,
+		HOTDOG,
+		PEANUTS,
+		SAKE,
+		BEER,
+		ICE_CREAM,
+		CANDY,
+		COFFEE,
+		PIZZA,
+		BURGER,
+		NUM_ITEMS,
+	};
+
+	struct itemInfo
+	{
+		string name;
+		int price;
+	};
+
 public:
 	Vending();
 	~Vending();

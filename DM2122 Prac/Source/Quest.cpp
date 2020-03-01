@@ -2,7 +2,7 @@
 
 Quest::Quest()
 {
-	srand(static_cast<unsigned int>(time(nullptr)));
+	srand(static_cast<unsigned int>(time(NULL)));
 	typeOfQuest = rand() % 3;
 	if (typeOfQuest == 0) {
 		questRequirement = "Drive a car at least once.";

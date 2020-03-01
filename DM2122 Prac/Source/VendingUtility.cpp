@@ -40,7 +40,7 @@ void Vending::CheckInput()
 		buttonTrigger++;
 		somethingHappened = true;
 	}
-	if (Application::IsKeyPressed('6'))
+	else if (Application::IsKeyPressed('6'))
 	{
 		itemChosen += "6";
 		buttonTrigger++;
@@ -75,7 +75,12 @@ void Vending::CheckInput()
 		buttonTrigger++;
 		somethingHappened = true;
 	}
+	else if (Application::IsKeyPressed(VK_BACK))
+	{
+		itemChosen = itemChosen.substr(0, itemChosen.size() - 1);
+	}
 }
+
 
 void Vending::UpdateVending()
 {
@@ -97,7 +102,7 @@ void Vending::UpdateVending()
 		{
 			this->BuyItem(std::stoi(itemChosen));
 			inventory2->AddItemIntoInventory(this->GetItem(std::stoi(itemChosen)));
-			currency2->DeductCurrency(int(this->ReturnItemPrice(std::stoi(itemChosen))));
+			currency2->DeductCurrency(this->ReturnItemPrice(std::stoi(itemChosen)));
 			itemIssued = this->ReturnItemName(std::stoi(itemChosen));
 			itemChosen = "";
 			buttonTrigger = 0;
@@ -139,7 +144,15 @@ void Vending::SetToDefault()
 
 Item* Vending::GetItem(int ID)
 {
-	return machineItems.at(ID)->GetItem();
+	if (ID > int(machineItems.size())) {
+		return NULL;
+	}
+	else if (ID <= int(machineItems.size())) {
+		return machineItems.at(ID)->GetItem();
+	}
+	else {
+		return NULL;
+	}
 }
 
 bool Vending::BuyingItem()
@@ -165,4 +178,59 @@ bool Vending::CheckIfValidInput(int ID)
 	else {
 		return false;
 	}
+}
+
+void Vending::FillMachine()
+{
+	itemInfo tempItem;
+
+	for (int i = 0; i < NUM_ITEMS; ++i)
+	{
+		switch (i)
+		{
+		case 1:
+			tempItem = { "Soda", BASE_ITEM_PRICE };
+			break;
+		case 2:
+			tempItem = { "Potato Chips", BASE_ITEM_PRICE * 2 };
+			break;
+		case 3:
+			tempItem = { "Chocolate", BASE_ITEM_PRICE / 2 };
+			break;
+		case 4:
+			tempItem = { "Noodles", BASE_ITEM_PRICE * 3 };
+			break;
+		case 5:
+			tempItem = { "Hot Dog", BASE_ITEM_PRICE };
+			break;
+		case 6:
+			tempItem = { "Peanuts", BASE_ITEM_PRICE / 2 };
+			break;
+		case 7:
+			tempItem = { "Sake", BASE_ITEM_PRICE * 5 };
+			break;
+		case 8:
+			tempItem = { "Beer", BASE_ITEM_PRICE * 2 };
+			break;
+		case 9:
+			tempItem = { "Ice Cream", (BASE_ITEM_PRICE / 10) * 8 };
+			break;
+		case 10:
+			tempItem = { "Candy", (BASE_ITEM_PRICE / 10) * 3 };
+			break;
+		case 11:
+			tempItem = { "Coffee", (BASE_ITEM_PRICE / 10) * 8 };
+			break;
+		case 12:
+			tempItem = { "Pizza", BASE_ITEM_PRICE * 3 };
+			break;
+		case 13:
+			tempItem = { "Burger", BASE_ITEM_PRICE * 2 };
+			break;
+		}
+
+		ItemManager* newManager = new ItemManager(i, tempItem.name, tempItem.price);
+		machineItems.push_back(newManager);
+	}
+
 }

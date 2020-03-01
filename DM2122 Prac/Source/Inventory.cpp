@@ -26,7 +26,7 @@ Inventory* Inventory::GetInstance()
 
 bool Inventory::AddItemIntoInventory(Item* newItem)
 {
-	if (itemInventory.size() <= 5) {
+	if (itemInventory.size() <= 10) {
 		itemInventory.push_back(newItem);
 		return true;
 	}
@@ -45,29 +45,33 @@ void Inventory::RemoveItemFromInventory(int ID)
 
 void Inventory::UseItem(int ID)
 {
-	srand(static_cast<unsigned int>(time(nullptr)));
-	itemInventory.at(ID - 1)->SetItemEffectID(rand() % itemInventory.at(ID - 1)->ReturnListOfItemEffects());
-	Currency* currency = Currency::GetInstance();
-	switch (itemInventory.at(ID - 1)->ReturnItemEffectID())
+	srand(static_cast<unsigned int>(time(NULL)));
+	if (ID <= int(itemInventory.size()))
 	{
-	case 0:
-		itemInventory.at(ID - 1)->SetItemEffect("REGEN");
-		currency->SetRegeneration(currency->ReturnRegeneration() + 100.0);
-		break;
-	case 1:
-		itemInventory.at(ID - 1)->SetItemEffect("CURRENCY");
-		currency->AddCurrency(1000);
-		break;
-	case 2:
-		itemInventory.at(ID - 1)->SetItemEffect("BOOST");
-		currency->AddCurrency(10000);
-		break;
+		itemInventory.at(ID - 1)->SetItemEffectID(rand() % itemInventory.at(ID - 1)->ReturnListOfItemEffects());
+		Currency* currency = Currency::GetInstance();
+		switch (itemInventory.at(ID - 1)->ReturnItemEffectID())
+		{
+		case 0:
+			itemInventory.at(ID - 1)->SetItemEffect("REGEN");
+			currency->SetRegeneration(currency->ReturnRegeneration() + 100.0);
+			break;
+		case 1:
+			itemInventory.at(ID - 1)->SetItemEffect("CURRENCY");
+			currency->AddCurrency(1000);
+			break;
+		case 2:
+			itemInventory.at(ID - 1)->SetItemEffect("BOOST");
+			currency->AddCurrency(10000);
+			break;
+		}
+
+		if (!itemInventory.empty() && itemInventory.at(ID - 1) != nullptr) {
+			std::cout << itemInventory.at(ID - 1)->ReturnItemEffect() << std::endl;
+			itemInventory.erase(itemInventory.begin() + ID - 1);
+		}
 	}
 
-	if (!itemInventory.empty() && itemInventory.at(ID - 1) != nullptr) {
-		std::cout << itemInventory.at(ID - 1)->ReturnItemEffect() << std::endl;
-		itemInventory.erase(itemInventory.begin() + ID - 1);
-	}
 }
 
 bool Inventory::isEmpty()
@@ -80,7 +84,7 @@ bool Inventory::isEmpty()
 
 void Inventory::PrintInventory()
 {
-	for (size_t i = 0; i < itemInventory.size(); ++i){
+	for (size_t i = 0; i < itemInventory.size(); ++i) {
 		std::cout << itemInventory.at(i)->ReturnName() << std::endl;
 	}
 }

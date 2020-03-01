@@ -14,10 +14,10 @@ private:
 
 public:
 	ItemManager();
-	ItemManager(int ID, string name, float price);
+	ItemManager(int ID, string name, int price);
 	~ItemManager();
 
-	void AddItem(int data, string name, float price);
+	void AddItem(int data, string name, int price);
 	void RemoveItem();
 	void Print();
 

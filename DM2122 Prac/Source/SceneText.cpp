@@ -193,7 +193,7 @@ void SceneText::Update(double dt)
 	CalculateFrameRate();
 
 	if (somethingHappened) {
-		bounceTime = gameTime + 0.125;
+		bounceTime = gameTime + 0.2;
 	}
 }
 

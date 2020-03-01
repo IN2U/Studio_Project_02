@@ -2,14 +2,7 @@
 
 Vending::Vending()
 {
-	for (int i = 0; i < 10; ++i)
-	{
-		ItemManager* newManager = new ItemManager(i, "trashcan" + std::to_string(i), float(i * 3));
-		machineItems.push_back(newManager);
-	}
-
-	ItemManager* newManager = new ItemManager(10, "Soda", 1000.f);
-	machineItems.push_back(newManager);
+	FillMachine();
 
 	goingToBuyItem = false;
 	itemBought = false;
@@ -26,11 +19,6 @@ Vending::~Vending()
 	}
 }
 
-void Vending::FillMachine()
-{
-
-}
-
 bool Vending::BuyItem(int choice)
 {
 	//machineItems.at(choice)->Print();
@@ -39,7 +27,6 @@ bool Vending::BuyItem(int choice)
 		if (!machineItems.at(choice)->IsEmpty())
 		{
 			machineItems.at(choice)->RemoveItem();
-			cout << "Item " << choice << " bought" << endl;
 			return true;
 		}
 		else

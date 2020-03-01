@@ -12,7 +12,7 @@ class Item
 private:
 	int itemID;
 	string name;
-	float itemPrice;
+	int itemPrice;
 	Item* next;
 
 	int itemEffectID;
@@ -34,7 +34,7 @@ public:
 	Item* ReturnNext();
 	int ReturnID();
 	string ReturnName();
-	float ReturnPrice();
+	int ReturnPrice();
 
 	void SetItemEffect(string eff);
 	string ReturnItemEffect();

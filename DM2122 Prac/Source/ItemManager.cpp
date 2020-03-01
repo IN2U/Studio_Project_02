@@ -6,7 +6,7 @@ ItemManager::ItemManager()
 	head = nullptr;
 }
 
-ItemManager::ItemManager(int ID, string name, float price)
+ItemManager::ItemManager(int ID, string name, int price)
 {
 	head = nullptr;
 	for (int i = 0; i < ITEM_AMOUNT; ++i)
@@ -22,7 +22,7 @@ ItemManager::~ItemManager()
 
 }
 
-void ItemManager::AddItem(int data, string name, float price)
+void ItemManager::AddItem(int data, string name, int price)
 {
 	Item* tmp;
 	tmp = new Item(data, name, price);

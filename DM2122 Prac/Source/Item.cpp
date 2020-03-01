@@ -17,18 +17,6 @@ Item::Item(int data, string name, float price)
 	next = nullptr;
 	itemEffect = "NIL";
 	itemEffectID = 0;
-
-	/*srand(time(NULL));
-	randomItemEffect = rand() % NUM_EFFECT;
-
-	switch (randomItemEffect)
-	{
-	case FAST_CURRENCY_REGEN:
-		itemEffect = "REGEN";
-
-	case ADD_CURRENCY:
-		itemEffect = "CURRENCY";
-	}*/
 }
 
 Item::~Item()
@@ -51,7 +39,7 @@ string Item::ReturnName()
 	return name;
 }
 
-float Item::ReturnPrice()
+int Item::ReturnPrice()
 {
 	return itemPrice;
 }
