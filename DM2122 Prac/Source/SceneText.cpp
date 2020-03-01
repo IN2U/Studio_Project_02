@@ -64,7 +64,7 @@ NULL, NULL, NULL, NULL, NULL, NULL }
 	angleb4 = 0.f;
 	anglec4 = 0.f;
 
-	carrotate = true;
+	carRotate = true;
 	clickL1 = false;
 	clickL2 = false;
 	clickL3 = false;
@@ -230,10 +230,11 @@ void SceneText::Update(double dt)
 		bounceTime = gameTime + 0.2;
 	}
 
-	if (carrotate == true)
+	if (carRotate == true)
 	{
 		anglex += (float)(1.5);
 	}
+
 	if (camera.position.x > 15 && camera.position.x < 17 && camera.position.z <= -17)
 	{
 		clickL1 = true;
@@ -259,13 +260,7 @@ void SceneText::Update(double dt)
 		angleb1 += (float)(5.5);
 		anglec1 -= (float)(4.5);
 	}
-	if (anglea1 >= 0)
-	{
-		if (eUIState == NPC_UI) {
-			eUIState = DEFAULT_UI;
-			somethingHappened = true;
-		}
-	}
+
 	if (camera.position.x > 35 && camera.position.x < 37 && camera.position.z <= -17)
 	{
 		clickL2 = true;
@@ -276,10 +271,7 @@ void SceneText::Update(double dt)
 			eUIState = NPC_UI;
 			somethingHappened = true;
 		}
-		else {
-			eUIState = DEFAULT_UI;
-			somethingHappened = true;
-		}
+
 		anglea2 -= (float)(1.5);
 		angleb2 -= (float)(5.5);
 		anglec2 += (float)(4.5);
@@ -294,13 +286,7 @@ void SceneText::Update(double dt)
 		angleb2 += (float)(5.5);
 		anglec2 -= (float)(4.5);
 	}
-	if (anglea2 >= 0)
-	{
-		if (eUIState == NPC_UI) {
-			eUIState = DEFAULT_UI;
-			somethingHappened = true;
-		}
-	}
+
 	if (camera.position.x > -17 && camera.position.x < -15 && camera.position.z <= -17)
 	{
 		clickL3 = true;
@@ -309,10 +295,6 @@ void SceneText::Update(double dt)
 	{
 		if (eUIState == DEFAULT_UI) {
 			eUIState = NPC_UI;
-			somethingHappened = true;
-		}
-		else {
-			eUIState = DEFAULT_UI;
 			somethingHappened = true;
 		}
 		anglea3 -= (float)(1.5);
@@ -329,13 +311,7 @@ void SceneText::Update(double dt)
 		angleb3 += (float)(5.5);
 		anglec3 -= (float)(4.5);
 	}
-	if (anglea3 >= 0)
-	{
-		if (eUIState == NPC_UI) {
-			eUIState = DEFAULT_UI;
-			somethingHappened = true;
-		}
-	}
+
 	if (camera.position.x > -37 && camera.position.x < -35 && camera.position.z <= -17)
 	{
 		clickL4 = true;
@@ -344,10 +320,6 @@ void SceneText::Update(double dt)
 	{
 		if (eUIState == DEFAULT_UI) {
 			eUIState = NPC_UI;
-			somethingHappened = true;
-		}
-		else {
-			eUIState = DEFAULT_UI;
 			somethingHappened = true;
 		}
 		anglea4 -= (float)(1.5);
@@ -364,12 +336,11 @@ void SceneText::Update(double dt)
 		angleb4 += (float)(5.5);
 		anglec4 -= (float)(4.5);
 	}
-	if (anglea4 >= 0)
+
+	if (camera.position.z > -17 && eUIState == NPC_UI)
 	{
-		if (eUIState == NPC_UI) {
-			eUIState = DEFAULT_UI;
-			somethingHappened = true;
-		}
+		eUIState = DEFAULT_UI;
+		somethingHappened = true;
 	}
 }
 

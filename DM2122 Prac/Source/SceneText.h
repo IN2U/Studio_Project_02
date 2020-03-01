@@ -54,7 +54,10 @@ private:
 		GEO_VENDING_MENU,
 		TEXT_BORDER,
 
+		// NPC
 		GEO_NPC,
+		GEO_ARM,
+		GEO_FARM,
 
 		//Phone
 		GEO_PHONE,
@@ -117,7 +120,7 @@ private:
 	double bounceTime;
 	bool somethingHappened;
 
-	bool carrotate;
+	bool carRotate;
 	bool clickL1;
 	bool clickL2;
 	bool clickL3;

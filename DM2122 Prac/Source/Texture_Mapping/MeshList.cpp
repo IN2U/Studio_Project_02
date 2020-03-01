@@ -86,6 +86,12 @@ void SceneText::InitMeshList()
 	meshList[GEO_NPC] = MeshBuilder::GenerateOBJ("NPC", "OBJ//NPC.obj");
 	meshList[GEO_NPC]->textureID = LoadTGA("Image//silver.tga");
 
+	meshList[GEO_ARM] = MeshBuilder::GenerateOBJ("arm", "OBJ//right_arm.obj");
+	meshList[GEO_ARM]->textureID = LoadTGA("Image//silver.tga");
+
+	meshList[GEO_FARM] = MeshBuilder::GenerateOBJ("Farm", "OBJ//right_forearm.obj");
+	meshList[GEO_FARM]->textureID = LoadTGA("Image//silver.tga");
+
 	// Environment objects
 	meshList[GEO_VENDING] = MeshBuilder::GenerateOBJ("Vending", "OBJ//vending.obj");
 	meshList[GEO_VENDING]->textureID = LoadTGA("Image//VENDING.tga");
