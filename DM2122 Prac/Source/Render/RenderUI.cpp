@@ -88,7 +88,7 @@ void SceneText::RenderInventoryUI()
 
 	Currency* currency = Currency::GetInstance();
 
-	float valY = 16.f;
+	float valY = 14.f;
 
 	RenderTextOnScreen(meshList[GEO_TEXT], "INVENTORY: ", Color(0, 1, 0), 3.f, 1.f, valY + 1.f);
 	for (size_t i = 1; i < inventory->ReturnInventory().size() + 1; ++i)

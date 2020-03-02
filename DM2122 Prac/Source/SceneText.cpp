@@ -182,10 +182,6 @@ void SceneText::Update(double dt)
 			eUIState = VENDING_UI;
 		}
 	}
-	else if (clickv == false)
-	{
-		eUIState = DEFAULT_UI;
-	}
 	if (camera.position.x > -35 && vendingMenuAppear == true)
 	{
 		clickv = false;
