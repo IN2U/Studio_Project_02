@@ -41,13 +41,13 @@ NPC::~NPC()
 
 std::string NPC::ReturnDialogue()
 {
-	srand(static_cast<unsigned int>(time(NULL)));
+	//srand(static_cast<unsigned int>(time(NULL)));
 	return dialogue.at(dialogueID);
 }
 
 std::string NPC::ReturnTips()
 {
-	srand(static_cast<unsigned int>(time(NULL)));
+	//srand(static_cast<unsigned int>(time(NULL)));
 	return tips.at(tipsID);
 }
 
@@ -68,11 +68,13 @@ float NPC::ReturnReward()
 
 void NPC::SelectRandomDialogue()
 {
+	srand(static_cast<unsigned int>(time(NULL)));
 	dialogueID = rand() % dialogue.size();
 }
 
 void NPC::SelectRandomTip()
 {
+	srand(static_cast<unsigned int>(time(NULL)));
 	tipsID = rand() % tips.size();
 }
 

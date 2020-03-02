@@ -10,7 +10,7 @@ class NPC
 {
 private:
 	int dialogueID = 0;
-	int tipsID = -1;
+	int tipsID = 0;
 	std::vector<std::string> dialogue;
 	std::vector<std::string> tips;
 	Quest* NPCQuest;

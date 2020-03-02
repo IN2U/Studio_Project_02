@@ -43,6 +43,8 @@ NULL, NULL, NULL, NULL, NULL, NULL }
 	vendingMenuAppear = false;
 	vendingID = 0;
 
+	NPCID = 0;
+
 	sunAngle = 0.f;
 	spotlightAngle = 0.f;
 
@@ -69,6 +71,7 @@ NULL, NULL, NULL, NULL, NULL, NULL }
 	clickL2 = false;
 	clickL3 = false;
 	clickL4 = false;
+	clickv = false;
 }
 
 SceneText::~SceneText()
@@ -87,7 +90,7 @@ void SceneText::Init()
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	camera.Init(Vector3(0, 0, 10), Vector3(0, 0, 0), Vector3(0, 1, 0));
+	camera.Init(Vector3(0, 6, 10), Vector3(0, 0, 0), Vector3(0, 1, 0));
 
 	// Top-down view for minimap
 	minimapCamera.Init(Vector3(0, 10, 0), Vector3(0, 0, 0), Vector3(0, 0, -1));
@@ -134,13 +137,13 @@ void SceneText::Update(double dt)
 
 	if (eUIState == NPC_UI)
 	{
-		npc[0].UpdateNPC();
-		somethingHappened = npc[0].SomethingHappened();
+		npc[NPCUI].UpdateNPC();
+		somethingHappened = npc[NPCUI].SomethingHappened();
 	}
 	else if (eUIState == VENDING_UI)
 	{
-		vending[0].UpdateVending();
-		somethingHappened = vending[0].SomethingHappened();
+		vending[vendingID].UpdateVending();
+		somethingHappened = vending[vendingID].SomethingHappened();
 	}
 	else if (eUIState == INVENTORY_UI)
 	{
@@ -148,10 +151,10 @@ void SceneText::Update(double dt)
 		somethingHappened = inventory->SomethingHappened();
 	}
 
-	if (Application::IsKeyPressed('B'))
+	if (Application::IsKeyPressed('F'))
 	{
-		if (eUIState == DEFAULT_UI) {
-			eUIState = NPC_UI;
+		if (eUIState != INVENTORY_UI) {
+			eUIState = INVENTORY_UI;
 			somethingHappened = true;
 		}
 		else {
@@ -160,32 +163,29 @@ void SceneText::Update(double dt)
 		}
 	}
 
-	if (Application::IsKeyPressed('V'))
+	if (camera.position.z >= -11 && camera.position.z <= -9 && camera.position.x < -37)
+	{
+		clickv = true;
+	}
+	if (clickv == true)
 	{
 		if (eUIState == VENDING_UI)
 		{
 			if (vendingMenuAppear == false)
 			{
 				vendingMenuAppear = true;
-				somethingHappened = true;
-			}
-			else
-			{
-				vendingMenuAppear = false;
-				somethingHappened = true;
-			}
 
+			}
 		}
 		else
 		{
 			eUIState = VENDING_UI;
 		}
 	}
-
-	if (Application::IsKeyPressed('F'))
+	if (camera.position.x > -35 && vendingMenuAppear == true)
 	{
-		//inventory->PrintInventory();
-		eUIState = INVENTORY_UI;
+		clickv = false;
+		vendingMenuAppear = false;
 	}
 
 	// Phone
@@ -232,16 +232,18 @@ void SceneText::Update(double dt)
 
 	if (carRotate == true)
 	{
-		anglex += (float)(1.5);
+		anglex += (float)(0.5);
 	}
 
 	if (camera.position.x > 15 && camera.position.x < 17 && camera.position.z <= -17)
 	{
+		NPCID = 1;
+		npc[NPCID].SetToDefaultTipState();
 		clickL1 = true;
 	}
 	if (clickL1 == true)
 	{
-		if (eUIState == DEFAULT_UI) {
+		if (eUIState == DEFAULT_UI || eUIState == VENDING_UI || eUIState == INVENTORY_UI) {
 			eUIState = NPC_UI;
 			somethingHappened = true;
 		}
@@ -263,11 +265,13 @@ void SceneText::Update(double dt)
 
 	if (camera.position.x > 35 && camera.position.x < 37 && camera.position.z <= -17)
 	{
+		NPCID = 0;
+		npc[NPCID].SetToDefaultTipState();
 		clickL2 = true;
 	}
 	if (clickL2 == true)
 	{
-		if (eUIState == DEFAULT_UI) {
+		if (eUIState == DEFAULT_UI || eUIState == VENDING_UI || eUIState == INVENTORY_UI) {
 			eUIState = NPC_UI;
 			somethingHappened = true;
 		}
@@ -289,11 +293,13 @@ void SceneText::Update(double dt)
 
 	if (camera.position.x > -17 && camera.position.x < -15 && camera.position.z <= -17)
 	{
+		NPCID = 2;
+		npc[NPCID].SetToDefaultTipState();
 		clickL3 = true;
 	}
 	if (clickL3 == true)
 	{
-		if (eUIState == DEFAULT_UI) {
+		if (eUIState == DEFAULT_UI || eUIState == VENDING_UI || eUIState == INVENTORY_UI) {
 			eUIState = NPC_UI;
 			somethingHappened = true;
 		}
@@ -314,11 +320,13 @@ void SceneText::Update(double dt)
 
 	if (camera.position.x > -37 && camera.position.x < -35 && camera.position.z <= -17)
 	{
+		NPCID = 3;
+		npc[NPCID].SetToDefaultTipState();
 		clickL4 = true;
 	}
 	if (clickL4 == true)
 	{
-		if (eUIState == DEFAULT_UI) {
+		if (eUIState == DEFAULT_UI || eUIState == VENDING_UI || eUIState == INVENTORY_UI) {
 			eUIState = NPC_UI;
 			somethingHappened = true;
 		}
@@ -423,7 +431,7 @@ void SceneText::Render()
 	{
 	case DEFAULT_UI: RenderUI();
 		break;
-	case NPC_UI: RenderNPCUI(npc[0]);
+	case NPC_UI: RenderNPCUI(npc[NPCUI]);
 		break;
 	case VENDING_UI: RenderVendingUI(vendingID);
 		break;

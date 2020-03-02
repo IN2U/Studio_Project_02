@@ -34,7 +34,8 @@ void SceneText::RenderNPCUI(NPC npc)
 
 	if (npc.IsGoingToGiveTip())
 	{
-		RenderText(meshList[GEO_TEXT], npc.ReturnTips(), Color(0, 1, 0), 0.4f, 0.f, 0.f, 0.f);
+		//npc.SelectRandomTip();
+		RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnTips(), Color(0, 1, 0), 3, 3, 6.5);
 	}
 
 	RenderTextOnScreen(meshList[GEO_TEXT], npc.ReturnDialogue(), Color(0, 1, 0), 3, 5, 2.5);

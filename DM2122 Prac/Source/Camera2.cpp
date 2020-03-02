@@ -74,27 +74,27 @@ void Camera2::Update(double dt)
 	{
 		target -= right * dt * 10;
 		position -= right * dt * 10;
-		position.y = 0;
+		position.y = 6;
 	}
 	if (Application::IsKeyPressed(VK_RIGHT) || Application::IsKeyPressed('D'))
 	{
 		target += right * dt * 10;
 		position += right * dt * 10;
-		position.y = 0;
+		position.y = 6;
 	}
 	if (Application::IsKeyPressed(VK_UP) || Application::IsKeyPressed('W'))
 	{
 		target += view * dt * 10;
 		position += view * dt * 10;
-		position.y = 0;
-		target.y = view.y;
+		position.y = 6;
+		target.y = view.y + 6;
 	}
 	if (Application::IsKeyPressed(VK_DOWN) || Application::IsKeyPressed('S'))
 	{
 		target -= view * dt * 10;
 		position -= view * dt * 10;
-		position.y = 0;
-		target.y = view.y;
+		position.y = 6;
+		target.y = view.y + 6;
 	}
 
 	if (Application::IsKeyPressed('N'))

@@ -125,9 +125,12 @@ private:
 	bool clickL2;
 	bool clickL3;
 	bool clickL4;
+	bool clickv;
 
 	int vendingID;
 	bool vendingMenuAppear;
+
+	int NPCID;
 
 	bool renderHitBox;
 

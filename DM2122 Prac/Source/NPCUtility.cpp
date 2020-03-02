@@ -8,7 +8,8 @@ void NPC::CheckInput()
 {
 	if (Application::IsKeyPressed('1'))
 	{
-		SelectRandomTip();
+		SelectRandomDialogue();
+		goingToGiveTip = true;
 		somethingHappened = true;
 	}
 
@@ -35,7 +36,7 @@ void NPC::CheckInput()
 			}
 		}
 	}
-	
+
 }
 
 void NPC::UpdateNPC()

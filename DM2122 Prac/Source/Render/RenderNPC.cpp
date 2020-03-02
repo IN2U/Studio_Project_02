@@ -4,7 +4,7 @@
 void SceneText::RenderNPC()
 {
 	modelStack.PushMatrix();
-	modelStack.Translate(16.f, 0.f, -20.f);
+	modelStack.Translate(16.f, 0.9f, -20.f);
 	RenderMesh(meshList[GEO_NPC], true);
 
 	modelStack.PushMatrix();
@@ -24,7 +24,7 @@ void SceneText::RenderNPC()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(36.f, 0.f, -20.f);
+	modelStack.Translate(36.f, 0.9f, -20.f);
 	RenderMesh(meshList[GEO_NPC], true);
 
 	modelStack.PushMatrix();
@@ -44,7 +44,7 @@ void SceneText::RenderNPC()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(-16.f, 0.f, -20.f);
+	modelStack.Translate(-16.f, 0.9f, -20.f);
 	RenderMesh(meshList[GEO_NPC], true);
 	modelStack.PushMatrix();
 	modelStack.Translate(-0.55f, 4.7f, 0.f);
@@ -63,7 +63,7 @@ void SceneText::RenderNPC()
 	modelStack.PopMatrix();
 
 	modelStack.PushMatrix();
-	modelStack.Translate(-36.f, 0.f, -20.f);
+	modelStack.Translate(-36.f, 0.9f, -20.f);
 	RenderMesh(meshList[GEO_NPC], true);
 	modelStack.PushMatrix();
 	modelStack.Translate(-0.55f, 4.7f, 0.f);
