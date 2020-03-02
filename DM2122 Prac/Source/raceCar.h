@@ -20,6 +20,7 @@ private:
 	Vector3 Force;
 	Vector3 Friction;
 	Mtx44 rotation;
+	Vector3 PrevPos;
 
 public:
 	raceCar();
@@ -30,7 +31,7 @@ public:
 	Mtx44 getRotation();
 	void Accelerate(Vector3 force);
 	void Physics();
-	void Update(double dt);
+	void Update(double dt, ObjectManager* Objects);
 
 };
 

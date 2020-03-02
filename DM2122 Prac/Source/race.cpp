@@ -6,6 +6,7 @@
 #include "Mesh_Generation/MeshBuilder.h"
 #include "Utility.h"
 #include "Texture_Mapping/LoadTGA.h"
+#include "SceneManager.h"
 
 #define ROT_LIMIT 45.f;
 #define SCALE_LIMIT 5.f;
@@ -54,7 +55,41 @@ void SceneRace::Init()
 
 	InitLightSettings();
 
-	InitMeshList();
+	InitMeshList(1);
+}
+
+void SceneRace::Init(int Car)
+{
+	glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+	renderHitbox = false;
+
+	// Generate a default VAO for now
+	glGenVertexArrays(1, &m_vertexArrayID);
+	glBindVertexArray(m_vertexArrayID);
+	glEnable(GL_CULL_FACE);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	camera.Init(Vector3(0, 0, 10), Vector3(0, 0, 0), Vector3(0, 1, 0));
+	Objects = ObjectManager::getInstance();
+
+	Mtx44 projection;
+	projection.SetToPerspective(45.f, 4.f / 3.f, 0.1f, 1000.f);
+	projectionStack.LoadMatrix(projection);
+
+	m_programID = LoadShaders("Shader//Texture.vertexshader", "Shader//Text.fragmentshader");
+
+
+	InitShaderUniforms();
+
+	glUseProgram(m_programID);
+	// Enable depth test
+	glEnable(GL_DEPTH_TEST);
+
+	InitLightSettings();
+
+	InitMeshList(Car);
 }
 
 void SceneRace::Update(double dt)
@@ -99,15 +134,12 @@ void SceneRace::Update(double dt)
 		//to do: switch light type to SPOT and pass the information to
 		light[0].type = Light::LIGHT_SPOT;
 	}
-	camera.Update(dt);
-	if (Objects->getLib().size() != 0) {
-		if (Collisions::colliCheck(Objects->getLib()[0], Objects->getLib()[1]) == true) {
-			std::cout << "Colliding\n";
-		}
-	}
+	//camera.Update(dt, Car->getPos(), Car->getRotation());
+	camera.Update(dt, Car->getPos(), Car->getRotation());
+
 	CalculateFrameRate();
 	carControls(dt, Car);
-	Car->Update(dt);
+	Car->Update(dt, Objects);
 }
 
 void SceneRace::Render()
@@ -143,9 +175,6 @@ void SceneRace::Render()
 
 	RenderSkybox();
 
-	//No transform needed
-	RenderTextOnScreen(meshList[GEO_TEXT], "Hello World", Color(0, 1, 0), 2, 0, 0);
-
 	Objects->Update();
 	Object* temp;
 
@@ -156,14 +185,38 @@ void SceneRace::Render()
 	Vector3 temp2 = Vector3(1, 1, 1);
 	Objects->getObject("Light")->AddHitbox(temp1, temp2);
 
-	temp = Objects->AddObject("Map", meshList[GEO_MAP], true);
-	temp->Transform(-90.f, 1, 0, 0);
+	temp = Objects->AddObject("Track", meshList[GEO_TRACK], true);
+	temp->Transform('T', 0, -5, 18.5);
+	temp->Transform('S', 2.5, 2.5, 2.5);
+	temp->AddHitbox(Vector3(11.9, 0.5, -2), Vector3(0.2, 0.5, 12));
+	temp->AddHitbox(Vector3(9.4, 0.5, -2), Vector3(0.2, 0.5, 10));
+	temp->AddHitbox(Vector3(-11, 0.5, 7), Vector3(0.2, 0.5, 6));
+	temp->AddHitbox(Vector3(-8.2, 0.5, 5), Vector3(0.4, 0.5, 4));
+	temp->AddHitbox(Vector3(-12.3, 0.5, -17), Vector3(0.2, 0.5, 6));
+	temp->AddHitbox(Vector3(-9.8, 0.5, -17), Vector3(0.2, 0.5, 6));
+	temp->AddHitbox(Vector3(-10, 0.5, -4.8), Vector3(2, 0.5, 2.1));
+	temp->AddHitbox(Vector3(-5.5, 0.5, -4.8), Vector3(0.2, 0.5, 2.1));
+	temp->AddHitbox(Vector3(7, 0.5, -14.2), Vector3(1, 0.5, 0.2));
+	temp->AddHitbox(Vector3(8, 0.5, -17), Vector3(1, 0.5, 0.2));
+	temp->AddHitbox(Vector3(9, 0.5, -13.2), Vector3(1, 0.5, 0.2), -55.f, Vector3(0, 1, 0));
+	temp->AddHitbox(Vector3(11, 0.5, -15.7), Vector3(1, 0.5, 0.2), -45.f, Vector3(0, 1, 0));
+	temp->AddHitbox(Vector3(1.8, 0.5, -22.1), Vector3(6., 0.5, 0.2), -54.f, Vector3(0,1,0));
+	temp->AddHitbox(Vector3(1, 0.5, -18.8), Vector3(7, 0.5, 0.2), -54.f, Vector3(0, 1, 0));
+	temp->AddHitbox(Vector3(-6, 0.5, -27.4), Vector3(5, 0.5, 0.2));
+	temp->AddHitbox(Vector3(-6, 0.5, -24.8), Vector3(2.5, 0.5, 0.2));
+	temp->AddHitbox(Vector3(7, 0.5, 11.5), Vector3(5, 0.5, 0.2));
+	temp->AddHitbox(Vector3(6, 0.5, 8.5), Vector3(2.5, 0.5, 0.2));
+	temp->AddHitbox(Vector3(-2.5, 0.5, 8.2), Vector3(1.5, 0.5, 0.2));
+	temp->AddHitbox(Vector3(-2.5, 0.5, 6.2), Vector3(3, 0.5, 0.2));
+	temp->AddHitbox(Vector3(1, 0.5, 10), Vector3(1, 0.5, 0.2), -55.f, Vector3(0, 1, 0));
+	temp->AddHitbox(Vector3(2, 0.5, 7), Vector3(1, 0.5, 0.2), -45.f, Vector3(0, 1, 0));
 	Objects->getLib().push_back(temp);
 
 	temp = Objects->AddObject("Car", meshList[GEO_CAR], true);
+	temp->Transform('S', 0.2, 0.2, 0.2);
 	temp->Transform('T', Car->getPos().x, Car->getPos().y, Car->getPos().z);
 	Objects->getLib().push_back(temp);
-	Objects->getObject("Car")->AddHitbox(Vector3(0, 0, 0), Vector3(0.5, 0.5, 0.5));
+	Objects->getObject("Car")->AddHitbox(Vector3(0, 0, 0), Vector3(2.5, 1.5, 6));
 
 
 	// RenderMesh

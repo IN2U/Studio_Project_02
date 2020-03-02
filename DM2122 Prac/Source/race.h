@@ -21,11 +21,9 @@ class SceneRace : public Scene
 		GEO_BOTTOM,
 		GEO_FRONT,
 		GEO_BACK,
-		GEO_CHAR,
-		GEO_DICE,
 		GEO_LIGHTSPHERE,
 		GEO_TEXT,
-		GEO_MAP,
+		GEO_TRACK,
 		GEO_CAR,
 		NUM_GEOMETRY,
 	};
@@ -89,12 +87,14 @@ private:
 	void InitShaderUniforms();
 	void InitLightSettings();
 	void InitMeshList();
+	void InitMeshList(int Car);
 
 public:
 	SceneRace();
 	~SceneRace();
 
 	virtual void Init();
+	virtual void Init(int Car);
 	virtual void Update(double dt);
 	virtual void Render();
 	virtual void Exit();

@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "GL/glew.h"
 #include "ObjectManager.h"
+#include "Mesh_Generation/MeshBuilder.h"
 #include "Currency.h"
 #include "Vending.h"
 #include "NPC.h"
@@ -88,6 +89,8 @@ void SceneText::Init()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	camera.Init(Vector3(0, 0, 10), Vector3(0, 0, 0), Vector3(0, 1, 0));
+
+	Objects = ObjectManager::getInstance();
 
 	// Top-down view for minimap
 	minimapCamera.Init(Vector3(0, 10, 0), Vector3(0, 0, 0), Vector3(0, 0, -1));
@@ -223,7 +226,7 @@ void SceneText::Update(double dt)
 	currency->AddCurrency(int(currency->ReturnRegeneration() * dt));
 	currency->SortAndUpdateCurrency();
 
-	camera.Update(dt);
+	camera.Update(dt, Objects);
 	CalculateFrameRate();
 
 	if (somethingHappened) {
@@ -342,6 +345,16 @@ void SceneText::Update(double dt)
 		eUIState = DEFAULT_UI;
 		somethingHappened = true;
 	}
+
+	if (Application::IsKeyPressed(VK_F1)) {
+		scene->SetNextScene(3,1);
+	}
+	if (Application::IsKeyPressed(VK_F2)) {
+		scene->SetNextScene(3,2);
+	}
+	if (Application::IsKeyPressed(VK_F3)) {
+		scene->SetNextScene(3,3);
+	}
 }
 
 void SceneText::Render()
@@ -384,7 +397,6 @@ void SceneText::Render()
 
 	RenderSkybox();
 
-	ObjectManager* Objects = ObjectManager::getInstance();
 	Objects->Update();
 	Object* temp;
 
@@ -400,9 +412,15 @@ void SceneText::Render()
 	RenderSpotlight();
 
 	RenderCar();
+
 	RenderTurntable();
 
 	RenderBuilding();
+
+	temp = Objects->AddObject("User", meshList[GEO_USER], true);
+	temp->Transform('T', camera.position.x, camera.position.y, camera.position.z);
+	Objects->getLib().push_back(temp);
+	Objects->getObject("User")->AddHitbox(Vector3(0, 0, 0), Vector3(2, 3, 2));
 
 	if (phoneUse == true)
 	{
@@ -429,7 +447,12 @@ void SceneText::Render()
 		break;
 	}
 
+	if (renderHitBox == true) {
+		RenderHitbox(Objects);
+	}
+
 	RenderMinimap();
+
 
 	glViewport(0, 0, Window::getInstance()->getWidth(), Window::getInstance()->getHeight());
 }
@@ -461,4 +484,25 @@ void SceneText::CalculateFrameRate()
 		fps = (int)framesPerSecond;
 		framesPerSecond = 0;
 	}
+}
+
+void SceneText::RenderHitbox(ObjectManager*& Objects) {
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	for (int i = 0; i < Objects->getLib().size(); i++) {
+		for (int j = 0; j < Objects->getLib()[i]->getHitboxLib().size(); j++) {
+			modelStack.PushMatrix();
+			Objects->getLib()[i]->Render(modelStack);
+			Vector3 temp = Objects->getLib()[i]->getHitboxLib()[j]->getDisplacement();
+			modelStack.Translate(temp.x, temp.y, temp.z);
+			if (Objects->getLib()[i]->getHitboxLib()[j]->getDegrees() != 0) {
+				temp = Objects->getLib()[i]->getHitboxLib()[j]->getRotate();
+				modelStack.Rotate(Objects->getLib()[i]->getHitboxLib()[j]->getDegrees(), temp.x, temp.y, temp.z);
+			}
+			temp = Objects->getLib()[i]->getHitboxLib()[j]->getDimensions();
+			Mesh* temp2 = MeshBuilder::GenerateCuboid("Hitbox", Color(0, 1, 0), temp.x * 2, temp.y * 2, temp.z * 2);
+			RenderMesh(temp2, false);
+			modelStack.PopMatrix();
+		}
+	}
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
