@@ -10,6 +10,9 @@ void SceneMenu::InitMeshList()
 	meshList[MENU_SCREEN] = MeshBuilder::GenerateQuad("Menu_Screen", Color(1, 1, 1), 1.f, 1.f);
 	meshList[MENU_SCREEN]->textureID = LoadTGA("Image//menu-screen.tga");
 
+	meshList[CONTROLS_SCREEN] = MeshBuilder::GenerateQuad("Controls_Screen", Color(1, 1, 1), 1.f, 1.f);
+	meshList[CONTROLS_SCREEN]->textureID = LoadTGA("Image//controls-screen.tga");
+
 	meshList[BUTTON] = MeshBuilder::GenerateQuad("Button", Color(0.4f, 0.4f, 0.4f), 1.f, 1.f);
 
 	meshList[TEXT] = MeshBuilder::GenerateText("text", 16, 16);

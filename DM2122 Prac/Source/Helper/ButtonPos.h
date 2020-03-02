@@ -6,8 +6,8 @@ private:
 	// Buttons position
 	double ButtonMinPosX;
 	double ButtonMaxPosX;
-	double ButtonMinPosY[3];
-	double ButtonMaxPosY[3];
+	double ButtonMinPosY[4];
+	double ButtonMaxPosY[4];
 
 	static Button* instance;
 
@@ -26,6 +26,9 @@ public:
 						 
 	double getButton3MinPosY() const;
 	double getButton3MaxPosY() const;
+
+	double getButton4MinPosY() const;
+	double getButton4MaxPosY() const;
 
 	void updateButtonPos();
 

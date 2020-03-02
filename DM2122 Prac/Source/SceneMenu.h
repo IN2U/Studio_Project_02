@@ -8,6 +8,7 @@ private:
 	enum GEOMETRY_TYPE
 	{
 		MENU_SCREEN,
+		CONTROLS_SCREEN,
 		BUTTON,
 		TEXT,
 		NUM_GEOMETRY,
@@ -22,6 +23,7 @@ private:
 	// Menu states
 	const int MAIN_MENU;
 	const int OPTIONS_MENU;
+	const int CONTROLS_MENU;
 
 	int menuCurrentState;
 

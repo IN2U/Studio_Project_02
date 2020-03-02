@@ -11,7 +11,7 @@
 #include "Global_Constants/TEXT_BUTTON.h"
 #include "Global_Constants/GAME_STATES.h"
 
-SceneMenu::SceneMenu() : meshList{ NULL, NULL, NULL }, sceneTime(0.0), debounceTime(0.0), MAIN_MENU(0), OPTIONS_MENU(1), menuCurrentState(MAIN_MENU)
+SceneMenu::SceneMenu() : meshList{ NULL, NULL, NULL }, sceneTime(0.0), debounceTime(0.0), MAIN_MENU(0), OPTIONS_MENU(1), CONTROLS_MENU(2), menuCurrentState(MAIN_MENU)
 {
 }
 
@@ -71,7 +71,6 @@ void SceneMenu::Update(double dt)
 				&& mouse->getMYPos() < button->getButton1MaxPosY() && mouse->getMYPos() > button->getButton1MinPosY())
 			{
 				scene->SetNextScene(STATE::GAME_SCENE);
-				//scene->SetNextScene(STATE::TIC_TAC_TOE_SCENE);
 			}
 			// OPTIONS
 			else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
@@ -92,7 +91,7 @@ void SceneMenu::Update(double dt)
 			if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
 				&& mouse->getMYPos() < button->getButton1MaxPosY() && mouse->getMYPos() > button->getButton1MinPosY())
 			{
-
+				menuCurrentState = CONTROLS_MENU;
 			}
 			// AUDIO
 			else if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
@@ -112,6 +111,15 @@ void SceneMenu::Update(double dt)
 				{
 					menuCurrentState = MAIN_MENU;
 				}
+			}
+		}
+		else if (menuCurrentState == CONTROLS_MENU)
+		{
+			// BACK
+			if (mouse->getMXPos() > button->getButtonMinPosX() && mouse->getMXPos() < button->getButtonMaxPosX()
+				&& mouse->getMYPos() < button->getButton4MaxPosY() && mouse->getMYPos() > button->getButton4MinPosY())
+			{
+				menuCurrentState = OPTIONS_MENU;
 			}
 		}
 
@@ -145,6 +153,12 @@ void SceneMenu::Render()
 		RenderTextOnScreen(meshList[TEXT], "Controls", Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 9.6f, TxtB::TEXT_DISTANCE_Y);
 		RenderTextOnScreen(meshList[TEXT], "Audio", Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.2f, TxtB::TEXT_DISTANCE_Y - 2);
 		RenderTextOnScreen(meshList[TEXT], "Back", Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.5f, TxtB::TEXT_DISTANCE_Y - 4);
+	}
+	else if (menuCurrentState == CONTROLS_MENU)
+	{
+		RenderMeshOnScreen(meshList[CONTROLS_SCREEN], TxtB::CENTRE_OF_SCREEN_X, 30, 80, 60);
+		RenderMeshOnScreen(meshList[BUTTON], TxtB::CENTRE_OF_SCREEN_X, 15.f, TxtB::BUTTON_SIZE_X, TxtB::BUTTON_SIZE_Y);
+		RenderTextOnScreen(meshList[TEXT], "Back", Color(TxtB::TEXT_COLOR, TxtB::TEXT_COLOR, TxtB::TEXT_COLOR), TxtB::TEXT_SIZE, 11.5f, TxtB::TEXT_DISTANCE_Y - 6.75f);
 	}
 }
 

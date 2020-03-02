@@ -9,6 +9,6 @@ void SceneText::RenderFloor()
 	floor = Objects->AddObject("Floor", meshList[GEO_FLOOR], true);
 	floor->Transform('T', 0.f, -1.f, 0.f);
 	floor->Transform(-90.f, 1.f, 0.f, 0.f);
-	floor->Transform('S', 100.f, 1.f, 100.f);
+	floor->Transform('S', 200.f, 1.f, 200.f);
 	Objects->getLib().push_back(floor);
 }

@@ -51,6 +51,16 @@ double Button::getButton3MaxPosY() const
 	return ButtonMaxPosY[2];
 }
 
+double Button::getButton4MinPosY() const
+{
+	return ButtonMinPosY[3];
+}
+
+double Button::getButton4MaxPosY() const
+{
+	return ButtonMaxPosY[3];
+}
+
 Button* Button::instance = nullptr;
 
 Button* Button::getInstance()
@@ -77,4 +87,7 @@ void Button::updateButtonPos()
 
 	ButtonMinPosY[2] = double(window->getHeight() / 40) * (double)23;
 	ButtonMaxPosY[2] = double(window->getHeight() / 20) * (double)13;
+
+	ButtonMinPosY[3] = double(window->getHeight() / 60) * (double)43;
+	ButtonMaxPosY[3] = double(window->getHeight() / 60) * (double)47;
 }
