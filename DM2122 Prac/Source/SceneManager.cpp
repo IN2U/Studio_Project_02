@@ -5,6 +5,7 @@ SceneManager::SceneManager() {
 	currSceneID = STATE::MENU_SCENE;
 	nextSceneID = STATE::MENU_SCENE;
 	fromGame = false;
+	carSelect = 0;
 }
 
 SceneManager::~SceneManager() {
@@ -36,6 +37,12 @@ void SceneManager::AddScene(Scene* scene) {
 void SceneManager::SetNextScene(int sceneID) {
 
 	nextSceneID = sceneID;
+	carSelect = 0;
+}
+
+void SceneManager::SetNextScene(int sceneID, int carSelect) {
+	nextSceneID = sceneID;
+	this->carSelect = carSelect;
 }
 
 int SceneManager::getCurrentSceneID() const
@@ -66,3 +73,6 @@ void SceneManager::ChangeScene() {
 	currSceneID = nextSceneID;
 }
 
+int SceneManager::getCarSelect() {
+	return carSelect;
+}

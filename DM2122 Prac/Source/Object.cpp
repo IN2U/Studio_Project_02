@@ -83,17 +83,17 @@ void Object::Transform(float degrees, float x, float y, float z) {
 
 void Object::Render(MS& modelStack) {
 	if (this->getParent() != nullptr) {
-		modelStack.Translate(parent->translate.x, parent->translate.y, parent->translate.z);
-		modelStack.Translate(translate.x, translate.y, translate.z);
 		modelStack.Scale(parent->scale.x, parent->scale.y, parent->scale.z);
 		modelStack.Scale(scale.x, scale.y, scale.z);
+		modelStack.Translate(parent->translate.x, parent->translate.y, parent->translate.z);
+		modelStack.Translate(translate.x, translate.y, translate.z);
 		if (parent->rotateDegrees != 0) {
 			modelStack.Rotate(parent->rotateDegrees, parent->rotateAxis.x, parent->rotateAxis.y, parent->rotateAxis.z);
 		}
 	}
 	else {
-		modelStack.Scale(scale.x, scale.y, scale.z);
 		modelStack.Translate(translate.x, translate.y, translate.z);
+		modelStack.Scale(scale.x, scale.y, scale.z);
 		if (rotateDegrees != 0) {
 			modelStack.Rotate(rotateDegrees, rotateAxis.x, rotateAxis.y, rotateAxis.z);
 		}

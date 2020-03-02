@@ -173,6 +173,8 @@ void SceneText::InitMeshList()
 
 	meshList[GEO_PHONE] = MeshBuilder::GenerateOBJ("phone", "OBJ//Phone.obj");
 	meshList[GEO_PHONE]->textureID = LoadTGA("Image//Phone_uv.tga");
+
+	meshList[GEO_USER] = MeshBuilder::GenerateCuboid("User", Color(0, 0, 0), 1.f, 1.f, 1.f);
 }
 
 void TicTacToe::InitMeshList()

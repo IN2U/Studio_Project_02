@@ -145,8 +145,13 @@ void Application::Run()
 		else if (scene->getCurrentSceneID() != scene->getNextSceneID())
 		{
 			//scene->GetCurrScene()->Exit();
-			scene->ChangeScene();
-			scene->GetCurrScene()->Init();
+				scene->ChangeScene();
+			if (scene->getCarSelect() != 0) {
+				static_cast<SceneRace*>(scene->GetCurrScene())->Init(scene->getCarSelect());
+			}
+			else {
+				scene->GetCurrScene()->Init();
+			}
 		}
 
 		// Gets window size

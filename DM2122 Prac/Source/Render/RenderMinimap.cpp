@@ -12,7 +12,6 @@ void SceneText::RenderMinimap()
 	modelStack_mini.LoadIdentity();
 
 	ObjectManager* Objects = ObjectManager::getInstance();
-	Objects->Update();
 	Object* mini;
 
 	mini = Objects->AddObject("minimap_border", meshList[MINIMAP_BORDER], false);

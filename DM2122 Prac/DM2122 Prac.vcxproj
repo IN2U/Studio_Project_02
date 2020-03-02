@@ -142,7 +142,6 @@
     <ClInclude Include="Source\Mesh_Generation\LoadOBJ.h" />
     <ClInclude Include="Source\race.h" />
     <ClInclude Include="Source\raceCar.h" />
-    <ClInclude Include="Source\raceInitLightSettings.h" />
     <ClInclude Include="Source\Texture_Mapping\LoadTGA.h" />
     <ClInclude Include="Source\Material.h" />
     <ClInclude Include="Source\Mesh_Generation\Mesh.h" />

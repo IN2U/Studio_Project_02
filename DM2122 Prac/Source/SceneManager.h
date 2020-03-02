@@ -13,6 +13,7 @@ private:
 	std::vector< Scene* > sceneLib;
 	int currSceneID;
 	int nextSceneID;
+	int carSelect;
 
 public:
 
@@ -22,7 +23,9 @@ public:
 	void ChangeScene();
 	void AddScene(Scene* scene);
 	void SetNextScene(int sceneID);
-
+	void SetNextScene(int sceneID, int carSelect);
+	
+	int getCarSelect();
 	int getCurrentSceneID() const;
 	int getNextSceneID() const;
 	void Update(double ElapsedTime);

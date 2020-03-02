@@ -58,8 +58,14 @@
     <ClCompile Include="Source\raceInitShaderUniforms.cpp" />
     <ClCompile Include="Source\raceRenderSkyboxAndTrack.cpp" />
     <ClCompile Include="Source\raceInitLightSettings.cpp" />
+<<<<<<< Updated upstream
     <ClCompile Include="Source\Render\RenderTurntable.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Source\Render\RenderVending.cpp" />
+=======
+=======
+>>>>>>> Stashed changes
+>>>>>>> Collision-on-SceneText
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h" />
@@ -99,6 +105,5 @@
     <ClInclude Include="Source\Hitbox.h" />
     <ClInclude Include="Source\race.h" />
     <ClInclude Include="Source\raceCar.h" />
-    <ClInclude Include="Source\raceInitLightSettings.h" />
   </ItemGroup>
 </Project>

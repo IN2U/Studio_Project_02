@@ -1,4 +1,5 @@
 #include "Collision.h"
+#include "raceCar.h"
 
 Collisions::Collisions() {}
 
